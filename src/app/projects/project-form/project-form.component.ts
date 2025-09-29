@@ -1,31 +1,36 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ProjectsService } from '../projects.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project-form',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss']
 })
-export class ProjectFormComponent {
-  projectName = '';
-  projectDescription = '';
 
-  constructor(private projectsService: ProjectsService) {}
+export class ProjectFormComponent {
+  form;
+
+  constructor(private fb: FormBuilder, private projectsService: ProjectsService) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      description: ['']
+    });
+  }
 
   addProject(): void {
-    if (!this.projectName.trim()) return;
+    if (this.form.invalid) return;
 
     this.projectsService.addProject({
-      name: this.projectName,
-      description: this.projectDescription,
+      name: this.form.value.name!,
+      description: this.form.value.description || '',
       startDate: new Date().toISOString().split('T')[0],
       endDate: ''
     });
 
-    this.projectName = '';
-    this.projectDescription = '';
+    this.form.reset();
   }
 }
+

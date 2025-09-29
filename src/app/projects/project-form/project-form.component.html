@@ -1,19 +1,19 @@
 <h2>Add Project</h2>
 
-<form (ngSubmit)="addProject()">
+<form [formGroup]="form" (ngSubmit)="addProject()">
   <label>
     Name:
-    <input type="text" [(ngModel)]="projectName" name="name" required>
+    <input type="text" formControlName="name" required>
   </label>
 
   <label>
     Description:
-    <input type="text" [(ngModel)]="projectDescription" name="description">
+    <input type="text" formControlName="description">
   </label>
 
-  <button type="submit" [disabled]="!projectName.trim()">Add Project</button>
+  <button type="submit" [disabled]="form.invalid">Add Project</button>
 
-  @if (!projectName.trim()) {
+  @if (form.get('name')?.invalid && form.get('name')?.touched) {
     <p style="color: red;">Project name is required</p>
   }
 </form>
