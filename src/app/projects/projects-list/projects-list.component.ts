@@ -14,14 +14,11 @@ export class ProjectsListComponent implements OnInit {
   constructor(private projectsService: ProjectsService) {}
 
   ngOnInit(): void {
-    // Al iniciar el componente, cargamos la lista de proyectos
     this.projects = this.projectsService.getProjects();
   }
 
   deleteProject(id: number): void {
-    // Llamamos al servicio para eliminar el proyecto
     this.projectsService.deleteProject(id);
-    // Refrescamos la lista en pantalla
     this.projects = this.projectsService.getProjects();
   }
 }
