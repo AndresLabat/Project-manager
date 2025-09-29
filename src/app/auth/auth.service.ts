@@ -8,7 +8,7 @@ export class AuthService {
   constructor() { }
 
   login(username: string, password: string): boolean {
-    if(username === 'admin' && password === '1234'){
+    if(username === 'admin' && password === 'Test1234!'){
       localStorage.setItem('user', JSON.stringify({ username }));
       return true;
     }

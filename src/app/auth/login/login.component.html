@@ -1,1 +1,26 @@
-<p>login works!</p>
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+    <label>
+      Username:
+      <input type="text" formControlName="username" required>
+    </label>
+  
+    <label>
+      Password:
+      <input type="password" formControlName="password" required>
+    </label>
+  
+    <button type="submit" [disabled]="form.invalid">Login</button>
+  
+    @if (form.get('username')?.invalid && form.get('username')?.touched) {
+      <p style="color:red;">Username is required</p>
+    }
+  
+    @if (form.get('password')?.invalid && form.get('password')?.touched) {
+      <p style="color:red;">Password is required</p>
+    }
+  
+    @if (form.errors?.['invalidLogin']) {
+      <p style="color:red;">Incorrect username or password</p>
+    }
+  </form>
+  
