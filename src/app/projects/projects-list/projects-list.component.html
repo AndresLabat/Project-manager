@@ -1,1 +1,12 @@
-<p>projects-list works!</p>
+<h2>Projects</h2>
+<ul>
+  @for (project of projects; track project.id) {
+    <li>
+      {{ project.name }}
+      <button (click)="deleteProject(project.id)">Delete</button>
+    </li>
+  }
+  @empty {
+    <li>No projects available</li>
+  }
+</ul>

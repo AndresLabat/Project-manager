@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService, Project } from '../projects.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-projects-list',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })
