@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-project-form',
   imports: [],
-  templateUrl: './project-form.html',
-  styleUrl: './project-form.scss'
+  templateUrl: './project-form.component.html',
+  styleUrl: './project-form.component.scss'
 })
-export class ProjectForm {
+export class ProjectFormComponent {
 
 }
