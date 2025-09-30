@@ -1,1 +1,14 @@
-<p>project-detail works!</p>
+<h2>Project Details</h2>
+
+@if (project) {
+  <p><strong>Name:</strong> {{ project.name }}</p>
+  <p><strong>Description:</strong> {{ project.description }}</p>
+  <p><strong>Start Date:</strong> {{ project.startDate }}</p>
+  <p><strong>End Date:</strong> {{ project.endDate ? project.endDate : 'Not set' }}</p>
+
+  <button (click)="editProject()">Edit</button>
+  <button (click)="deleteProject()">Delete</button>
+}
+@else {
+  <p>Project not found.</p>
+}

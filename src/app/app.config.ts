@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { AuthGuard } from './auth/auth.guard';
 
 export const appConfig = {
@@ -15,7 +16,8 @@ export const appConfig = {
         children: [
           { path: '', component: ProjectsListComponent },
           { path: 'new', component: ProjectFormComponent },
-          { path: ':id/edit', component: ProjectEditComponent }
+          { path: ':id/edit', component: ProjectEditComponent },
+          { path: ':id', component: ProjectDetailComponent }
         ]
       },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },

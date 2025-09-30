@@ -11,6 +11,11 @@
     <input type="text" formControlName="description">
   </label>
 
+  <label>
+    End Date:
+    <input type="date" formControlName="endDate">
+  </label>
+
   <button type="submit" [disabled]="form.invalid">Update Project</button>
 
   @if (form.get('name')?.invalid && form.get('name')?.touched) {

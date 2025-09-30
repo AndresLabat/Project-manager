@@ -20,4 +20,8 @@ export class ProjectsListComponent {
   editProject(id: number): void {
     this.router.navigate(['/projects', id, 'edit']);
   }
+
+  viewDetails(id: number) {
+    this.router.navigate(['/projects', id]);
+  }
 }
