@@ -1,14 +1,39 @@
-<h2>Project Details</h2>
-
-@if (project) {
-  <p><strong>Name:</strong> {{ project.name }}</p>
-  <p><strong>Description:</strong> {{ project.description }}</p>
-  <p><strong>Start Date:</strong> {{ project.startDate }}</p>
-  <p><strong>End Date:</strong> {{ project.endDate ? project.endDate : 'Not set' }}</p>
-
-  <button (click)="editProject()">Edit</button>
-  <button (click)="deleteProject()">Delete</button>
-}
-@else {
-  <p>Project not found.</p>
-}
+<div class="project-detail-container">
+  <h2>Project Details</h2>
+  
+  @if (project) {
+    <div class="project-detail-card">
+      <div class="project-header">
+        <h3 class="project-title">{{ project.name }}</h3>
+        <div class="project-actions">
+          <button class="btn btn-secondary" (click)="editProject()">Edit</button>
+          <button class="btn btn-danger" (click)="deleteProject()">Delete</button>
+        </div>
+      </div>
+      
+      <div class="project-content">
+        @if (project.description) {
+          <div class="detail-section">
+            <h4 class="detail-label">Description</h4>
+            <p class="detail-value description">{{ project.description }}</p>
+          </div>
+        }
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Start Date</h4>
+          <p class="detail-value">{{ project.startDate }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">End Date</h4>
+          <p class="detail-value">{{ project.endDate ? project.endDate : 'Not set' }}</p>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="error-state">
+      <h3 class="error-title">Project not found</h3>
+      <p class="error-message">The project you're looking for doesn't exist or has been deleted.</p>
+    </div>
+  }
+</div>
