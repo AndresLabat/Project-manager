@@ -1,6 +1,7 @@
-<h2>Edit Project</h2>
-
-<form [formGroup]="form" (ngSubmit)="updateProject()" class="project-form">
+<div class="project-form">
+  <h2>Edit Project</h2>
+  
+  <form [formGroup]="form" (ngSubmit)="updateProject()">
   <div class="form-group">
     <label>
       Name: <span class="required">*</span>
@@ -50,4 +51,5 @@
   <p class="legend">
     <span class="required">*</span> Required fields
   </p>
-</form>
+  </form>
+</div>

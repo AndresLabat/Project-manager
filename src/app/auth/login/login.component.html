@@ -1,6 +1,7 @@
-<h2>Login</h2>
-
-<form [formGroup]="form" (ngSubmit)="onLogin()" class="login-form">
+<div class="login-form">
+  <h2>Login</h2>
+  
+  <form [formGroup]="form" (ngSubmit)="onLogin()">
   <div class="form-group">
     <label>
       Username: <span class="required">*</span>
@@ -32,5 +33,6 @@
   <p class="legend">
     <span class="required">*</span> Required fields
   </p>
-</form>
+  </form>
+</div>
   

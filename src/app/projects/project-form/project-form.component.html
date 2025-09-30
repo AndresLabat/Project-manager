@@ -1,6 +1,7 @@
-<h2>Add Project</h2>
-
-<form [formGroup]="form" (ngSubmit)="addProject()" class="project-form">
+<div class="project-form">
+  <h2>Add Project</h2>
+  
+  <form [formGroup]="form" (ngSubmit)="addProject()">
   <div class="form-group">
     <label>
       Name: <span class="required">*</span>
@@ -54,4 +55,5 @@
   <p class="legend">
     <span class="required">*</span> Required fields
   </p>
-</form>
+  </form>
+</div>

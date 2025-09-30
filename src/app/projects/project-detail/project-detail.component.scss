@@ -4,6 +4,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: $spacing-lg;
+  margin-top: $spacing-lg * 8;
 }
 
 .header-section {
@@ -97,16 +98,18 @@ h2 {
   }
   
   &.btn-back {
-    background-color: transparent;
-    color: $text-muted;
+    background-color: white;
+    color: $text-color;
     border: 1px solid $border-color;
     padding: 8px 16px;
     font-size: 0.9rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     
     &:hover {
       background-color: #f8f9fa;
-      color: $text-color;
+      color: $primary-color;
       border-color: $primary-color;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     }
   }
 }
@@ -163,7 +166,17 @@ h2 {
   margin: 0;
 }
 
+@media (max-width: 1200px) {
+  .project-detail-container {
+    margin-top: $spacing-lg * 6;
+  }
+}
+
 @media (max-width: 768px) {
+  .project-detail-container {
+    margin-top: $spacing-lg * 4;
+  }
+  
   .project-header {
     flex-direction: column;
     align-items: stretch;
@@ -176,5 +189,11 @@ h2 {
   .project-title {
     text-align: center;
     margin-bottom: $spacing-md;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-detail-container {
+    margin-top: $spacing-lg * 2;
   }
 }
