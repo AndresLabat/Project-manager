@@ -24,7 +24,11 @@
   <button type="submit" [disabled]="form.invalid">Add Project</button>
 
   @if (form.get('name')?.invalid && form.get('name')?.touched) {
-    <p style="color: red;">Project name is required</p>
+    <p style="color: red;">{{ getNameErrorMessage() }}</p>
+  }
+
+  @if (form.get('description')?.invalid && form.get('description')?.touched) {
+    <p style="color: red;">{{ getDescriptionErrorMessage() }}</p>
   }
 
   @if (form.hasError('dateRange')) {

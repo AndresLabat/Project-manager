@@ -24,8 +24,16 @@ export class ProjectEditComponent {
     const project = this.projectsService.getProjects().find(p => p.id === this.projectId);
 
     this.form = this.fb.group({
-      name: [project?.name || '', Validators.required],
-      description: [project?.description || ''],
+      name: [project?.name || '', [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(100),
+        Validators.pattern(/^[a-zA-Z0-9\s\-_.,()]+$/)
+      ]],
+      description: [project?.description || '', [
+        Validators.maxLength(500),
+        Validators.pattern(/^[a-zA-Z0-9\s\-_.,()!?@#$%&*+/=:;'"<>[\]{}|\\~`]*$/)
+      ]],
       startDate: [project?.startDate || '', Validators.required],
       endDate: [project?.endDate || '']
     }, { validators: this.dateRangeValidator });
@@ -40,6 +48,34 @@ export class ProjectEditComponent {
     }
     
     return null;
+  }
+
+  getNameErrorMessage(): string {
+    const nameControl = this.form.get('name');
+    if (nameControl?.hasError('required')) {
+      return 'Project name is required';
+    }
+    if (nameControl?.hasError('minlength')) {
+      return 'Project name must be at least 1 character long';
+    }
+    if (nameControl?.hasError('maxlength')) {
+      return 'Project name must be no more than 100 characters long';
+    }
+    if (nameControl?.hasError('pattern')) {
+      return 'Project name can only contain letters, numbers, spaces, and basic punctuation';
+    }
+    return '';
+  }
+
+  getDescriptionErrorMessage(): string {
+    const descControl = this.form.get('description');
+    if (descControl?.hasError('maxlength')) {
+      return 'Description must be no more than 500 characters long';
+    }
+    if (descControl?.hasError('pattern')) {
+      return 'Description contains invalid characters';
+    }
+    return '';
   }
 
   updateProject(): void {
