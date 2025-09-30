@@ -26,4 +26,8 @@
   @if (form.get('name')?.invalid && form.get('name')?.touched) {
     <p style="color: red;">Project name is required</p>
   }
+
+  @if (form.hasError('dateRange')) {
+    <p style="color: red;">End date must be after start date</p>
+  }
 </form>

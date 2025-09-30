@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ProjectsService, Project } from '../projects.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,7 +28,18 @@ export class ProjectEditComponent {
       description: [project?.description || ''],
       startDate: [project?.startDate || '', Validators.required],
       endDate: [project?.endDate || '']
-    });
+    }, { validators: this.dateRangeValidator });
+  }
+
+  private dateRangeValidator(control: AbstractControl): ValidationErrors | null {
+    const startDate = control.get('startDate')?.value;
+    const endDate = control.get('endDate')?.value;
+    
+    if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+      return { dateRange: true };
+    }
+    
+    return null;
   }
 
   updateProject(): void {

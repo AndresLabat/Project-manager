@@ -27,6 +27,10 @@
     <p style="color: red;">Project name is required</p>
   }
 
+  @if (form.hasError('dateRange')) {
+    <p style="color: red;">End date must be after start date</p>
+  }
+
   @if (successMessage()) {
     <p style="color: green;">{{ successMessage() }}</p>
   }
