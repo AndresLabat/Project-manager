@@ -70,9 +70,11 @@
 }
 
 .main-content {
-  padding: $spacing-lg $spacing-lg * 2;
+  padding: 0 $spacing-lg * 2;
   min-height: calc(100vh - 80px);
   background-color: #f8f9fa;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
