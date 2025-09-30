@@ -16,5 +16,8 @@
   @if (form.get('name')?.invalid && form.get('name')?.touched) {
     <p style="color: red;">Project name is required</p>
   }
-</form>
 
+  @if (successMessage()) {
+    <p style="color: green;">{{ successMessage() }}</p>
+  }
+</form>
