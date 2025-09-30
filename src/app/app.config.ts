@@ -3,6 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { AuthGuard } from './auth/auth.guard';
 
 export const appConfig = {
@@ -13,7 +14,8 @@ export const appConfig = {
         canActivate: [AuthGuard],
         children: [
           { path: '', component: ProjectsListComponent },
-          { path: 'new', component: ProjectFormComponent }
+          { path: 'new', component: ProjectFormComponent },
+          { path: ':id/edit', component: ProjectEditComponent }
         ]
       },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },

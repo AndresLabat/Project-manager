@@ -1,0 +1,19 @@
+<h2>Edit Project</h2>
+
+<form [formGroup]="form" (ngSubmit)="updateProject()">
+  <label>
+    Name:
+    <input type="text" formControlName="name" required>
+  </label>
+
+  <label>
+    Description:
+    <input type="text" formControlName="description">
+  </label>
+
+  <button type="submit" [disabled]="form.invalid">Update Project</button>
+
+  @if (form.get('name')?.invalid && form.get('name')?.touched) {
+    <p style="color: red;">Project name is required</p>
+  }
+</form>
