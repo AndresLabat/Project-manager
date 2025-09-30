@@ -1,6 +1,17 @@
 <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc;">
     <h1>{{ title() }}</h1>
-    <button (click)="onLogout()">Logout</button>
+    <nav>
+      <ul style="display: flex; gap: 10px; list-style: none; margin: 0; padding: 0;">
+        @if (authService.isAuthenticated()) {
+          <li><a (click)="router.navigate(['/projects'])">Projects</a></li>
+          <li><a (click)="router.navigate(['/projects/new'])">Add Project</a></li>
+          <li><button (click)="onLogout()">Logout</button></li>
+        }
+        @else {
+          <li><a (click)="router.navigate(['/login'])">Login</a></li>
+        }
+      </ul>
+    </nav>
   </header>
   
   <main style="padding: 20px;">

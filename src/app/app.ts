@@ -15,7 +15,11 @@ export class App {
 
   title = signal('Project Manager');
 
-  constructor(private authService: AuthService, private router: Router, private titleService: Title) {
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    private titleService: Title
+  ) {
     this.titleService.setTitle(this.title());
   }
 
