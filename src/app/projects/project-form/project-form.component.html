@@ -1,41 +1,57 @@
 <h2>Add Project</h2>
 
-<form [formGroup]="form" (ngSubmit)="addProject()">
-  <label>
-    Name:
-    <input type="text" formControlName="name" required>
-  </label>
+<form [formGroup]="form" (ngSubmit)="addProject()" class="project-form">
+  <div class="form-group">
+    <label>
+      Name: <span class="required">*</span>
+    </label>
+    <input type="text" formControlName="name" required placeholder="Enter project name" class="form-input">
+  </div>
 
-  <label>
-    Description:
-    <input type="text" formControlName="description">
-  </label>
+  <div class="form-group">
+    <label>
+      Description:
+    </label>
+    <input type="text" formControlName="description" placeholder="Enter project description (optional)" class="form-input">
+  </div>
 
-  <label>
-    Start Date:
-    <input type="date" formControlName="startDate" required>
-  </label>
+  <div class="form-group">
+    <label>
+      Start Date: <span class="required">*</span>
+    </label>
+    <input type="date" formControlName="startDate" required class="form-input">
+  </div>
 
-  <label>
-    End Date:
-    <input type="date" formControlName="endDate">
-  </label>  
+  <div class="form-group">
+    <label>
+      End Date:
+    </label>
+    <input type="date" formControlName="endDate" class="form-input">
+  </div>  
 
   <button type="submit" [disabled]="form.invalid">Add Project</button>
 
   @if (form.get('name')?.invalid && form.get('name')?.touched) {
-    <p style="color: red;">{{ getNameErrorMessage() }}</p>
+    <p class="error-message">{{ getNameErrorMessage() }}</p>
   }
 
   @if (form.get('description')?.invalid && form.get('description')?.touched) {
-    <p style="color: red;">{{ getDescriptionErrorMessage() }}</p>
+    <p class="error-message">{{ getDescriptionErrorMessage() }}</p>
+  }
+
+  @if (form.get('startDate')?.invalid && form.get('startDate')?.touched) {
+    <p class="error-message">Start date is required</p>
   }
 
   @if (form.hasError('dateRange')) {
-    <p style="color: red;">{{ getDateRangeErrorMessage() }}</p>
+    <p class="error-message">{{ getDateRangeErrorMessage() }}</p>
   }
 
   @if (successMessage()) {
-    <p style="color: green;">{{ successMessage() }}</p>
+    <p class="success-message">{{ successMessage() }}</p>
   }
 </form>
+
+<p class="legend">
+  <span class="required">*</span> Required fields
+</p>

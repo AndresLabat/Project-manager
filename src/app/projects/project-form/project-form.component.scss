@@ -1,0 +1,89 @@
+@import '../../styles/variables';
+
+.project-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    margin-bottom: $spacing-sm;
+    font-weight: 500;
+    color: $text-color;
+  }
+}
+
+.required {
+  color: $text-muted;
+  font-size: 0.9em;
+}
+
+.form-input {
+  padding: $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+  }
+  
+  &::placeholder {
+    color: $text-light;
+    font-style: italic;
+  }
+}
+
+button[type="submit"] {
+  background-color: $primary-color;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: $spacing-md;
+  transition: $transition;
+  
+  &:disabled {
+    background-color: $disabled-color;
+    cursor: default;
+    opacity: 0.6;
+  }
+  
+  &:hover:not(:disabled) {
+    background-color: $primary-hover;
+  }
+  
+  &:disabled:hover {
+    background-color: $disabled-color;
+    opacity: 0.6;
+  }
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.9em;
+  margin-top: $spacing-sm;
+}
+
+.success-message {
+  color: $success-color;
+  font-size: 0.9em;
+  margin-top: $spacing-sm;
+}
+
+.legend {
+  color: $text-muted;
+  font-size: 0.9em;
+  margin-top: $spacing-md;
+}
