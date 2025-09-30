@@ -1,14 +1,42 @@
-<h2>Projects</h2>
-<ul>
-  @for (project of projects(); track project.id) {
-    <li>
-      {{ project.name }}
-      <button (click)="editProject(project.id)">Edit</button>
-      <button (click)="deleteProject(project.id)">Delete</button>
-      <button (click)="viewDetails(project.id)">View Details</button>
-    </li>
+<div class="projects-container">
+  <h2>Projects</h2>
+  
+  @if (projects().length > 0) {
+    <div class="projects-grid">
+      @for (project of projects(); track project.id) {
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-name">{{ project.name }}</h3>
+            <div class="project-actions">
+              <button class="btn btn-primary" (click)="viewDetails(project.id)">View</button>
+              <button class="btn btn-secondary" (click)="editProject(project.id)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteProject(project.id)">Delete</button>
+            </div>
+          </div>
+          
+          @if (project.description) {
+            <p class="project-description">{{ project.description }}</p>
+          }
+          
+          <div class="project-dates">
+            <div class="date-item">
+              <span class="date-label">Start:</span>
+              <span class="date-value">{{ project.startDate }}</span>
+            </div>
+            @if (project.endDate) {
+              <div class="date-item">
+                <span class="date-label">End:</span>
+                <span class="date-value">{{ project.endDate }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p class="empty-message">No projects available</p>
+      <p class="empty-hint">Create your first project to get started!</p>
+    </div>
   }
-  @empty {
-    <li>No projects available</li>
-  }
-</ul>
+</div>
