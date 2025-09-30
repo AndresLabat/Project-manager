@@ -16,7 +16,8 @@ export class ProjectFormComponent {
   constructor(private fb: FormBuilder, private projectsService: ProjectsService) {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      description: ['']
+      description: [''],
+      endDate: ['']
     });
   }
 
@@ -27,7 +28,7 @@ export class ProjectFormComponent {
       name: this.form.value.name!,
       description: this.form.value.description || '',
       startDate: new Date().toISOString().split('T')[0],
-      endDate: ''
+      endDate: this.form.value.endDate || ''
     });
 
     this.form.reset();
