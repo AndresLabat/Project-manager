@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { ProjectsService, Project } from '../projects.service';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ProjectsService } from '../projects.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectValidators } from '../../validators/project.validators';
 
 @Component({
   selector: 'app-project-edit',
@@ -24,58 +25,23 @@ export class ProjectEditComponent {
     const project = this.projectsService.getProjects().find(p => p.id === this.projectId);
 
     this.form = this.fb.group({
-      name: [project?.name || '', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(100),
-        Validators.pattern(/^[a-zA-Z0-9\s\-_.,()]+$/)
-      ]],
-      description: [project?.description || '', [
-        Validators.maxLength(500),
-        Validators.pattern(/^[a-zA-Z0-9\s\-_.,()!?@#$%&*+/=:;'"<>[\]{}|\\~`]*$/)
-      ]],
+      name: [project?.name || '', ProjectValidators.nameValidators],
+      description: [project?.description || '', ProjectValidators.descriptionValidators],
       startDate: [project?.startDate || '', Validators.required],
       endDate: [project?.endDate || '']
-    }, { validators: this.dateRangeValidator });
-  }
-
-  private dateRangeValidator(control: AbstractControl): ValidationErrors | null {
-    const startDate = control.get('startDate')?.value;
-    const endDate = control.get('endDate')?.value;
-    
-    if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
-      return { dateRange: true };
-    }
-    
-    return null;
+    }, { validators: ProjectValidators.dateRangeValidator });
   }
 
   getNameErrorMessage(): string {
-    const nameControl = this.form.get('name');
-    if (nameControl?.hasError('required')) {
-      return 'Project name is required';
-    }
-    if (nameControl?.hasError('minlength')) {
-      return 'Project name must be at least 1 character long';
-    }
-    if (nameControl?.hasError('maxlength')) {
-      return 'Project name must be no more than 100 characters long';
-    }
-    if (nameControl?.hasError('pattern')) {
-      return 'Project name can only contain letters, numbers, spaces, and basic punctuation';
-    }
-    return '';
+    return ProjectValidators.getNameErrorMessage(this.form);
   }
 
   getDescriptionErrorMessage(): string {
-    const descControl = this.form.get('description');
-    if (descControl?.hasError('maxlength')) {
-      return 'Description must be no more than 500 characters long';
-    }
-    if (descControl?.hasError('pattern')) {
-      return 'Description contains invalid characters';
-    }
-    return '';
+    return ProjectValidators.getDescriptionErrorMessage(this.form);
+  }
+
+  getDateRangeErrorMessage(): string {
+    return ProjectValidators.getDateRangeErrorMessage(this.form);
   }
 
   updateProject(): void {

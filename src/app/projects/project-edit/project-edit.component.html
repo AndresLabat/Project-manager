@@ -32,6 +32,6 @@
   }
 
   @if (form.hasError('dateRange')) {
-    <p style="color: red;">End date must be after start date</p>
+    <p style="color: red;">{{ getDateRangeErrorMessage() }}</p>
   }
 </form>
