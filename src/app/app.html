@@ -1,20 +1,23 @@
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc;">
-    <h1>{{ title() }}</h1>
-    <nav>
-      <ul style="display: flex; gap: 10px; list-style: none; margin: 0; padding: 0;">
-        @if (authService.isAuthenticated()) {
-          <li><a (click)="router.navigate(['/projects'])">Projects</a></li>
-          <li><a (click)="router.navigate(['/projects/new'])">Add Project</a></li>
-          <li><button (click)="onLogout()">Logout</button></li>
-        }
-        @else {
-          <li><a (click)="router.navigate(['/login'])">Login</a></li>
-        }
-      </ul>
-    </nav>
-  </header>
-  
-  <main style="padding: 20px;">
-    <router-outlet></router-outlet>
-  </main>
+<header class="app-header">
+  <h1 class="app-title">{{ title() }}</h1>
+  <nav class="app-nav">
+    <ul>
+      @if (authService.isAuthenticated()) {
+        <li><a class="nav-link" (click)="router.navigate(['/projects'])">Projects</a></li>
+        <li><a class="nav-link" (click)="router.navigate(['/projects/new'])">Add Project</a></li>
+      }
+    </ul>
+  </nav>
+  <div class="app-actions">
+    @if (authService.isAuthenticated()) {
+      <button class="nav-button" (click)="onLogout()">Logout</button>
+    } @else {
+      <a class="nav-link" (click)="router.navigate(['/login'])">Login</a>
+    }
+  </div>
+</header>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
   
