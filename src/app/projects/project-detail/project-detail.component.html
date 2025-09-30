@@ -1,5 +1,10 @@
 <div class="project-detail-container">
-  <h2>Project Details</h2>
+  <div class="header-section">
+    <h2>Project Details</h2>
+    <button class="btn btn-back" (click)="goBack()">
+      ← Back to Projects
+    </button>
+  </div>
   
   @if (project) {
     <div class="project-detail-card">

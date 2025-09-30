@@ -6,11 +6,21 @@
   padding: $spacing-lg;
 }
 
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+  position: relative;
+}
+
 h2 {
   color: $text-color;
-  margin-bottom: $spacing-lg;
+  margin: 0;
   font-size: 2rem;
   font-weight: 600;
+  text-align: left;
+  flex: 1;
 }
 
 .project-detail-card {
@@ -83,6 +93,20 @@ h2 {
     
     &:hover {
       background-color: darken($error-color, 10%);
+    }
+  }
+  
+  &.btn-back {
+    background-color: transparent;
+    color: $text-muted;
+    border: 1px solid $border-color;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    
+    &:hover {
+      background-color: #f8f9fa;
+      color: $text-color;
+      border-color: $primary-color;
     }
   }
 }

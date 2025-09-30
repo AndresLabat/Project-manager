@@ -32,4 +32,8 @@ export class ProjectDetailComponent {
   editProject() {
     this.router.navigate(['/projects', this.projectId, 'edit']);
   }
+
+  goBack() {
+    this.router.navigate(['/projects']);
+  }
 }
