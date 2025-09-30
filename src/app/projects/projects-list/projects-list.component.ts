@@ -1,23 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ProjectsService, Project } from '../projects.service';
+import { Component, computed } from '@angular/core';
+import { ProjectsService } from '../projects.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-projects-list',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })
-export class ProjectsListComponent implements OnInit {
-  projects: Project[] = [];
+export class ProjectsListComponent {
+  projects = computed(() => this.projectsService.projects());
 
   constructor(private projectsService: ProjectsService) {}
 
-  ngOnInit(): void {
-    this.projects = this.projectsService.getProjects();
-  }
-
   deleteProject(id: number): void {
     this.projectsService.deleteProject(id);
-    this.projects = this.projectsService.getProjects();
   }
 }
