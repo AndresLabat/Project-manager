@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
@@ -16,7 +16,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute 
   ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -29,9 +30,10 @@ export class LoginComponent {
 
     const username = this.form.value.username ?? '';
     const password = this.form.value.password ?? '';
-    
+
     if (this.authService.login(username, password)) {
-      this.router.navigate(['/projects']);
+      const redirectTo = this.route.snapshot.queryParamMap.get('redirectTo') || '/projects';
+      this.router.navigate([redirectTo]);
     } else {
       this.form.setErrors({ invalidLogin: true });
     }
