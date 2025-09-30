@@ -17,6 +17,7 @@ export class ProjectFormComponent {
     this.form = this.fb.group({
       name: ['', Validators.required],
       description: [''],
+      startDate: ['', Validators.required],
       endDate: ['']
     });
   }
@@ -27,7 +28,7 @@ export class ProjectFormComponent {
     this.projectsService.addProject({
       name: this.form.value.name!,
       description: this.form.value.description || '',
-      startDate: new Date().toISOString().split('T')[0],
+      startDate: this.form.value.startDate!,
       endDate: this.form.value.endDate || ''
     });
 

@@ -26,6 +26,7 @@ export class ProjectEditComponent {
     this.form = this.fb.group({
       name: [project?.name || '', Validators.required],
       description: [project?.description || ''],
+      startDate: [project?.startDate || '', Validators.required],
       endDate: [project?.endDate || '']
     });
   }
@@ -36,6 +37,7 @@ export class ProjectEditComponent {
     this.projectsService.updateProject(this.projectId, {
       name: this.form.value.name!,
       description: this.form.value.description || '',
+      startDate: this.form.value.startDate!,
       endDate: this.form.value.endDate || ''
     });
 
