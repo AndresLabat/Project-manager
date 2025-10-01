@@ -1,0 +1,52 @@
+<div class="employee-form">
+  <div class="header-section">
+    <h2>Add Employee</h2>
+    <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
+  </div>
+  
+  <form [formGroup]="form" (ngSubmit)="addEmployee()">
+    <div class="form-group">
+      <label>
+        Full Name: <span class="required">*</span>
+      </label>
+      <input type="text" formControlName="fullName" required placeholder="Enter full name" class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label>
+        Email: <span class="required">*</span>
+      </label>
+      <input type="email" formControlName="email" required placeholder="Enter email address" class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label>
+        Role: <span class="required">*</span>
+      </label>
+      <input type="text" formControlName="role" required placeholder="Enter role (e.g., Developer, Designer)" class="form-input">
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Add Employee</button>
+
+    @if (form.get('fullName')?.invalid && form.get('fullName')?.touched) {
+      <p class="error-message">{{ getNameErrorMessage() }}</p>
+    }
+
+    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+      <p class="error-message">{{ getEmailErrorMessage() }}</p>
+    }
+
+    @if (form.get('role')?.invalid && form.get('role')?.touched) {
+      <p class="error-message">{{ getRoleErrorMessage() }}</p>
+    }
+
+    @if (successMessage()) {
+      <p class="success-message">{{ successMessage() }}</p>
+    }
+
+    <p class="legend">
+      <span class="required">*</span> Required fields
+    </p>
+  </form>
+</div>
+

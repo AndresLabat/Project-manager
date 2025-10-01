@@ -1,0 +1,57 @@
+import { Component, signal } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { EmployeesService } from '../employees.service';
+import { CommonModule } from '@angular/common';
+import { EmployeeValidators } from '../../validators/employee.validators';
+import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+
+@Component({
+  selector: 'app-employee-form',
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent],
+  templateUrl: './employee-form.component.html',
+  styleUrls: ['./employee-form.component.scss']
+})
+export class EmployeeFormComponent {
+  form;
+  successMessage = signal('');
+
+  constructor(
+    private fb: FormBuilder,
+    private employeesService: EmployeesService
+  ) {
+    this.form = this.fb.group({
+      fullName: ['', EmployeeValidators.nameValidators],
+      email: ['', EmployeeValidators.emailValidators],
+      role: ['', EmployeeValidators.roleValidators]
+    });
+  }
+
+  getNameErrorMessage(): string {
+    return EmployeeValidators.getNameErrorMessage(this.form);
+  }
+
+  getEmailErrorMessage(): string {
+    return EmployeeValidators.getEmailErrorMessage(this.form);
+  }
+
+  getRoleErrorMessage(): string {
+    return EmployeeValidators.getRoleErrorMessage(this.form);
+  }
+
+  addEmployee(): void {
+    if (this.form.invalid) return;
+
+    this.employeesService.addEmployee({
+      fullName: this.form.value.fullName!,
+      email: this.form.value.email!,
+      role: this.form.value.role!,
+      assignedProjects: [],
+      assignedTasks: []
+    });
+
+    this.form.reset();
+    this.successMessage.set('Employee added successfully!');
+    setTimeout(() => this.successMessage.set(''), 3000);
+  }
+}
+

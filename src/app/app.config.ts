@@ -7,6 +7,7 @@ import { ProjectEditComponent } from './projects/project-edit/project-edit.compo
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
+import { EmployeeFormComponent } from './employees/employee-form/employee-form.component';
 import { AuthGuard } from './auth/auth.guard';
 
 export const appConfig = {
@@ -26,6 +27,7 @@ export const appConfig = {
         canActivate: [AuthGuard],
         children: [
           { path: '', component: EmployeesListComponent },
+          { path: 'new', component: EmployeeFormComponent },
           { path: ':id', component: EmployeeDetailComponent }
         ]
       },
