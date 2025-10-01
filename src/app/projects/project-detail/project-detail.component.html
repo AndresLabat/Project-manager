@@ -1,19 +1,19 @@
 <div class="project-detail-container">
   <div class="header-section">
     <h2>Project Details</h2>
-    <button class="btn btn-back" (click)="goBack()">
-      ← Back to Projects
-    </button>
+    <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
   </div>
   
   @if (project) {
     <div class="project-detail-card">
       <div class="project-header">
         <h3 class="project-title">{{ project.name }}</h3>
-        <div class="project-actions">
-          <button class="btn btn-secondary" (click)="editProject()">Edit</button>
-          <button class="btn btn-danger" (click)="deleteProject()">Delete</button>
-        </div>
+        @if (authService.isAuthenticated()) {
+          <div class="project-actions">
+            <app-button variant="secondary" size="sm" (clicked)="editProject()">Edit</app-button>
+            <app-button variant="danger" size="sm" (clicked)="deleteProject()">Delete</app-button>
+          </div>
+        }
       </div>
       
       <div class="project-content">
