@@ -1,0 +1,60 @@
+<div class="employee-detail-container">
+  <div class="header-section">
+    <h2>Employee Details</h2>
+    <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
+  </div>
+  
+  @if (employee) {
+    <div class="employee-detail-card">
+      <div class="employee-header">
+        <div class="employee-title-section">
+          <h3 class="employee-name">{{ employee.fullName }}</h3>
+          <span class="employee-role">{{ employee.role }}</span>
+        </div>
+        <div class="employee-actions">
+          <button class="btn btn-danger" (click)="deleteEmployee()">Delete</button>
+        </div>
+      </div>
+      
+      <div class="employee-content">
+        <div class="detail-section">
+          <h4 class="detail-label">Email</h4>
+          <p class="detail-value">{{ employee.email }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Role</h4>
+          <p class="detail-value">{{ employee.role }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Assigned Projects</h4>
+          <p class="detail-value">
+            @if (employee.assignedProjects.length > 0) {
+              {{ employee.assignedProjects.length }} project(s)
+            } @else {
+              No projects assigned
+            }
+          </p>
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Assigned Tasks</h4>
+          <p class="detail-value">
+            @if (employee.assignedTasks.length > 0) {
+              {{ employee.assignedTasks.length }} task(s)
+            } @else {
+              No tasks assigned
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="error-state">
+      <h3 class="error-title">Employee not found</h3>
+      <p class="error-message">The employee you're looking for doesn't exist or has been deleted.</p>
+    </div>
+  }
+</div>
+
