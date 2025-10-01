@@ -1,5 +1,8 @@
 <div class="employees-container">
-  <h2>Employees</h2>
+  <div class="header-section">
+    <h2>Employees</h2>
+    <button class="btn btn-add" (click)="addEmployee()">Add Employee</button>
+  </div>
 
   @if (employees().length > 0) {
     <div class="employees-grid">

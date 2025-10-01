@@ -3,18 +3,41 @@
 .projects-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: $spacing-lg;
+  padding: 50px $spacing-lg;
   min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-h2 {
-  color: $text-color;
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: $spacing-lg;
-  font-size: 2rem;
-  font-weight: 600;
+  
+  h2 {
+    color: $text-color;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
+
+.btn-add {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition;
+  
+  &:hover {
+    background-color: $primary-hover;
+  }
 }
 
 .projects-grid {

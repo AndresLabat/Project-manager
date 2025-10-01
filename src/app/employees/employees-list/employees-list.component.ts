@@ -24,5 +24,9 @@ export class EmployeesListComponent {
   deleteEmployee(id: number): void {
     this.employeesService.deleteEmployee(id);
   }
+
+  addEmployee(): void {
+    this.router.navigate(['/employees/new']);
+  }
 }
 

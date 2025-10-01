@@ -24,4 +24,8 @@ export class ProjectsListComponent {
   viewDetails(id: number) {
     this.router.navigate(['/projects', id]);
   }
+
+  addProject(): void {
+    this.router.navigate(['/projects/new']);
+  }
 }
