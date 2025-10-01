@@ -179,6 +179,11 @@
   font-size: 0.875rem;
 }
 
+.no-assignments {
+  color: $text-light;
+  font-style: italic;
+}
+
 .empty-state {
   text-align: center;
   padding: 60px $spacing-lg;

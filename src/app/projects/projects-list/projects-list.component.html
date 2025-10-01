@@ -39,6 +39,22 @@
                 <span class="detail-value">{{ project.endDate }}</span>
               </div>
             }
+            
+            <div class="detail-item">
+              <span class="detail-label">Assigned Employees:</span>
+              <span class="detail-value">
+                @if (getAssignedEmployeesCount(project.id) > 0) {
+                  {{ getAssignedEmployees(project.id).join(', ') }}
+                } @else {
+                  <span class="no-assignments">No employees assigned</span>
+                }
+              </span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Tasks:</span>
+              <span class="detail-value">{{ getAssignedTasksCount(project.id) }} task(s)</span>
+            </div>
           </div>
         </div>
       }
