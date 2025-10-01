@@ -3,7 +3,7 @@ import { Project } from './project.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectsService {
-  private nextId = 1;
+  private nextId = 4;
   projects = signal<Project[]>(this.loadProjects());
 
   private saveProjects() {
@@ -17,7 +17,29 @@ export class ProjectsService {
       this.nextId = parsed.reduce((max, p) => Math.max(max, p.id), 0) + 1;
       return parsed;
     }
-    return [];
+    return [
+      {
+        id: 1,
+        name: 'E-commerce Platform',
+        description: 'Build a modern e-commerce platform with React and Node.js',
+        startDate: '2024-01-01',
+        endDate: '2024-06-30'
+      },
+      {
+        id: 2,
+        name: 'Mobile Banking App',
+        description: 'Develop a secure mobile banking application for iOS and Android',
+        startDate: '2024-02-01',
+        endDate: '2024-08-31'
+      },
+      {
+        id: 3,
+        name: 'Data Analytics Dashboard',
+        description: 'Create an interactive dashboard for business intelligence and reporting',
+        startDate: '2024-01-15',
+        endDate: '2024-04-15'
+      }
+    ];
   }
 
   getProjects() {

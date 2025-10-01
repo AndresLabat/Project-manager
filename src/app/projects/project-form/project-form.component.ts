@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -16,7 +17,7 @@ export class ProjectFormComponent {
   form;
   successMessage = signal('');
 
-  constructor(private fb: FormBuilder, private projectsService: ProjectsService) {
+  constructor(private fb: FormBuilder, private projectsService: ProjectsService, private router: Router) {
     this.form = this.fb.group({
       name: ['', ProjectValidators.nameValidators],
       description: ['', ProjectValidators.descriptionValidators],
@@ -47,8 +48,9 @@ export class ProjectFormComponent {
       endDate: this.form.value.endDate || ''
     });
 
-    this.form.reset();
     this.successMessage.set('Project added successfully!');
-    setTimeout(() => this.successMessage.set(''), 3000);
+    setTimeout(() => {
+      this.router.navigate(['/projects']);
+    }, 1000);
   }
 }

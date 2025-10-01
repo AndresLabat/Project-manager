@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { EmployeeValidators } from '../../validators/employee.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-form',
@@ -18,7 +19,8 @@ export class EmployeeFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private employeesService: EmployeesService
+    private employeesService: EmployeesService,
+    private router: Router
   ) {
     this.form = this.fb.group({
       fullName: ['', EmployeeValidators.nameValidators],
@@ -50,8 +52,9 @@ export class EmployeeFormComponent {
       assignedTasks: []
     });
 
-    this.form.reset();
     this.successMessage.set('Employee added successfully!');
-    setTimeout(() => this.successMessage.set(''), 3000);
+    setTimeout(() => {
+      this.router.navigate(['/employees']);
+    }, 1000);
   }
 }
