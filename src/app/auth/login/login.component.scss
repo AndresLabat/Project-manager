@@ -1,13 +1,20 @@
 @import '../../styles/variables';
 
 .login-form {
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   padding: $spacing-lg;
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100vh - 14rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: $spacing-lg * 2;
   
   h2 {
     color: $text-color;
@@ -15,14 +22,19 @@
     font-weight: 600;
     margin: 0;
     text-align: center;
-    margin-bottom: $spacing-lg;
   }
+}
+
+.form-section {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
 }
 
 .form-group {
   margin-bottom: $spacing-lg;
-  display: flex;
-  flex-direction: column;
   
   label {
     margin-bottom: $spacing-sm;
@@ -47,7 +59,11 @@
   &:focus {
     outline: none;
     border-color: $primary-color;
-    box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+    box-shadow: $shadow-focus;
+  }
+  
+  &.error {
+    border-color: $error-color;
   }
   
   &::placeholder {
@@ -56,31 +72,9 @@
   }
 }
 
-button[type="submit"] {
-  background-color: $primary-color;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: $border-radius;
-  font-size: 16px;
-  cursor: pointer;
+app-button {
   margin-top: $spacing-md;
-  transition: $transition;
-  
-  &:disabled {
-    background-color: $disabled-color;
-    cursor: default;
-    opacity: 0.6;
-  }
-  
-  &:hover:not(:disabled) {
-    background-color: $primary-hover;
-  }
-  
-  &:disabled:hover {
-    background-color: $disabled-color;
-    opacity: 0.6;
-  }
+  align-self: flex-end;
 }
 
 .error-message {
