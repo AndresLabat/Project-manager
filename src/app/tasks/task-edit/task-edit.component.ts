@@ -43,6 +43,8 @@ export class TaskEditComponent implements OnInit {
   ngOnInit() {
     const task = this.tasksService.getTaskById(this.taskId);
     if (task) {
+      const createdAtDate = task.createdAt.split('T')[0];
+      
       this.form = this.fb.group({
         title: [task.title, TaskValidators.titleValidators],
         description: [task.description, TaskValidators.descriptionValidators],
@@ -50,7 +52,7 @@ export class TaskEditComponent implements OnInit {
         assignedEmployeeId: [task.assignedEmployeeId],
         status: [task.status, [Validators.required]],
         priority: [task.priority, [Validators.required]],
-        dueDate: [task.dueDate, TaskValidators.dueDateValidators]
+        dueDate: [task.dueDate, TaskValidators.getDueDateValidators(createdAtDate)]
       });
     } else {
       this.router.navigate(['/tasks']);
@@ -99,5 +101,10 @@ export class TaskEditComponent implements OnInit {
 
   getTodayDate(): string {
     return new Date().toISOString().split('T')[0];
+  }
+
+  getTaskCreatedDate(): string {
+    const task = this.tasksService.getTaskById(this.taskId);
+    return task ? task.createdAt.split('T')[0] : this.getTodayDate();
   }
 }
