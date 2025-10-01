@@ -25,7 +25,7 @@ export class EmployeeDetailComponent {
   }
 
   deleteEmployee(): void {
-    if (this.employee && confirm('¿Estás seguro de que quieres eliminar este empleado?')) {
+    if (this.employee) {
       this.employeesService.deleteEmployee(this.employee.id);
       this.router.navigate(['/employees']);
     }

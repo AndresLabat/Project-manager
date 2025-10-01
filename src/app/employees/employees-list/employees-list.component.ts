@@ -22,9 +22,7 @@ export class EmployeesListComponent {
   }
 
   deleteEmployee(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar este empleado?')) {
-      this.employeesService.deleteEmployee(id);
-    }
+    this.employeesService.deleteEmployee(id);
   }
 }
 
