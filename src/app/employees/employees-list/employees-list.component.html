@@ -1,0 +1,45 @@
+<div class="employees-container">
+  <h2>Employees</h2>
+
+  @if (employees().length > 0) {
+    <div class="employees-grid">
+      @for (employee of employees(); track employee.id) {
+        <div class="employee-card">
+          <div class="employee-header">
+            <div class="employee-info">
+              <h3 class="employee-name">{{ employee.fullName }}</h3>
+              <span class="employee-role">{{ employee.role }}</span>
+            </div>
+            <div class="employee-actions">
+              <button class="btn btn-primary" (click)="viewDetails(employee.id)">View</button>
+              <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+            </div>
+          </div>
+          
+          <div class="employee-content">
+            <div class="detail-item">
+              <span class="detail-label">Email:</span>
+              <span class="detail-value">{{ employee.email }}</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Assigned Projects:</span>
+              <span class="detail-value">{{ employee.assignedProjects.length }}</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Assigned Tasks:</span>
+              <span class="detail-value">{{ employee.assignedTasks.length }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <h3 class="empty-title">No employees found</h3>
+      <p class="empty-message">There are no employees in the system yet.</p>
+    </div>
+  }
+</div>
+
