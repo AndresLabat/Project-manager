@@ -1,5 +1,6 @@
 import { Component, computed } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { ProjectsService } from '../../projects/projects.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
@@ -16,6 +17,7 @@ export class TasksListComponent {
 
   constructor(
     private tasksService: TasksService,
+    private projectsService: ProjectsService,
     private router: Router,
     public authService: AuthService
   ) {}
@@ -53,5 +55,10 @@ export class TasksListComponent {
       case 'low': return 'priority-low';
       default: return '';
     }
+  }
+
+  getProjectName(projectId: number): string {
+    const project = this.projectsService.getProjects().find(p => p.id === projectId);
+    return project ? project.name : `Project #${projectId}`;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, computed } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { ProjectsService } from '../../projects/projects.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
@@ -24,6 +25,7 @@ export class TaskDetailComponent {
 
   constructor(
     private tasksService: TasksService,
+    private projectsService: ProjectsService,
     private router: Router,
     private route: ActivatedRoute,
     public authService: AuthService
@@ -60,5 +62,10 @@ export class TaskDetailComponent {
 
   backToTasks(): void {
     this.router.navigate(['/tasks']);
+  }
+
+  getProjectName(projectId: number): string {
+    const project = this.projectsService.getProjects().find(p => p.id === projectId);
+    return project ? project.name : `Project #${projectId}`;
   }
 }
