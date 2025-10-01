@@ -17,6 +17,8 @@ export class App {
   title = signal('Project Manager');
   currentRoute = signal('');
   projectsDropdownOpen = signal(true);
+  employeesDropdownOpen = signal(true);
+  tasksDropdownOpen = signal(true);
 
   constructor(
     public authService: AuthService,
@@ -52,5 +54,13 @@ export class App {
 
   toggleProjectsDropdown() {
     this.projectsDropdownOpen.set(!this.projectsDropdownOpen());
+  }
+
+  toggleEmployeesDropdown() {
+    this.employeesDropdownOpen.set(!this.employeesDropdownOpen());
+  }
+
+  toggleTasksDropdown() {
+    this.tasksDropdownOpen.set(!this.tasksDropdownOpen());
   }
 }

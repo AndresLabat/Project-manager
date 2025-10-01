@@ -36,23 +36,65 @@
             </li>
           </ul>
         </li>
-        <li>
+        <li class="nav-item">
           <a 
-            class="nav-link" 
+            class="nav-link nav-toggle" 
             [class.active]="isActiveRoute('/employees')"
-            (click)="router.navigate(['/employees'])">
+            (click)="toggleEmployeesDropdown()">
             <span class="nav-icon">👥</span>
             <span class="nav-text">Employees</span>
+            <span class="nav-arrow" [class.rotated]="employeesDropdownOpen()">›</span>
           </a>
+          <ul class="nav-dropdown" [class.open]="employeesDropdownOpen()">
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/employees')"
+                (click)="router.navigate(['/employees'])">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Lista de empleados</span>
+              </a>
+            </li>
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/employees/new')"
+                (click)="router.navigate(['/employees/new'])">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Añadir empleado</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li>
+        <li class="nav-item">
           <a 
-            class="nav-link" 
+            class="nav-link nav-toggle" 
             [class.active]="isActiveRoute('/tasks')"
-            (click)="router.navigate(['/tasks'])">
+            (click)="toggleTasksDropdown()">
             <span class="nav-icon">✅</span>
             <span class="nav-text">Tasks</span>
+            <span class="nav-arrow" [class.rotated]="tasksDropdownOpen()">›</span>
           </a>
+          <ul class="nav-dropdown" [class.open]="tasksDropdownOpen()">
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/tasks')"
+                (click)="router.navigate(['/tasks'])">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Lista de tareas</span>
+              </a>
+            </li>
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/tasks/new')"
+                (click)="router.navigate(['/tasks/new'])">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Añadir tarea</span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
