@@ -86,11 +86,6 @@
 .form-textarea {
   resize: vertical;
   min-height: 100px;
-  
-  &::placeholder {
-    color: $text-light;
-    font-style: italic;
-  }
 }
 
 .error-message {

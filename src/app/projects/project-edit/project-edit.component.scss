@@ -52,7 +52,8 @@
 }
 
 .form-input,
-.form-select {
+.form-select,
+.form-textarea {
   padding: $spacing-md;
   border: 1px solid $border-color;
   border-radius: $border-radius;
@@ -74,6 +75,11 @@
     color: $text-light;
     font-style: italic;
   }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 app-button {
