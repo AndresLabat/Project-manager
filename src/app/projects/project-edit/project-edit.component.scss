@@ -38,11 +38,12 @@
   display: flex;
   flex-direction: column;
   
-  label {
-    margin-bottom: $spacing-sm;
-    font-weight: 500;
-    color: $text-color;
-  }
+        label {
+          margin-bottom: $spacing-sm;
+          font-weight: 500;
+          color: $text-color;
+          font-size: 0.9rem;
+        }
 }
 
 .required {
@@ -55,7 +56,7 @@
   padding: $spacing-md;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  font-size: 16px;
+  font-size: 0.9rem;
   width: 100%;
   box-sizing: border-box;
   

@@ -35,12 +35,14 @@
 
 .form-group {
   margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
 
   label {
-    display: block;
     margin-bottom: $spacing-sm;
     font-weight: 500;
     color: $text-color;
+    font-size: 0.9rem;
   }
 }
 
@@ -61,7 +63,8 @@
   padding: $spacing-md;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  font-size: $font-size-base;
+  font-size: 0.9rem;
+  box-sizing: border-box;
   transition: $transition;
 
   &:focus {
@@ -73,17 +76,27 @@
   &.error {
     border-color: $error-color;
   }
+  
+  &::placeholder {
+    color: $text-light;
+    font-style: italic;
+  }
 }
 
 .form-textarea {
   resize: vertical;
   min-height: 100px;
+  
+  &::placeholder {
+    color: $text-light;
+    font-style: italic;
+  }
 }
 
 .error-message {
   color: $error-color;
   font-size: 0.9em;
-  margin-top: $spacing-lg;
+  margin-top: $spacing-sm;
 }
 
 .success-message {

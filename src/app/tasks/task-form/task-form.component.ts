@@ -59,7 +59,7 @@ export class TaskFormComponent {
     return TaskValidators.getDueDateErrorMessage(this.form);
   }
 
-  addTask(): void {
+  onSubmit(): void {
     if (this.form.invalid) {
       this.errorMessage.set('Please fix all errors before submitting');
       return;
