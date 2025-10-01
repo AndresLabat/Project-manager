@@ -2,6 +2,7 @@ import { Component, computed } from '@angular/core';
 import { EmployeesService } from '../employees.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-employees-list',
@@ -14,7 +15,8 @@ export class EmployeesListComponent {
 
   constructor(
     private employeesService: EmployeesService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {}
 
   viewDetails(id: number): void {

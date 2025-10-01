@@ -15,19 +15,17 @@ export const appConfig = {
     provideRouter([
       { path: 'login', component: LoginComponent },
       { path: 'projects', 
-        canActivate: [AuthGuard],
         children: [
           { path: '', component: ProjectsListComponent },
-          { path: 'new', component: ProjectFormComponent },
-          { path: ':id/edit', component: ProjectEditComponent },
+          { path: 'new', component: ProjectFormComponent, canActivate: [AuthGuard] },
+          { path: ':id/edit', component: ProjectEditComponent, canActivate: [AuthGuard] },
           { path: ':id', component: ProjectDetailComponent }
         ]
       },
       { path: 'employees',
-        canActivate: [AuthGuard],
         children: [
           { path: '', component: EmployeesListComponent },
-          { path: 'new', component: EmployeeFormComponent },
+          { path: 'new', component: EmployeeFormComponent, canActivate: [AuthGuard] },
           { path: ':id', component: EmployeeDetailComponent }
         ]
       },

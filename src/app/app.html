@@ -2,17 +2,15 @@
   <h1 class="app-title">{{ title() }}</h1>
   <nav class="app-nav">
     <ul>
-      @if (authService.isAuthenticated()) {
-        <li><a class="nav-link" (click)="router.navigate(['/projects'])">Projects</a></li>
-        <li><a class="nav-link" (click)="router.navigate(['/employees'])">Employees</a></li>
-      }
+      <li><a class="nav-link" (click)="router.navigate(['/projects'])">Projects</a></li>
+      <li><a class="nav-link" (click)="router.navigate(['/employees'])">Employees</a></li>
     </ul>
   </nav>
   <div class="app-actions">
     @if (authService.isAuthenticated()) {
       <button class="nav-button" (click)="onLogout()">Logout</button>
     } @else {
-      <a class="nav-link" (click)="router.navigate(['/login'])">Login</a>
+      <button class="nav-button" (click)="router.navigate(['/login'])">Login</button>
     }
   </div>
 </header>

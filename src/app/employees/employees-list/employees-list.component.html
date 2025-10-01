@@ -1,7 +1,9 @@
 <div class="employees-container">
   <div class="header-section">
     <h2>Employees</h2>
-    <button class="btn btn-add" (click)="addEmployee()">Add Employee</button>
+    @if (authService.isAuthenticated()) {
+      <button class="btn btn-add" (click)="addEmployee()">Add Employee</button>
+    }
   </div>
 
   @if (employees().length > 0) {
@@ -15,7 +17,9 @@
             </div>
             <div class="employee-actions">
               <button class="btn btn-primary" (click)="viewDetails(employee.id)">View</button>
-              <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+              @if (authService.isAuthenticated()) {
+                <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+              }
             </div>
           </div>
           
