@@ -11,10 +11,11 @@
   
   h2 {
     color: $text-color;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0 0 $spacing-lg 0;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin: 0;
     text-align: center;
+    margin-bottom: $spacing-lg;
   }
 }
 
@@ -85,7 +86,7 @@ button[type="submit"] {
 .error-message {
   color: $error-color;
   font-size: 0.9em;
-  margin-top: $spacing-sm;
+  margin-top: $spacing-lg;
 }
 
 .legend {
