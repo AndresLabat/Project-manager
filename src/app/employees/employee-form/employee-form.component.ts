@@ -55,4 +55,3 @@ export class EmployeeFormComponent {
     setTimeout(() => this.successMessage.set(''), 3000);
   }
 }
-

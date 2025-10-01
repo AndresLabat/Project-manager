@@ -35,4 +35,3 @@ export class EmployeeDetailComponent {
     this.router.navigate(['/employees']);
   }
 }
-

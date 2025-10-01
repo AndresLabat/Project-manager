@@ -32,4 +32,3 @@ export class EmployeesListComponent {
     this.router.navigate(['/employees/new']);
   }
 }
-

@@ -6,4 +6,3 @@ export interface Employee {
   assignedProjects: number[];
   assignedTasks: number[];
 }
-

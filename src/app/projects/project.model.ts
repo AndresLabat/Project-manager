@@ -5,4 +5,3 @@ export interface Project {
   startDate: string;
   endDate: string;
 }
-

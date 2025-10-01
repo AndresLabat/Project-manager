@@ -18,4 +18,3 @@ export class BackButtonComponent {
     this.router.navigate([this.route]);
   }
 }
-

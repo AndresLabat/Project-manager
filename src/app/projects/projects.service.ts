@@ -46,4 +46,3 @@ export class ProjectsService {
     this.saveProjects();
   }
 }
-
