@@ -1,12 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-
-export interface Project {
-  id: number;
-  name: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-}
+import { Project } from './project.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectsService {
