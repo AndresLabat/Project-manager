@@ -16,7 +16,7 @@
     <input type="password" formControlName="password" required placeholder="Enter your password" class="form-input">
   </div>
 
-  <button type="submit" [disabled]="form.invalid">Login</button>
+  <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Login</app-button>
 
   @if (form.get('username')?.invalid && form.get('username')?.touched) {
     <p class="error-message">Username is required</p>

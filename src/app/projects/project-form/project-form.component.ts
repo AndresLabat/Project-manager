@@ -4,10 +4,11 @@ import { ProjectsService } from '../projects.service';
 import { CommonModule } from '@angular/common';
 import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-project-form',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss']
 })

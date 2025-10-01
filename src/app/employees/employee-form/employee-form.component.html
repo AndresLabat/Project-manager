@@ -26,7 +26,7 @@
       <input type="text" formControlName="role" required placeholder="Enter role (e.g., Developer, Designer)" class="form-input">
     </div>
 
-    <button type="submit" [disabled]="form.invalid">Add Employee</button>
+    <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Add Employee</app-button>
 
     @if (form.get('fullName')?.invalid && form.get('fullName')?.touched) {
       <p class="error-message">{{ getNameErrorMessage() }}</p>

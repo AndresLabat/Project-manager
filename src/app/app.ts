@@ -4,10 +4,11 @@ import { AuthService } from './auth/auth.service';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { ButtonComponent } from './shared/button/button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, ButtonComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

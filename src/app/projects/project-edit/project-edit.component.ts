@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-project-edit',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.scss']
 })

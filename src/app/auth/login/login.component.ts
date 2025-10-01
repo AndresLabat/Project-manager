@@ -3,10 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

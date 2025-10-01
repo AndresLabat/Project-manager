@@ -33,7 +33,7 @@
     <input type="date" formControlName="endDate" class="form-input">
   </div>  
 
-  <button type="submit" [disabled]="form.invalid">Add Project</button>
+  <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Add Project</app-button>
 
   @if (form.get('name')?.invalid && form.get('name')?.touched) {
     <p class="error-message">{{ getNameErrorMessage() }}</p>

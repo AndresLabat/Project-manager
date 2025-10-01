@@ -2,7 +2,7 @@
   <div class="header-section">
     <h2>Employees</h2>
     @if (authService.isAuthenticated()) {
-      <button class="btn btn-add" (click)="addEmployee()">Add Employee</button>
+      <app-button variant="primary" size="md" (clicked)="addEmployee()">Add Employee</app-button>
     }
   </div>
 
@@ -16,9 +16,9 @@
               <span class="employee-role">{{ employee.role }}</span>
             </div>
             <div class="employee-actions">
-              <button class="btn btn-primary" (click)="viewDetails(employee.id)">View</button>
+              <app-button variant="primary" size="sm" (clicked)="viewDetails(employee.id)">View</app-button>
               @if (authService.isAuthenticated()) {
-                <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+                <app-button variant="danger" size="sm" (clicked)="deleteEmployee(employee.id)">Delete</app-button>
               }
             </div>
           </div>

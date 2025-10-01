@@ -3,10 +3,11 @@ import { ProjectsService } from '../projects.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-projects-list',
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })

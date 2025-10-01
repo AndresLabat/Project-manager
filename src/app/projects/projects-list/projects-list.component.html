@@ -2,7 +2,7 @@
   <div class="header-section">
     <h2>Projects</h2>
     @if (authService.isAuthenticated()) {
-      <button class="btn btn-add" (click)="addProject()">Add Project</button>
+      <app-button variant="primary" size="md" (clicked)="addProject()">Add Project</app-button>
     }
   </div>
 
@@ -13,10 +13,10 @@
           <div class="project-header">
             <h3 class="project-name">{{ project.name }}</h3>
             <div class="project-actions">
-              <button class="btn btn-primary" (click)="viewDetails(project.id)">View</button>
+              <app-button variant="primary" size="sm" (clicked)="viewDetails(project.id)">View</app-button>
               @if (authService.isAuthenticated()) {
-                <button class="btn btn-secondary" (click)="editProject(project.id)">Edit</button>
-                <button class="btn btn-danger" (click)="deleteProject(project.id)">Delete</button>
+                <app-button variant="secondary" size="sm" (clicked)="editProject(project.id)">Edit</app-button>
+                <app-button variant="danger" size="sm" (clicked)="deleteProject(project.id)">Delete</app-button>
               }
             </div>
           </div>

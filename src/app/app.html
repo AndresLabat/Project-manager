@@ -8,9 +8,9 @@
   </nav>
   <div class="app-actions">
     @if (authService.isAuthenticated()) {
-      <button class="nav-button" (click)="onLogout()">Logout</button>
+      <app-button variant="primary" size="md" (clicked)="onLogout()">Logout</app-button>
     } @else {
-      <button class="nav-button" (click)="router.navigate(['/login'])">Login</button>
+      <app-button variant="primary" size="md" (clicked)="router.navigate(['/login'])">Login</app-button>
     }
   </div>
 </header>

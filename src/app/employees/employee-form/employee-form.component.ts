@@ -4,10 +4,11 @@ import { EmployeesService } from '../employees.service';
 import { CommonModule } from '@angular/common';
 import { EmployeeValidators } from '../../validators/employee.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-employee-form',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.scss']
 })
