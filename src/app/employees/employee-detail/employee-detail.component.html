@@ -32,24 +32,32 @@
         
         <div class="detail-section">
           <h4 class="detail-label">Assigned Projects</h4>
-          <p class="detail-value">
-            @if (employee.assignedProjects.length > 0) {
-              {{ employee.assignedProjects.length }} project(s)
-            } @else {
-              No projects assigned
-            }
-          </p>
+          @if (getAssignedProjectsCount() > 0) {
+            <ul class="detail-list">
+              @for (project of getAssignedProjects(); track project) {
+                <li class="detail-item">{{ project }}</li>
+              }
+            </ul>
+          } @else {
+            <p class="detail-value">
+              <span class="no-assignments">No projects assigned</span>
+            </p>
+          }
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Assigned Tasks</h4>
-          <p class="detail-value">
-            @if (employee.assignedTasks.length > 0) {
-              {{ employee.assignedTasks.length }} task(s)
-            } @else {
-              No tasks assigned
-            }
-          </p>
+          @if (getAssignedTasksCount() > 0) {
+            <ul class="detail-list">
+              @for (task of getAssignedTasks(); track task) {
+                <li class="detail-item">{{ task }}</li>
+              }
+            </ul>
+          } @else {
+            <p class="detail-value">
+              <span class="no-assignments">No tasks assigned</span>
+            </p>
+          }
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeesService } from '../employees.service';
+import { ProjectsService } from '../../projects/projects.service';
+import { TasksService } from '../../tasks/tasks.service';
 import { Employee } from '../employee.model';
 import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
@@ -21,6 +23,8 @@ export class EmployeeDetailComponent {
     private route: ActivatedRoute,
     private router: Router,
     private employeesService: EmployeesService,
+    private projectsService: ProjectsService,
+    private tasksService: TasksService,
     public authService: AuthService
   ) {
     this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
@@ -40,5 +44,29 @@ export class EmployeeDetailComponent {
 
   goBack(): void {
     this.router.navigate(['/employees']);
+  }
+
+  getAssignedProjects(): string[] {
+    if (!this.employee) return [];
+    const projects = this.projectsService.getProjects();
+    return projects
+      .filter(project => this.employee!.assignedProjects.includes(project.id))
+      .map(project => project.name);
+  }
+
+  getAssignedTasks(): string[] {
+    if (!this.employee) return [];
+    const tasks = this.tasksService.getTasks();
+    return tasks
+      .filter(task => task.assignedEmployeeId === this.employee!.id)
+      .map(task => task.title);
+  }
+
+  getAssignedProjectsCount(): number {
+    return this.getAssignedProjects().length;
+  }
+
+  getAssignedTasksCount(): number {
+    return this.getAssignedTasks().length;
   }
 }
