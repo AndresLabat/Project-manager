@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ProjectsService } from '../projects.service';
+import { EmployeesService } from '../../employees/employees.service';
 import { CommonModule } from '@angular/common';
 import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
@@ -16,13 +17,21 @@ import { Router } from '@angular/router';
 export class ProjectFormComponent {
   form;
   successMessage = signal('');
+  employees: any[] = [];
 
-  constructor(private fb: FormBuilder, private projectsService: ProjectsService, private router: Router) {
+  constructor(
+    private fb: FormBuilder, 
+    private projectsService: ProjectsService, 
+    private employeesService: EmployeesService,
+    private router: Router
+  ) {
+    this.employees = this.employeesService.getEmployees();
     this.form = this.fb.group({
       name: ['', ProjectValidators.nameValidators],
       description: ['', ProjectValidators.descriptionValidators],
       startDate: ['', Validators.required],
-      endDate: ['']
+      endDate: [''],
+      assignedEmployees: [[]]
     }, { validators: ProjectValidators.dateRangeValidator });
   }
 
@@ -42,12 +51,20 @@ export class ProjectFormComponent {
     if (this.form.invalid) return;
 
     const formValue = this.form.value;
-    this.projectsService.addProject({
+    const project = this.projectsService.addProject({
       name: formValue.name || '',
       description: formValue.description || '',
       startDate: formValue.startDate || '',
       endDate: formValue.endDate || ''
     });
+
+    // Assign selected employees to the project
+    const assignedEmployees = formValue.assignedEmployees as number[] | null;
+    if (assignedEmployees && Array.isArray(assignedEmployees) && assignedEmployees.length > 0) {
+      assignedEmployees.forEach((employeeId: number) => {
+        this.employeesService.assignToProject(employeeId, project.id);
+      });
+    }
 
     this.successMessage.set('Project added successfully!');
     setTimeout(() => {

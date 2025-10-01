@@ -68,9 +68,11 @@ export class ProjectsService {
   }
 
   addProject(project: Omit<Project, 'id'>) {
-    const updated = [...this.projects(), { id: this.nextId++, ...project }];
+    const newProject = { id: this.nextId++, ...project };
+    const updated = [...this.projects(), newProject];
     this.projects.set(updated);
     this.saveProjects();
+    return newProject;
   }
 
   updateProject(id: number, updated: Partial<Project>) {

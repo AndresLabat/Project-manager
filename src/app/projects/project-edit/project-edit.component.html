@@ -60,6 +60,20 @@
         }
       </div>
 
+      <div class="form-group">
+        <label for="assignedEmployees">Assign Employees</label>
+        <select 
+          id="assignedEmployees"
+          formControlName="assignedEmployees" 
+          class="form-select"
+          multiple>
+          @for (employee of employees; track employee.id) {
+            <option [value]="employee.id">{{ employee.fullName }} ({{ employee.role }})</option>
+          }
+        </select>
+        <p class="form-hint">Hold Ctrl/Cmd to select multiple employees</p>
+      </div>
+
       @if (form.hasError('dateRange')) {
         <p class="error-message">{{ getDateRangeErrorMessage() }}</p>
       }

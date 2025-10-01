@@ -50,7 +50,8 @@
   font-size: 0.9em;
 }
 
-.form-input {
+.form-input,
+.form-select {
   padding: $spacing-md;
   border: 1px solid $border-color;
   border-radius: $border-radius;
@@ -97,4 +98,20 @@ app-button {
   margin-top: 50px;
   text-align: left;
   padding-left: 0;
+}
+
+.form-hint {
+  color: $text-light;
+  font-size: 0.8rem;
+  margin-top: $spacing-sm;
+  font-style: italic;
+}
+
+.form-select[multiple] {
+  min-height: 120px;
+  padding: $spacing-sm;
+  
+  option {
+    padding: $spacing-sm;
+  }
 }
