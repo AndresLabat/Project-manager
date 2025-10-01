@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Task } from './task.model';
+import { EmployeesService } from '../employees/employees.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,11 @@ import { Task } from './task.model';
 export class TasksService {
   private tasksSignal = signal<Task[]>(this.loadTasks());
   private nextId = 6;
+
+  constructor(private employeesService: EmployeesService) {
+    this.saveTasks();
+    this.syncEmployeeTaskAssignments();
+  }
 
   private saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(this.tasksSignal()));
@@ -78,9 +84,6 @@ export class TasksService {
   ];
   }
 
-  constructor() {
-    this.saveTasks();
-  }
 
   getTasks(): Task[] {
     return this.tasksSignal();
@@ -105,18 +108,44 @@ export class TasksService {
     };
     this.tasksSignal.update(tasks => [...tasks, newTask]);
     this.saveTasks();
+    
+    if (newTask.assignedEmployeeId) {
+      this.employeesService.assignToTask(newTask.assignedEmployeeId, newTask.id);
+    }
   }
 
   updateTask(id: number, updatedTask: Partial<Task>): void {
+    const currentTask = this.getTaskById(id);
+    if (!currentTask) return;
+
     this.tasksSignal.update(tasks =>
       tasks.map(task =>
         task.id === id ? { ...task, ...updatedTask } : task
       )
     );
     this.saveTasks();
+
+    const oldEmployeeId = currentTask.assignedEmployeeId;
+    const newEmployeeId = updatedTask.assignedEmployeeId;
+
+    if (oldEmployeeId !== newEmployeeId) {
+      if (oldEmployeeId) {
+        this.employeesService.unassignFromTask(oldEmployeeId, id);
+      }
+      if (newEmployeeId) {
+        this.employeesService.assignToTask(newEmployeeId, id);
+      }
+    }
   }
 
   deleteTask(id: number): void {
+    const taskToDelete = this.getTaskById(id);
+    if (taskToDelete) {
+      if (taskToDelete.assignedEmployeeId) {
+        this.employeesService.unassignFromTask(taskToDelete.assignedEmployeeId, id);
+      }
+    }
+
     this.tasksSignal.update(tasks =>
       tasks.filter(task => task.id !== id)
     );
@@ -129,5 +158,11 @@ export class TasksService {
         task.id === id ? { ...task, status } : task
       )
     );
+    this.saveTasks();
+  }
+
+  syncEmployeeTaskAssignments(): void {
+    const allTasks = this.getTasks();
+    this.employeesService.updateEmployeeTaskAssignments(allTasks);
   }
 }

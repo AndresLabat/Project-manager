@@ -132,5 +132,48 @@ export class EmployeesService {
         return emp;
       })
     );
+    this.saveEmployees();
+  }
+
+  assignToTask(employeeId: number, taskId: number): void {
+    this.employeesSignal.update(employees =>
+      employees.map(emp => {
+        if (emp.id === employeeId && !emp.assignedTasks.includes(taskId)) {
+          return {
+            ...emp,
+            assignedTasks: [...emp.assignedTasks, taskId]
+          };
+        }
+        return emp;
+      })
+    );
+    this.saveEmployees();
+  }
+
+  unassignFromTask(employeeId: number, taskId: number): void {
+    this.employeesSignal.update(employees =>
+      employees.map(emp => {
+        if (emp.id === employeeId) {
+          return {
+            ...emp,
+            assignedTasks: emp.assignedTasks.filter(id => id !== taskId)
+          };
+        }
+        return emp;
+      })
+    );
+    this.saveEmployees();
+  }
+
+  updateEmployeeTaskAssignments(allTasks: any[]): void {
+    this.employeesSignal.update(employees =>
+      employees.map(emp => ({
+        ...emp,
+        assignedTasks: allTasks
+          .filter((task: any) => task.assignedEmployeeId === emp.id)
+          .map((task: any) => task.id)
+      }))
+    );
+    this.saveEmployees();
   }
 }

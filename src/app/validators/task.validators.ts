@@ -27,10 +27,10 @@ export class TaskValidators {
       if (!control.value) return null;
       
       const today = new Date();
-      today.setHours(0, 0, 0, 0); // Reset time to start of day
+      today.setHours(0, 0, 0, 0);
       
       const dueDate = new Date(control.value);
-      dueDate.setHours(0, 0, 0, 0); // Reset time to start of day
+      dueDate.setHours(0, 0, 0, 0);
       
       if (dueDate < today) {
         return { dueDateInPast: true };
