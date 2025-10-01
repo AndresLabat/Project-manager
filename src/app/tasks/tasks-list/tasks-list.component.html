@@ -1,0 +1,70 @@
+<div class="tasks-container">
+  <div class="header-section">
+    <h2>Tasks</h2>
+    @if (authService.isAuthenticated()) {
+      <app-button variant="primary" size="md" (clicked)="addTask()">Add Task</app-button>
+    }
+  </div>
+
+  @if (tasks().length > 0) {
+    <div class="tasks-grid">
+      @for (task of tasks(); track task.id) {
+        <div class="task-card">
+          <div class="task-header">
+            <div class="task-info">
+              <h3 class="task-title">{{ task.title }}</h3>
+              <div class="task-meta">
+                <div class="status-badge">
+                  <span class="status-label">Status:</span>
+                  <span class="task-status" [class]="getStatusClass(task.status)">{{ task.status }}</span>
+                </div>
+                <div class="priority-badge">
+                  <span class="priority-label">Priority:</span>
+                  <span class="task-priority" [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="task-actions">
+              <app-button variant="primary" size="sm" (clicked)="viewDetails(task.id)">View</app-button>
+              @if (authService.isAuthenticated()) {
+                <app-button variant="secondary" size="sm" (clicked)="editTask(task.id)">Edit</app-button>
+                <app-button variant="danger" size="sm" (clicked)="deleteTask(task.id)">Delete</app-button>
+              }
+            </div>
+          </div>
+          
+          @if (task.description) {
+            <p class="task-description">{{ task.description }}</p>
+          }
+          
+          <div class="task-details">
+            <div class="detail-item">
+              <span class="detail-label">Created Date:</span>
+              <span class="detail-value">{{ task.createdAt }}</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Due Date:</span>
+              <span class="detail-value">{{ task.dueDate }}</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Project ID:</span>
+              <span class="detail-value">{{ task.projectId }}</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Assigned to:</span>
+              <span class="detail-value">Employee #{{ task.assignedEmployeeId }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <h3 class="empty-title">No tasks found</h3>
+      <p class="empty-message">There are no tasks in the system yet.</p>
+    </div>
+  }
+</div>
