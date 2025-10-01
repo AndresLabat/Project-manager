@@ -8,40 +8,40 @@ export class EmployeesService {
   private employeesSignal = signal<Employee[]>([
     {
       id: 1,
-      fullName: 'Juan Pérez',
-      email: 'juan.perez@company.com',
-      role: 'Desarrollador Frontend',
+      fullName: 'John Smith',
+      email: 'john.smith@company.com',
+      role: 'Frontend Developer',
       assignedProjects: [1],
       assignedTasks: []
     },
     {
       id: 2,
-      fullName: 'María García',
-      email: 'maria.garcia@company.com',
-      role: 'Diseñadora UX/UI',
+      fullName: 'Sarah Johnson',
+      email: 'sarah.johnson@company.com',
+      role: 'UX/UI Designer',
       assignedProjects: [1, 2],
       assignedTasks: []
     },
     {
       id: 3,
-      fullName: 'Carlos Rodríguez',
-      email: 'carlos.rodriguez@company.com',
-      role: 'Desarrollador Backend',
+      fullName: 'Mike Wilson',
+      email: 'mike.wilson@company.com',
+      role: 'Backend Developer',
       assignedProjects: [2],
       assignedTasks: []
     },
     {
       id: 4,
-      fullName: 'Ana Martínez',
-      email: 'ana.martinez@company.com',
+      fullName: 'Emma Davis',
+      email: 'emma.davis@company.com',
       role: 'Project Manager',
       assignedProjects: [1, 2, 3],
       assignedTasks: []
     },
     {
       id: 5,
-      fullName: 'Luis Sánchez',
-      email: 'luis.sanchez@company.com',
+      fullName: 'David Brown',
+      email: 'david.brown@company.com',
       role: 'QA Tester',
       assignedProjects: [3],
       assignedTasks: []

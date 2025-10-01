@@ -8,8 +8,8 @@ export class TasksService {
   private tasksSignal = signal<Task[]>([
     {
       id: 1,
-      title: 'Implementar autenticación',
-      description: 'Crear sistema de login y logout para la aplicación',
+      title: 'Implement authentication',
+      description: 'Create login and logout system for the application',
       status: 'completed',
       priority: 'high',
       assignedEmployeeId: 1,
@@ -19,8 +19,8 @@ export class TasksService {
     },
     {
       id: 2,
-      title: 'Diseñar interfaz de usuario',
-      description: 'Crear mockups y prototipos de la interfaz',
+      title: 'Design user interface',
+      description: 'Create mockups and interface prototypes',
       status: 'in-progress',
       priority: 'medium',
       assignedEmployeeId: 2,
@@ -30,8 +30,8 @@ export class TasksService {
     },
     {
       id: 3,
-      title: 'Configurar base de datos',
-      description: 'Configurar y optimizar la base de datos del proyecto',
+      title: 'Configure database',
+      description: 'Set up and optimize project database',
       status: 'pending',
       priority: 'high',
       assignedEmployeeId: 3,
@@ -41,8 +41,8 @@ export class TasksService {
     },
     {
       id: 4,
-      title: 'Escribir documentación',
-      description: 'Crear documentación técnica del proyecto',
+      title: 'Write documentation',
+      description: 'Create technical project documentation',
       status: 'pending',
       priority: 'low',
       assignedEmployeeId: 4,
@@ -52,8 +52,8 @@ export class TasksService {
     },
     {
       id: 5,
-      title: 'Realizar pruebas',
-      description: 'Ejecutar pruebas unitarias y de integración',
+      title: 'Run tests',
+      description: 'Execute unit and integration tests',
       status: 'pending',
       priority: 'medium',
       assignedEmployeeId: 5,
