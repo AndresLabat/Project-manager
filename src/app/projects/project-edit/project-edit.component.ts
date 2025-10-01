@@ -56,4 +56,8 @@ export class ProjectEditComponent {
 
     this.router.navigate(['/projects']);
   }
+
+  goBack(): void {
+    this.router.navigate(['/projects']);
+  }
 }
