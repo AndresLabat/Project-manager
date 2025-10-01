@@ -14,8 +14,8 @@
 
 .app-sidebar {
   width: 280px;
-  background: #f8f9fa;
-  border-right: 1px solid #e9ecef;
+  background: white;
+  border-right: 1px solid #dee2e6;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -27,7 +27,7 @@
 
 .sidebar-header {
   padding: $spacing-lg * 2;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .app-title {
@@ -55,7 +55,7 @@
 
 .sidebar-footer {
   padding: $spacing-lg 0;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid #dee2e6;
 }
 
 .nav-item {
@@ -181,7 +181,7 @@
   flex: 1;
   margin-left: 280px;
   overflow-y: auto;
-  background-color: white;
+  background-color: #f8f9fa;
   min-height: 100vh;
 }
 
