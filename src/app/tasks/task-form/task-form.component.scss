@@ -1,0 +1,87 @@
+@import '../../styles/variables';
+
+.task-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px $spacing-lg;
+  min-height: calc(100vh - 100px);
+}
+
+.form-section {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: $text-color;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 $spacing-lg 0;
+    text-align: center;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: 500;
+    color: $text-color;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  transition: $transition;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  }
+
+  &.error {
+    border-color: $error-color;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.9em;
+  margin-top: $spacing-lg;
+}
+
+.success-message {
+  color: $success-color;
+  font-size: 0.9em;
+  margin-top: $spacing-lg;
+}
+
+app-button {
+  margin-top: $spacing-md;
+}

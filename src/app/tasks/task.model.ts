@@ -4,7 +4,7 @@ export interface Task {
   description: string;
   status: 'pending' | 'in-progress' | 'completed';
   priority: 'low' | 'medium' | 'high';
-  assignedEmployeeId: number;
+  assignedEmployeeId: number | null;
   projectId: number;
   dueDate: string;
   createdAt: string;

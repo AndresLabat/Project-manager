@@ -10,6 +10,8 @@ import { EmployeeDetailComponent } from './employees/employee-detail/employee-de
 import { EmployeeFormComponent } from './employees/employee-form/employee-form.component';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import { TaskFormComponent } from './tasks/task-form/task-form.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { AuthGuard } from './auth/auth.guard';
 
 export const appConfig = {
@@ -34,7 +36,9 @@ export const appConfig = {
       },
       { path: 'tasks',
         children: [
-          { path: '', component: TasksListComponent }
+          { path: '', component: TasksListComponent },
+          { path: 'new', component: TaskFormComponent, canActivate: [AuthGuard] },
+          { path: ':id', component: TaskDetailComponent }
         ]
       },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },

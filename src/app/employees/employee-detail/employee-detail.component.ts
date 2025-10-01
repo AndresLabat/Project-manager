@@ -4,10 +4,12 @@ import { EmployeesService } from '../employees.service';
 import { Employee } from '../employee.model';
 import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+import { ButtonComponent } from '../../shared/button/button.component';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-employee-detail',
-  imports: [CommonModule, BackButtonComponent],
+  imports: [CommonModule, BackButtonComponent, ButtonComponent],
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.scss']
 })
@@ -18,10 +20,15 @@ export class EmployeeDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private employeesService: EmployeesService
+    private employeesService: EmployeesService,
+    public authService: AuthService
   ) {
     this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
     this.employee = this.employeesService.getEmployeeById(this.employeeId);
+  }
+
+  editEmployee(): void {
+    this.router.navigate(['/employees', this.employeeId, 'edit']);
   }
 
   deleteEmployee(): void {

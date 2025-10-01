@@ -21,6 +21,7 @@ export class TasksListComponent {
   ) {}
 
   viewDetails(id: number): void {
+    console.log('Navigating to task:', id);
     this.router.navigate(['/tasks', id]);
   }
 
