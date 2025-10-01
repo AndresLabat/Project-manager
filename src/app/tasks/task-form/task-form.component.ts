@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { TasksService } from '../tasks.service';
+import { ProjectsService } from '../../projects/projects.service';
+import { EmployeesService } from '../../employees/employees.service';
 import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
@@ -18,12 +20,18 @@ export class TaskFormComponent {
   form;
   successMessage = signal('');
   errorMessage = signal('');
+  projects;
+  employees;
 
   constructor(
     private fb: FormBuilder,
     private tasksService: TasksService,
+    private projectsService: ProjectsService,
+    private employeesService: EmployeesService,
     private router: Router
   ) {
+    this.projects = this.projectsService.getProjects();
+    this.employees = this.employeesService.getEmployees();
     this.form = this.fb.group({
       title: ['', TaskValidators.titleValidators],
       description: ['', TaskValidators.descriptionValidators],

@@ -44,9 +44,9 @@
             class="form-select"
             [class.error]="form.get('projectId')?.invalid && form.get('projectId')?.touched">
             <option value="">Select a project</option>
-            <option value="1">E-commerce Platform</option>
-            <option value="2">Mobile Banking App</option>
-            <option value="3">Data Analytics Dashboard</option>
+            @for (project of projects; track project.id) {
+              <option [value]="project.id">{{ project.name }}</option>
+            }
           </select>
           @if (form.get('projectId')?.invalid && form.get('projectId')?.touched) {
             <p class="error-message">{{ getProjectIdErrorMessage() }}</p>
@@ -60,11 +60,9 @@
             formControlName="assignedEmployeeId"
             class="form-select">
             <option value="">No assignment</option>
-            <option value="1">John Smith</option>
-            <option value="2">Sarah Johnson</option>
-            <option value="3">Mike Wilson</option>
-            <option value="4">Emma Davis</option>
-            <option value="5">David Brown</option>
+            @for (employee of employees; track employee.id) {
+              <option [value]="employee.id">{{ employee.fullName }}</option>
+            }
           </select>
         </div>
       </div>
