@@ -4,12 +4,11 @@ import { AuthService } from './auth/auth.service';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { ButtonComponent } from './shared/button/button.component';
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, ButtonComponent],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -17,6 +16,7 @@ export class App {
 
   title = signal('Project Manager');
   currentRoute = signal('');
+  projectsDropdownOpen = signal(true);
 
   constructor(
     public authService: AuthService,
@@ -43,5 +43,14 @@ export class App {
       return currentRoute === '/';
     }
     return currentRoute.startsWith(route);
+  }
+
+  isActiveSubRoute(route: string): boolean {
+    const currentRoute = this.currentRoute();
+    return currentRoute === route;
+  }
+
+  toggleProjectsDropdown() {
+    this.projectsDropdownOpen.set(!this.projectsDropdownOpen());
   }
 }

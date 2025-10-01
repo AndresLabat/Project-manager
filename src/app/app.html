@@ -6,14 +6,35 @@
     
     <nav class="sidebar-nav">
       <ul>
-        <li>
+        <li class="nav-item">
           <a 
-            class="nav-link" 
+            class="nav-link nav-toggle" 
             [class.active]="isActiveRoute('/projects')"
-            (click)="router.navigate(['/projects'])">
+            (click)="toggleProjectsDropdown()">
             <span class="nav-icon">📁</span>
             <span class="nav-text">Projects</span>
+            <span class="nav-arrow" [class.rotated]="projectsDropdownOpen()">›</span>
           </a>
+          <ul class="nav-dropdown" [class.open]="projectsDropdownOpen()">
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/projects')"
+                (click)="router.navigate(['/projects'])">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Lista de proyectos</span>
+              </a>
+            </li>
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/projects/new')"
+                (click)="router.navigate(['/projects/new'])">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Añadir proyecto</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <a 
