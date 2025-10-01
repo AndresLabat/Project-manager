@@ -51,6 +51,10 @@
     <p class="error-message">{{ getDateRangeErrorMessage() }}</p>
   }
 
+  @if (successMessage()) {
+    <p class="success-message">{{ successMessage() }}</p>
+  }
+
   <p class="legend">
     <span class="required">*</span> Required fields
   </p>

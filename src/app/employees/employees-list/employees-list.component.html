@@ -18,6 +18,7 @@
             <div class="employee-actions">
               <app-button variant="primary" size="sm" (clicked)="viewDetails(employee.id)">View</app-button>
               @if (authService.isAuthenticated()) {
+                <app-button variant="secondary" size="sm" (clicked)="editEmployee(employee.id)">Edit</app-button>
                 <app-button variant="danger" size="sm" (clicked)="deleteEmployee(employee.id)">Delete</app-button>
               }
             </div>

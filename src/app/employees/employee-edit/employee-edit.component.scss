@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-.project-form {
+.employee-form {
   max-width: 500px;
   margin: 0 auto;
   padding: $spacing-lg;
@@ -61,11 +61,6 @@
     font-style: italic;
   }
 }
-
-app-button {
-  margin-top: $spacing-md;
-}
-
 
 .error-message {
   color: $error-color;

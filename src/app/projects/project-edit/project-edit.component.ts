@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ProjectsService } from '../projects.service';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ import { ButtonComponent } from '../../shared/button/button.component';
 })
 export class ProjectEditComponent {
   form;
+  successMessage = signal('');
   projectId: number;
 
   constructor(
@@ -56,6 +57,10 @@ export class ProjectEditComponent {
       endDate: this.form.value.endDate || ''
     });
 
-    this.router.navigate(['/projects']);
+    this.successMessage.set('Project updated successfully!');
+    
+    setTimeout(() => {
+      this.router.navigate(['/projects']);
+    }, 1000);
   }
 }

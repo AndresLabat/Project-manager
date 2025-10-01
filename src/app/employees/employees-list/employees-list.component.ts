@@ -31,4 +31,8 @@ export class EmployeesListComponent {
   addEmployee(): void {
     this.router.navigate(['/employees/new']);
   }
+
+  editEmployee(id: number): void {
+    this.router.navigate(['/employees', id, 'edit']);
+  }
 }
