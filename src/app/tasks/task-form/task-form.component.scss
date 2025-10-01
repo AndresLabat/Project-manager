@@ -3,8 +3,25 @@
 .task-form-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 50px $spacing-lg;
-  min-height: calc(100vh - 100px);
+  padding: $spacing-lg;
+  min-height: calc(100vh - 12rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg * 2;
+
+  h2 {
+    color: $text-color;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+  }
 }
 
 .form-section {
@@ -12,15 +29,8 @@
   border: 1px solid $border-color;
   border-radius: $border-radius;
   padding: $spacing-lg;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-md;
 
-  h2 {
-    color: $text-color;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0 0 $spacing-lg 0;
-    text-align: center;
-  }
 }
 
 .form-group {
@@ -57,7 +67,7 @@
   &:focus {
     outline: none;
     border-color: $primary-color;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+    box-shadow: $shadow-focus;
   }
 
   &.error {
