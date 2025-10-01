@@ -45,11 +45,11 @@ button.variant-primary {
 }
 
 button.variant-secondary {
-  background-color: #6c757d;
+  background-color: $btn-secondary-bg;
   color: white;
   
   &:hover:not(:disabled) {
-    background-color: #5a6268;
+    background-color: $btn-secondary-hover;
   }
 }
 
@@ -72,19 +72,19 @@ button.variant-success {
 }
 
 button.variant-warning {
-  background-color: #ffc107;
-  color: #212529;
+  background-color: $btn-warning-bg;
+  color: $btn-warning-text;
   
   &:hover:not(:disabled) {
-    background-color: #e0a800;
+    background-color: $btn-warning-hover;
   }
 }
 
 button.variant-info {
-  background-color: #17a2b8;
+  background-color: $btn-info-bg;
   color: white;
   
   &:hover:not(:disabled) {
-    background-color: #138496;
+    background-color: $btn-info-hover;
   }
 }

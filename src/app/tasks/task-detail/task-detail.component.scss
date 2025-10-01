@@ -30,7 +30,7 @@
   border: 1px solid $border-color;
   border-radius: $border-radius;
   padding: $spacing-lg;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-md;
 }
 
 .task-header {
@@ -80,35 +80,35 @@
 
 .task-status {
   &.status-completed {
-    background-color: #d1fae5;
-    color: #065f46;
+    background-color: $status-completed-bg;
+    color: $status-completed-text;
   }
   
   &.status-in-progress {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background-color: $status-in-progress-bg;
+    color: $status-in-progress-text;
   }
   
   &.status-pending {
-    background-color: #fef3c7;
-    color: #92400e;
+    background-color: $status-pending-bg;
+    color: $status-pending-text;
   }
 }
 
 .task-priority {
   &.priority-high {
-    background-color: #fee2e2;
-    color: #dc2626;
+    background-color: $priority-high-bg;
+    color: $priority-high-text;
   }
   
   &.priority-medium {
-    background-color: #fef3c7;
-    color: #92400e;
+    background-color: $priority-medium-bg;
+    color: $priority-medium-text;
   }
   
   &.priority-low {
-    background-color: #f3f4f6;
-    color: #374151;
+    background-color: $priority-low-bg;
+    color: $priority-low-text;
   }
 }
 
@@ -158,7 +158,7 @@
   background: white;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-md;
 
   .error-title {
     color: $text-color;

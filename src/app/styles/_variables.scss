@@ -1,3 +1,4 @@
+// Colors
 $primary-color: #007bff;
 $primary-hover: #0056b3;
 $disabled-color: #6c757d;
@@ -7,11 +8,48 @@ $text-muted: #666;
 $text-light: #999;
 $error-color: red;
 $success-color: green;
+
+// Background colors
+$bg-light: #f8f9fa;
+$bg-white: #ffffff;
+
+// Status colors
+$status-completed-bg: #d1fae5;
+$status-completed-text: #065f46;
+$status-in-progress-bg: #dbeafe;
+$status-in-progress-text: #1e40af;
+$status-pending-bg: #fef3c7;
+$status-pending-text: #92400e;
+
+// Priority colors
+$priority-high-bg: #fee2e2;
+$priority-high-text: #dc2626;
+$priority-medium-bg: #fef3c7;
+$priority-medium-text: #92400e;
+$priority-low-bg: #f3f4f6;
+$priority-low-text: #374151;
+
+// Button colors
+$btn-secondary-bg: #6c757d;
+$btn-secondary-hover: #5a6268;
+$btn-warning-bg: #ffc107;
+$btn-warning-text: #212529;
+$btn-warning-hover: #e0a800;
+$btn-info-bg: #17a2b8;
+$btn-info-hover: #138496;
+
+// Layout
 $border-radius: 4px;
 $spacing-sm: 5px;
 $spacing-md: 10px;
 $spacing-lg: 20px;
 $transition: background-color 0.3s ease;
+
+// Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-focus: 0 0 0 2px rgba($primary-color, 0.25);
 
 // Typography scale
 $font-size-xs: 0.75rem;    // 12px

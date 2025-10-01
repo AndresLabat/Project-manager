@@ -14,7 +14,7 @@
   padding: $spacing-lg $spacing-lg * 2;
   border-bottom: 1px solid $border-color;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-md;
 }
 
 .app-title {
@@ -79,7 +79,7 @@
 .main-content {
   flex: 1;
   overflow-y: auto;
-  background-color: #f8f9fa;
+  background-color: $bg-light;
 }
 
 @media (max-width: 768px) {
