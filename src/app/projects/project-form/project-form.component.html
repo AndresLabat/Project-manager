@@ -64,11 +64,11 @@
         <p class="error-message">{{ getDateRangeErrorMessage() }}</p>
       }
 
+      <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Add Project</app-button>
+
       @if (successMessage()) {
         <p class="success-message">{{ successMessage() }}</p>
       }
-
-      <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Add Project</app-button>
     </form>
   </div>
 </div>
