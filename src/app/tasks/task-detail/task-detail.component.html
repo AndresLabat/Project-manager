@@ -9,10 +9,6 @@
       <div class="task-header">
         <div class="task-title-section">
           <h3 class="task-name">{{ task()!.title }}</h3>
-          <div class="task-meta">
-            <span class="task-status" [class]="getStatusClass(task()!.status)">{{ task()!.status }}</span>
-            <span class="task-priority" [class]="getPriorityClass(task()!.priority)">{{ task()!.priority }}</span>
-          </div>
         </div>
         @if (authService.isAuthenticated()) {
           <div class="task-actions">

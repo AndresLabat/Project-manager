@@ -1,10 +1,14 @@
 @import '../../styles/variables';
 
 .task-detail-container {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 50px $spacing-lg;
-  min-height: calc(100vh - 100px);
+  padding: $spacing-lg;
+  height: calc(100vh - 12rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .header-section {
@@ -36,7 +40,7 @@
   margin-bottom: $spacing-lg;
   gap: $spacing-md;
   min-width: 0;
-  padding-bottom: $spacing-md;
+  padding-bottom: $spacing-lg;
   border-bottom: 1px solid $border-color;
 }
 
