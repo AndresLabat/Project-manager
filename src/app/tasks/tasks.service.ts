@@ -5,7 +5,21 @@ import { Task } from './task.model';
   providedIn: 'root'
 })
 export class TasksService {
-  private tasksSignal = signal<Task[]>([
+  private tasksSignal = signal<Task[]>(this.loadTasks());
+  private nextId = 6;
+
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasksSignal()));
+  }
+
+  private loadTasks(): Task[] {
+    const stored = localStorage.getItem('tasks');
+    if (stored) {
+      const parsed: Task[] = JSON.parse(stored);
+      this.nextId = parsed.reduce((max, task) => Math.max(max, task.id), 0) + 1;
+      return parsed;
+    }
+    return [
     {
       id: 1,
       title: 'Implement authentication',
@@ -61,11 +75,12 @@ export class TasksService {
       dueDate: '2024-02-01',
       createdAt: '2024-01-05'
     }
-  ]);
+  ];
+  }
 
-  private nextId = 6;
-
-  constructor() {}
+  constructor() {
+    this.saveTasks();
+  }
 
   getTasks(): Task[] {
     return this.tasksSignal();
@@ -89,6 +104,7 @@ export class TasksService {
       id: this.nextId++
     };
     this.tasksSignal.update(tasks => [...tasks, newTask]);
+    this.saveTasks();
   }
 
   updateTask(id: number, updatedTask: Partial<Task>): void {
@@ -97,12 +113,14 @@ export class TasksService {
         task.id === id ? { ...task, ...updatedTask } : task
       )
     );
+    this.saveTasks();
   }
 
   deleteTask(id: number): void {
     this.tasksSignal.update(tasks =>
       tasks.filter(task => task.id !== id)
     );
+    this.saveTasks();
   }
 
   updateTaskStatus(id: number, status: Task['status']): void {

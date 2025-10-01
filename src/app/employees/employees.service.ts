@@ -5,7 +5,21 @@ import { Employee } from './employee.model';
   providedIn: 'root'
 })
 export class EmployeesService {
-  private employeesSignal = signal<Employee[]>([
+  private employeesSignal = signal<Employee[]>(this.loadEmployees());
+  private nextId = 6;
+
+  private saveEmployees() {
+    localStorage.setItem('employees', JSON.stringify(this.employeesSignal()));
+  }
+
+  private loadEmployees(): Employee[] {
+    const stored = localStorage.getItem('employees');
+    if (stored) {
+      const parsed: Employee[] = JSON.parse(stored);
+      this.nextId = parsed.reduce((max, emp) => Math.max(max, emp.id), 0) + 1;
+      return parsed;
+    }
+    return [
     {
       id: 1,
       fullName: 'John Smith',
@@ -46,11 +60,12 @@ export class EmployeesService {
       assignedProjects: [3],
       assignedTasks: []
     }
-  ]);
+  ];
+  }
 
-  private nextId = 6;
-
-  constructor() {}
+  constructor() {
+    this.saveEmployees();
+  }
 
   getEmployees(): Employee[] {
     return this.employeesSignal();
@@ -66,6 +81,7 @@ export class EmployeesService {
       id: this.nextId++
     };
     this.employeesSignal.update(employees => [...employees, newEmployee]);
+    this.saveEmployees();
   }
 
   updateEmployee(id: number, updatedEmployee: Omit<Employee, 'id'>): void {
@@ -74,12 +90,14 @@ export class EmployeesService {
         emp.id === id ? { ...updatedEmployee, id } : emp
       )
     );
+    this.saveEmployees();
   }
 
   deleteEmployee(id: number): void {
     this.employeesSignal.update(employees =>
       employees.filter(emp => emp.id !== id)
     );
+    this.saveEmployees();
   }
 
   getEmployeesByProject(projectId: number): Employee[] {
