@@ -35,11 +35,14 @@
 
 .form-group {
   margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
   
   label {
     margin-bottom: $spacing-sm;
     font-weight: 500;
     color: $text-color;
+    font-size: 0.9rem;
   }
 }
 
@@ -52,7 +55,7 @@
   padding: $spacing-md;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  font-size: 16px;
+  font-size: 0.9rem;
   width: 100%;
   box-sizing: border-box;
   
@@ -80,7 +83,7 @@ app-button {
 .error-message {
   color: $error-color;
   font-size: 0.9em;
-  margin-top: $spacing-lg;
+  margin-top: $spacing-sm;
 }
 
 .legend {

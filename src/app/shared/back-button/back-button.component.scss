@@ -10,9 +10,12 @@
   cursor: pointer;
   transition: $transition;
   box-shadow: $shadow-sm;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   
   &:hover {
-    background-color: $bg-light;
+    background-color: white;
     color: $primary-color;
     border-color: $primary-color;
     box-shadow: $shadow-md;
