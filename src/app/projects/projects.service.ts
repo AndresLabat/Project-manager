@@ -3,7 +3,7 @@ import { Project } from './project.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectsService {
-  private nextId = 4;
+  private nextId = 7;
   projects = signal<Project[]>(this.loadProjects());
 
   private saveProjects() {
@@ -38,6 +38,27 @@ export class ProjectsService {
         description: 'Create an interactive dashboard for business intelligence and reporting',
         startDate: '2024-01-15',
         endDate: '2024-04-15'
+      },
+      {
+        id: 4,
+        name: 'Customer Support System',
+        description: 'Implement a comprehensive customer support platform with ticketing and chat features',
+        startDate: '2024-03-01',
+        endDate: '2024-09-30'
+      },
+      {
+        id: 5,
+        name: 'Inventory Management',
+        description: 'Develop a real-time inventory tracking system with automated reordering capabilities',
+        startDate: '2024-02-15',
+        endDate: '2024-07-15'
+      },
+      {
+        id: 6,
+        name: 'Social Media Integration',
+        description: 'Build tools for social media content management and analytics across multiple platforms',
+        startDate: '2024-04-01',
+        endDate: '2024-10-31'
       }
     ];
   }
