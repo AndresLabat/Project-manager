@@ -1,46 +1,62 @@
-<header class="app-header">
-  <h1 class="app-title">{{ title() }}</h1>
-  <nav class="app-nav">
-    <ul>
-      <li>
+<div class="app-container">
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <h1 class="app-title">{{ title() }}</h1>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a 
+            class="nav-link" 
+            [class.active]="isActiveRoute('/projects')"
+            (click)="router.navigate(['/projects'])">
+            <span class="nav-icon">📁</span>
+            <span class="nav-text">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a 
+            class="nav-link" 
+            [class.active]="isActiveRoute('/employees')"
+            (click)="router.navigate(['/employees'])">
+            <span class="nav-icon">👥</span>
+            <span class="nav-text">Employees</span>
+          </a>
+        </li>
+        <li>
+          <a 
+            class="nav-link" 
+            [class.active]="isActiveRoute('/tasks')"
+            (click)="router.navigate(['/tasks'])">
+            <span class="nav-icon">✅</span>
+            <span class="nav-text">Tasks</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+      @if (authService.isAuthenticated()) {
         <a 
-          class="nav-link" 
-          [class.active]="isActiveRoute('/projects')"
-          (click)="router.navigate(['/projects'])">
-          <span class="nav-icon">📁</span>
-          <span class="nav-text">Projects</span>
+          class="nav-link logout-link" 
+          (click)="onLogout()">
+          <span class="nav-icon">🚪</span>
+          <span class="nav-text">Logout</span>
         </a>
-      </li>
-      <li>
+      } @else {
         <a 
-          class="nav-link" 
-          [class.active]="isActiveRoute('/employees')"
-          (click)="router.navigate(['/employees'])">
-          <span class="nav-icon">👥</span>
-          <span class="nav-text">Employees</span>
+          class="nav-link login-link" 
+          (click)="router.navigate(['/login'])">
+          <span class="nav-icon">🔑</span>
+          <span class="nav-text">Login</span>
         </a>
-      </li>
-      <li>
-        <a 
-          class="nav-link" 
-          [class.active]="isActiveRoute('/tasks')"
-          (click)="router.navigate(['/tasks'])">
-          <span class="nav-icon">✅</span>
-          <span class="nav-text">Tasks</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <div class="app-actions">
-    @if (authService.isAuthenticated()) {
-      <app-button variant="primary" size="md" (clicked)="onLogout()">Logout</app-button>
-    } @else {
-      <app-button variant="primary" size="md" (clicked)="router.navigate(['/login'])">Login</app-button>
-    }
-  </div>
-</header>
+      }
+    </div>
+  </aside>
 
-<main class="main-content">
-  <router-outlet></router-outlet>
-</main>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
   
