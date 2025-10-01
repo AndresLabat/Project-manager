@@ -41,11 +41,12 @@ export class ProjectFormComponent {
   addProject(): void {
     if (this.form.invalid) return;
 
+    const formValue = this.form.value;
     this.projectsService.addProject({
-      name: this.form.value.name!,
-      description: this.form.value.description || '',
-      startDate: this.form.value.startDate!,
-      endDate: this.form.value.endDate || ''
+      name: formValue.name || '',
+      description: formValue.description || '',
+      startDate: formValue.startDate || '',
+      endDate: formValue.endDate || ''
     });
 
     this.successMessage.set('Project added successfully!');

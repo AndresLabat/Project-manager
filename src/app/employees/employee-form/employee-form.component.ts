@@ -44,10 +44,11 @@ export class EmployeeFormComponent {
   addEmployee(): void {
     if (this.form.invalid) return;
 
+    const formValue = this.form.value;
     this.employeesService.addEmployee({
-      fullName: this.form.value.fullName!,
-      email: this.form.value.email!,
-      role: this.form.value.role!,
+      fullName: formValue.fullName || '',
+      email: formValue.email || '',
+      role: formValue.role || '',
       assignedProjects: [],
       assignedTasks: []
     });

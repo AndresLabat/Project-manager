@@ -76,14 +76,15 @@ export class TaskFormComponent {
 
     this.errorMessage.set('');
 
+    const formValue = this.form.value;
     this.tasksService.addTask({
-      title: this.form.value.title!,
-      description: this.form.value.description!,
-      projectId: +this.form.value.projectId!,
-      assignedEmployeeId: this.form.value.assignedEmployeeId ? +this.form.value.assignedEmployeeId : null,
-      status: this.form.value.status! as 'pending' | 'in-progress' | 'completed',
-      priority: this.form.value.priority! as 'low' | 'medium' | 'high',
-      dueDate: this.form.value.dueDate!,
+      title: formValue.title || '',
+      description: formValue.description || '',
+      projectId: +(formValue.projectId || 0),
+      assignedEmployeeId: formValue.assignedEmployeeId ? +formValue.assignedEmployeeId : null,
+      status: (formValue.status || 'pending') as 'pending' | 'in-progress' | 'completed',
+      priority: (formValue.priority || 'medium') as 'low' | 'medium' | 'high',
+      dueDate: formValue.dueDate || '',
       createdAt: new Date().toISOString().split('T')[0]
     });
 

@@ -25,7 +25,8 @@ export class EmployeeEditComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.employeeId = +this.route.snapshot.paramMap.get('id')!;
+    const idParam = this.route.snapshot.paramMap.get('id');
+    this.employeeId = idParam ? +idParam : 0;
     
     const employee = this.employeesService.getEmployeeById(this.employeeId);
     
@@ -51,10 +52,11 @@ export class EmployeeEditComponent {
   updateEmployee() {
     if (this.form.invalid) return;
 
+    const formValue = this.form.value;
     const updatedEmployee: Omit<Employee, 'id'> = {
-      fullName: this.form.value.fullName!,
-      email: this.form.value.email!,
-      role: this.form.value.role!,
+      fullName: formValue.fullName || '',
+      email: formValue.email || '',
+      role: formValue.role || '',
       assignedProjects: [],
       assignedTasks: []
     };

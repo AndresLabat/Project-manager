@@ -8,7 +8,7 @@
     <div class="task-detail-card">
       <div class="task-header">
         <div class="task-title-section">
-          <h3 class="task-name">{{ task()!.title }}</h3>
+          <h3 class="task-name">{{ task()?.title }}</h3>
         </div>
         @if (authService.isAuthenticated()) {
           <div class="task-actions">
@@ -21,47 +21,43 @@
       <div class="task-content">
         <div class="detail-section">
           <h4 class="detail-label">Description</h4>
-          <p class="detail-value">{{ task()!.description }}</p>
+          <p class="detail-value">{{ task()?.description }}</p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Project</h4>
-          <p class="detail-value">{{ getProjectName(task()!.projectId) }}</p>
+          <p class="detail-value">{{ getProjectName(task()?.projectId || 0) }}</p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Assigned Employee</h4>
           <p class="detail-value">
-            @if (task()!.assignedEmployeeId) {
-              Employee #{{ task()!.assignedEmployeeId }}
-            } @else {
-              Not assigned
-            }
+            {{ getEmployeeName(task()?.assignedEmployeeId || null) }}
           </p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Status</h4>
           <p class="detail-value">
-            <span class="task-status" [class]="getStatusClass(task()!.status)">{{ task()!.status }}</span>
+            <span class="task-status" [class]="getStatusClass(task()?.status || 'pending')">{{ task()?.status }}</span>
           </p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Priority</h4>
           <p class="detail-value">
-            <span class="task-priority" [class]="getPriorityClass(task()!.priority)">{{ task()!.priority }}</span>
+            <span class="task-priority" [class]="getPriorityClass(task()?.priority || 'medium')">{{ task()?.priority }}</span>
           </p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Created Date</h4>
-          <p class="detail-value">{{ task()!.createdAt }}</p>
+          <p class="detail-value">{{ task()?.createdAt }}</p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Due Date</h4>
-          <p class="detail-value">{{ task()!.dueDate }}</p>
+          <p class="detail-value">{{ task()?.dueDate }}</p>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, computed } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { ProjectsService } from '../../projects/projects.service';
+import { EmployeesService } from '../../employees/employees.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
@@ -18,6 +19,7 @@ export class TasksListComponent {
   constructor(
     private tasksService: TasksService,
     private projectsService: ProjectsService,
+    private employeesService: EmployeesService,
     private router: Router,
     public authService: AuthService
   ) {}
@@ -60,5 +62,11 @@ export class TasksListComponent {
   getProjectName(projectId: number): string {
     const project = this.projectsService.getProjects().find(p => p.id === projectId);
     return project ? project.name : `Project #${projectId}`;
+  }
+
+  getEmployeeName(employeeId: number | null): string {
+    if (!employeeId) return 'Not assigned';
+    const employee = this.employeesService.getEmployees().find(e => e.id === employeeId);
+    return employee ? employee.fullName : `Employee #${employeeId}`;
   }
 }
