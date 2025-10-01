@@ -103,6 +103,7 @@
       @if (authService.isAuthenticated()) {
         <a 
           class="nav-link logout-link" 
+          [class.active]="!isActiveRoute('/login')"
           (click)="onLogout()">
           <span class="nav-icon">🚪</span>
           <span class="nav-text">Logout</span>
@@ -110,6 +111,7 @@
       } @else {
         <a 
           class="nav-link login-link" 
+          [class.active]="isActiveRoute('/login')"
           (click)="router.navigate(['/login'])">
           <span class="nav-icon">🔑</span>
           <span class="nav-text">Login</span>
