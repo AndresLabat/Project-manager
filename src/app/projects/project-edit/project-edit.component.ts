@@ -4,10 +4,11 @@ import { ProjectsService } from '../projects.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectValidators } from '../../validators/project.validators';
+import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 
 @Component({
   selector: 'app-project-edit',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent],
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.scss']
 })
@@ -54,10 +55,6 @@ export class ProjectEditComponent {
       endDate: this.form.value.endDate || ''
     });
 
-    this.router.navigate(['/projects']);
-  }
-
-  goBack(): void {
     this.router.navigate(['/projects']);
   }
 }

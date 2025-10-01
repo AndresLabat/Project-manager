@@ -3,11 +3,11 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ProjectsService } from '../projects.service';
 import { CommonModule } from '@angular/common';
 import { ProjectValidators } from '../../validators/project.validators';
-import { Router } from '@angular/router';
+import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 
 @Component({
   selector: 'app-project-form',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss']
 })
@@ -15,7 +15,7 @@ export class ProjectFormComponent {
   form;
   successMessage = signal('');
 
-  constructor(private fb: FormBuilder, private projectsService: ProjectsService, private router: Router) {
+  constructor(private fb: FormBuilder, private projectsService: ProjectsService) {
     this.form = this.fb.group({
       name: ['', ProjectValidators.nameValidators],
       description: ['', ProjectValidators.descriptionValidators],
@@ -49,9 +49,5 @@ export class ProjectFormComponent {
     this.form.reset();
     this.successMessage.set('Project added successfully!');
     setTimeout(() => this.successMessage.set(''), 3000);
-  }
-
-  goBack(): void {
-    this.router.navigate(['/projects']);
   }
 }

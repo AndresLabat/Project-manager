@@ -1,9 +1,7 @@
 <div class="project-form">
   <div class="header-section">
     <h2>Add Project</h2>
-    <button class="btn btn-back" type="button" (click)="goBack()">
-      ← Back to Projects
-    </button>
+    <app-back-button></app-back-button>
   </div>
   
   <form [formGroup]="form" (ngSubmit)="addProject()">
