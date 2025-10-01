@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { Router } from '@angular/router';
+import { TaskValidators } from '../../validators/task.validators';
 
 @Component({
   selector: 'app-task-form',
@@ -24,48 +25,30 @@ export class TaskFormComponent {
     private router: Router
   ) {
     this.form = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(10)]],
-      projectId: ['', [Validators.required]],
+      title: ['', TaskValidators.titleValidators],
+      description: ['', TaskValidators.descriptionValidators],
+      projectId: ['', TaskValidators.projectIdValidators],
       assignedEmployeeId: [''],
       status: ['pending', [Validators.required]],
       priority: ['medium', [Validators.required]],
-      dueDate: ['', [Validators.required]]
+      dueDate: ['', TaskValidators.dueDateValidators]
     });
   }
 
   getTitleErrorMessage(): string {
-    if (this.form.get('title')?.hasError('required')) {
-      return 'Title is required';
-    }
-    if (this.form.get('title')?.hasError('minlength')) {
-      return 'Title must be at least 3 characters long';
-    }
-    return '';
+    return TaskValidators.getTitleErrorMessage(this.form);
   }
 
   getDescriptionErrorMessage(): string {
-    if (this.form.get('description')?.hasError('required')) {
-      return 'Description is required';
-    }
-    if (this.form.get('description')?.hasError('minlength')) {
-      return 'Description must be at least 10 characters long';
-    }
-    return '';
+    return TaskValidators.getDescriptionErrorMessage(this.form);
   }
 
   getProjectIdErrorMessage(): string {
-    if (this.form.get('projectId')?.hasError('required')) {
-      return 'Project is required';
-    }
-    return '';
+    return TaskValidators.getProjectIdErrorMessage(this.form);
   }
 
   getDueDateErrorMessage(): string {
-    if (this.form.get('dueDate')?.hasError('required')) {
-      return 'Due date is required';
-    }
-    return '';
+    return TaskValidators.getDueDateErrorMessage(this.form);
   }
 
   addTask(): void {
@@ -92,5 +75,9 @@ export class TaskFormComponent {
     setTimeout(() => {
       this.router.navigate(['/tasks']);
     }, 1000);
+  }
+
+  getTodayDate(): string {
+    return new Date().toISOString().split('T')[0];
   }
 }

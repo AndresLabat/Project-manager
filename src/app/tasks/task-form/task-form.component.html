@@ -102,6 +102,7 @@
           id="dueDate"
           formControlName="dueDate"
           class="form-input"
+          [min]="getTodayDate()"
           [class.error]="form.get('dueDate')?.invalid && form.get('dueDate')?.touched">
         @if (form.get('dueDate')?.invalid && form.get('dueDate')?.touched) {
           <p class="error-message">{{ getDueDateErrorMessage() }}</p>
