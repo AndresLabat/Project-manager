@@ -14,7 +14,11 @@
           formControlName="fullName" 
           class="form-input"
           [class.error]="form.get('fullName')?.invalid && form.get('fullName')?.touched"
-          placeholder="Enter full name">
+          placeholder="Enter full name"
+          autocomplete="name"
+          spellcheck="false"
+          inputmode="text"
+          lang="es">
         @if (form.get('fullName')?.invalid && form.get('fullName')?.touched) {
           <p class="error-message">{{ getNameErrorMessage() }}</p>
         }

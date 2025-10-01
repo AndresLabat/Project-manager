@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .employee-form {
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   padding: $spacing-lg;
   min-height: calc(100vh - 10rem);
@@ -23,6 +23,14 @@
       text-align: left;
     }
   }
+}
+
+.form-section {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
 }
 
 .form-group {
@@ -53,7 +61,11 @@
   &:focus {
     outline: none;
     border-color: $primary-color;
-    box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+    box-shadow: $shadow-focus;
+  }
+  
+  &.error {
+    border-color: $error-color;
   }
   
   &::placeholder {
@@ -65,13 +77,14 @@
 .error-message {
   color: $error-color;
   font-size: 0.9em;
-  margin-top: $spacing-lg;
+  margin-top: $spacing-sm;
 }
 
 .success-message {
   color: $success-color;
   font-size: 0.9em;
   margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
 }
 
 .legend {
