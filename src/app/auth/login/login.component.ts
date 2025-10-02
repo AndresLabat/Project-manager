@@ -1,17 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { ButtonComponent } from '../../shared/button/button.component';
-
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form;
 
   constructor(
@@ -24,6 +22,12 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/projects']);
+    }
   }
 
   onLogin() {
@@ -42,5 +46,21 @@ export class LoginComponent {
 
   continueWithoutLogin() {
     this.router.navigate(['/projects']);
+  }
+
+  getUsernameErrorMessage() {
+    const control = this.form.get('username');
+    if (control?.hasError('required') && control?.touched) {
+      return 'Username is required';
+    }
+    return '';
+  }
+
+  getPasswordErrorMessage() {
+    const control = this.form.get('password');
+    if (control?.hasError('required') && control?.touched) {
+      return 'Password is required';
+    }
+    return '';
   }
 }
