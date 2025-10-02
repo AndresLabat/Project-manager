@@ -4,36 +4,32 @@
   max-width: 800px;
   margin: 0 auto;
   padding: $spacing-lg;
-  height: calc(100vh - 12rem);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
 }
 
+.employee-detail-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
 .header-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-lg;
-  position: relative;
-}
+  margin-bottom: 2.5rem;
 
-h2 {
-  color: $text-color;
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: left;
-  flex: 1;
-}
-
-.employee-detail-card {
-  background: white;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  padding: $spacing-lg;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  h2 {
+    color: $primary-color;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+  }
 }
 
 .employee-header {

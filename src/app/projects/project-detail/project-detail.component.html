@@ -1,11 +1,10 @@
 <div class="project-detail-container">
-  <div class="header-section">
-    <h2>Project Details</h2>
-    <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
-  </div>
-  
   @if (project) {
     <div class="project-detail-card">
+      <div class="header-section">
+        <h2>Project Details</h2>
+        <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
+      </div>
       <div class="project-header">
         <h3 class="project-title">{{ project.name }}</h3>
         @if (authService.isAuthenticated()) {
@@ -66,9 +65,11 @@
       </div>
     </div>
   } @else {
-    <div class="error-state">
-      <h3 class="error-title">Project not found</h3>
-      <p class="error-message">The project you're looking for doesn't exist or has been deleted.</p>
+    <div class="project-detail-card">
+      <div class="error-state">
+        <h3 class="error-title">Project not found</h3>
+        <p class="error-message">The project you're looking for doesn't exist or has been deleted.</p>
+      </div>
     </div>
   }
 </div>

@@ -1,11 +1,10 @@
 <div class="employee-detail-container">
-  <div class="header-section">
-    <h2>Employee Details</h2>
-    <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
-  </div>
-  
   @if (employee) {
     <div class="employee-detail-card">
+      <div class="header-section">
+        <h2>Employee Details</h2>
+        <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
+      </div>
       <div class="employee-header">
         <div class="employee-title-section">
           <h3 class="employee-name">{{ employee.fullName }}</h3>
@@ -62,9 +61,11 @@
       </div>
     </div>
   } @else {
-    <div class="error-state">
-      <h3 class="error-title">Employee not found</h3>
-      <p class="error-message">The employee you're looking for doesn't exist or has been deleted.</p>
+    <div class="employee-detail-card">
+      <div class="error-state">
+        <h3 class="error-title">Employee not found</h3>
+        <p class="error-message">The employee you're looking for doesn't exist or has been deleted.</p>
+      </div>
     </div>
   }
 </div>
