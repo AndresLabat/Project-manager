@@ -2,7 +2,7 @@
 
 **Prueba Técnica Frontend para Quasar Dynamics**
 
-Una aplicación web completa desarrollada en Angular 17 para la gestión de proyectos, tareas y empleados, con sistema de autenticación y operaciones CRUD.
+Una aplicación web completa desarrollada en Angular 20 para la gestión de proyectos, tareas y empleados, con sistema de autenticación y operaciones CRUD.
 
 ## 🔑 CREDENCIALES DE ACCESO
 
@@ -40,7 +40,7 @@ Una aplicación web completa desarrollada en Angular 17 para la gestión de proy
 
 ## 🛠 Tecnologías Utilizadas
 
-- **Angular 17** - Framework principal
+- **Angular 20** - Framework principal
 - **TypeScript** - Lenguaje de programación
 - **SCSS** - Preprocesador CSS
 - **Angular Signals** - Gestión de estado reactivo
@@ -48,6 +48,8 @@ Una aplicación web completa desarrollada en Angular 17 para la gestión de proy
 - **Angular Router** - Navegación
 - **Angular Guards** - Protección de rutas
 - **LocalStorage** - Persistencia de datos
+
+> **📝 Nota técnica**: Se utilizó Angular 20 (versión más reciente) en lugar de Angular 17 para aprovechar las últimas características y mejoras de performance, incluyendo Angular Signals más maduros, optimizaciones del framework y mejores prácticas de desarrollo.
 
 ## 🚀 Instalación y Configuración
 
@@ -278,7 +280,7 @@ interface Employee {
 
 ---
 
-> **Nota**: Este proyecto fue desarrollado como prueba técnica para Quasar Dynamics, demostrando habilidades en Angular 17, TypeScript, SCSS y mejores prácticas de desarrollo frontend.
+> **Nota**: Este proyecto fue desarrollado como prueba técnica para Quasar Dynamics, demostrando habilidades en Angular 20, TypeScript, SCSS y mejores prácticas de desarrollo frontend.
 
 ## 📄 Licencia
 
