@@ -39,4 +39,8 @@ export class LoginComponent {
       this.form.setErrors({ invalidLogin: true });
     }
   }
+
+  continueWithoutLogin() {
+    this.router.navigate(['/projects']);
+  }
 }

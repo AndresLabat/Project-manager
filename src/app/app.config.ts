@@ -43,8 +43,8 @@ export const appConfig = {
           { path: ':id', component: TaskDetailComponent }
         ]
       },
-      { path: '', redirectTo: 'projects', pathMatch: 'full' },
-      { path: '**', redirectTo: 'projects' }
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '**', redirectTo: 'login' }
     ]),
     provideHttpClient()
   ]
