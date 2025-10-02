@@ -46,17 +46,15 @@ export class ProjectDetailComponent {
     this.router.navigate(['/projects']);
   }
 
-  getAssignedEmployees(): string[] {
+  getAssignedEmployees() {
     const employees = this.employeesService.getEmployees();
-    const assignedEmployees = employees.filter(emp => 
+    return employees.filter(emp => 
       emp.assignedProjects.includes(this.projectId)
     );
-    return assignedEmployees.map(emp => emp.fullName);
   }
 
-  getAssignedTasks(): string[] {
-    const tasks = this.tasksService.getTasksByProject(this.projectId);
-    return tasks.map(task => task.title);
+  getAssignedTasks() {
+    return this.tasksService.getTasksByProject(this.projectId);
   }
 
   getAssignedEmployeesCount(): number {
@@ -65,5 +63,13 @@ export class ProjectDetailComponent {
 
   getAssignedTasksCount(): number {
     return this.getAssignedTasks().length;
+  }
+
+  navigateToEmployee(employeeId: number) {
+    this.router.navigate(['/employees', employeeId]);
+  }
+
+  navigateToTask(taskId: number) {
+    this.router.navigate(['/tasks', taskId]);
   }
 }

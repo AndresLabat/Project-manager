@@ -34,7 +34,11 @@
           @if (getAssignedProjectsCount() > 0) {
             <ul class="detail-list">
               @for (project of getAssignedProjects(); track project) {
-                <li class="detail-item">{{ project }}</li>
+                <li class="detail-item">
+                  <a class="clickable-link" (click)="navigateToProject(project.id)">
+                    {{ project.name }}
+                  </a>
+                </li>
               }
             </ul>
           } @else {
@@ -49,7 +53,11 @@
           @if (getAssignedTasksCount() > 0) {
             <ul class="detail-list">
               @for (task of getAssignedTasks(); track task) {
-                <li class="detail-item">{{ task }}</li>
+                <li class="detail-item">
+                  <a class="clickable-link" (click)="navigateToTask(task.id)">
+                    {{ task.title }}
+                  </a>
+                </li>
               }
             </ul>
           } @else {
