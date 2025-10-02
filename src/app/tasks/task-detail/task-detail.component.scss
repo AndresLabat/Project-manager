@@ -128,13 +128,14 @@
 .detail-section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: $spacing-sm;
 }
 
 .detail-label {
-  font-weight: 600;
   color: $text-color;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 .detail-value {
