@@ -5,7 +5,7 @@ import { Employee } from './employee.model';
   providedIn: 'root'
 })
 export class EmployeesService {
-  private employeesSignal = signal<Employee[]>(this.loadEmployees());
+  employeesSignal = signal<Employee[]>(this.loadEmployees());
   private nextId = 1;
 
   private saveEmployees() {
@@ -20,60 +20,31 @@ export class EmployeesService {
       return parsed;
     }
     const defaults: Employee[] = [
-    {
-      id: 1,
-      fullName: 'John Smith',
-      email: 'john.smith@company.com',
-      role: 'Frontend Developer',
-      assignedProjects: [1, 2],
-      assignedTasks: [1, 2]
-    },
-    {
-      id: 2,
-      fullName: 'Sarah Johnson',
-      email: 'sarah.johnson@company.com',
-      role: 'UX/UI Designer',
-      assignedProjects: [1, 2, 3],
-      assignedTasks: [2, 4]
-    },
-    {
-      id: 3,
-      fullName: 'Mike Wilson',
-      email: 'mike.wilson@company.com',
-      role: 'Backend Developer',
-      assignedProjects: [2, 4],
-      assignedTasks: [3, 6]
-    },
-    {
-      id: 4,
-      fullName: 'Emma Davis',
-      email: 'emma.davis@company.com',
-      role: 'Project Manager',
-      assignedProjects: [1, 2, 3, 4],
-      assignedTasks: [5]
-    },
-    {
-      id: 5,
-      fullName: 'David Brown',
-      email: 'david.brown@company.com',
-      role: 'QA Tester',
-      assignedProjects: [3, 5],
-      assignedTasks: [7]
-    },
-    {
-      id: 6,
-      fullName: 'Lisa Garcia',
-      email: 'lisa.garcia@company.com',
-      role: 'DevOps Engineer',
-      assignedProjects: [4, 5, 6],
-      assignedTasks: [8]
-    }
+      {
+        id: 1,
+        fullName: 'John Smith',
+        email: 'john.smith@company.com',
+        role: 'Frontend Developer',
+        assignedProjects: [1],
+        assignedTasks: [1]
+      },
+      {
+        id: 2,
+        fullName: 'Sarah Johnson',
+        email: 'sarah.johnson@company.com',
+        role: 'Data Analyst',
+        assignedProjects: [2],
+        assignedTasks: [2]
+      }
     ];
-    this.nextId = defaults.reduce((max, emp) => Math.max(max, emp.id), 0) + 1;
+    this.nextId = 3;
     return defaults;
   }
 
   constructor() {
+    localStorage.removeItem('employees');
+    localStorage.removeItem('projects');
+    localStorage.removeItem('tasks');
     this.saveEmployees();
   }
 
@@ -187,6 +158,17 @@ export class EmployeesService {
         assignedTasks: allTasks
           .filter((task: any) => task.assignedEmployeeId === emp.id)
           .map((task: any) => task.id)
+      }))
+    );
+    this.saveEmployees();
+  }
+
+  removeProjectFromEmployees(projectId: number, tasksToRemove: number[] = []): void {
+    this.employeesSignal.update(employees =>
+      employees.map(emp => ({
+        ...emp,
+        assignedProjects: emp.assignedProjects.filter(id => id !== projectId),
+        assignedTasks: emp.assignedTasks.filter(taskId => !tasksToRemove.includes(taskId))
       }))
     );
     this.saveEmployees();

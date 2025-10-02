@@ -25,96 +25,32 @@ export class TasksService {
       this.nextId = parsed.length > 0 ? parsed.reduce((max, task) => Math.max(max, task.id), 0) + 1 : 9;
       return parsed;
     }
-    return [
-    {
-      id: 1,
-      title: 'Implement user authentication',
-      description: 'Create secure login and logout system with JWT tokens',
-      status: 'completed',
-      priority: 'high',
-      assignedEmployeeId: 1,
-      projectId: 1,
-      dueDate: '2024-01-15',
-      createdAt: '2024-01-01'
-    },
-    {
-      id: 2,
-      title: 'Design responsive UI components',
-      description: 'Create modern and responsive user interface components',
-      status: 'in-progress',
-      priority: 'medium',
-      assignedEmployeeId: 2,
-      projectId: 1,
-      dueDate: '2024-01-20',
-      createdAt: '2024-01-02'
-    },
-    {
-      id: 3,
-      title: 'Setup payment gateway integration',
-      description: 'Integrate secure payment processing for mobile banking',
-      status: 'pending',
-      priority: 'high',
-      assignedEmployeeId: 3,
-      projectId: 2,
-      dueDate: '2024-02-15',
-      createdAt: '2024-01-03'
-    },
-    {
-      id: 4,
-      title: 'Create user experience wireframes',
-      description: 'Design intuitive user flows for banking app',
-      status: 'completed',
-      priority: 'medium',
-      assignedEmployeeId: 2,
-      projectId: 2,
-      dueDate: '2024-01-25',
-      createdAt: '2024-01-04'
-    },
-    {
-      id: 5,
-      title: 'Project planning and coordination',
-      description: 'Manage project timeline and team coordination',
-      status: 'in-progress',
-      priority: 'high',
-      assignedEmployeeId: 4,
-      projectId: 1,
-      dueDate: '2024-02-01',
-      createdAt: '2024-01-05'
-    },
-    {
-      id: 6,
-      title: 'Implement API endpoints',
-      description: 'Develop RESTful API for customer support system',
-      status: 'pending',
-      priority: 'medium',
-      assignedEmployeeId: 3,
-      projectId: 4,
-      dueDate: '2024-03-15',
-      createdAt: '2024-01-06'
-    },
-    {
-      id: 7,
-      title: 'Execute comprehensive testing',
-      description: 'Run unit, integration and end-to-end tests for analytics dashboard',
-      status: 'pending',
-      priority: 'medium',
-      assignedEmployeeId: 5,
-      projectId: 3,
-      dueDate: '2024-02-20',
-      createdAt: '2024-01-07'
-    },
-    {
-      id: 8,
-      title: 'Deploy to production environment',
-      description: 'Configure CI/CD pipeline and deploy inventory management system',
-      status: 'pending',
-      priority: 'high',
-      assignedEmployeeId: 6,
-      projectId: 5,
-      dueDate: '2024-04-01',
-      createdAt: '2024-01-08'
-    }
-  ];
+    const defaults = [
+      {
+        id: 1,
+        title: 'Frontend Development',
+        description: 'Develop responsive user interface for the e-commerce platform with modern design patterns',
+        status: 'in-progress' as const,
+        priority: 'high' as const,
+        assignedEmployeeId: 1,
+        projectId: 1,
+        dueDate: '2024-06-30',
+        createdAt: '2024-01-15'
+      },
+      {
+        id: 2,
+        title: 'Analytics Dashboard',
+        description: 'Create comprehensive analytics dashboard for social media metrics and performance insights',
+        status: 'pending' as const,
+        priority: 'medium' as const,
+        assignedEmployeeId: 2,
+        projectId: 2,
+        dueDate: '2024-08-15',
+        createdAt: '2024-04-01'
+      }
+    ];
+    this.nextId = 3;
+    return defaults;
   }
 
 
@@ -197,5 +133,20 @@ export class TasksService {
   syncEmployeeTaskAssignments(): void {
     const allTasks = this.getTasks();
     this.employeesService.updateEmployeeTaskAssignments(allTasks);
+  }
+
+  deleteTasksByProject(projectId: number): void {
+    const tasksToDelete = this.getTasks().filter(task => task.projectId === projectId);
+    
+    tasksToDelete.forEach(task => {
+      if (task.assignedEmployeeId) {
+        this.employeesService.unassignFromTask(task.assignedEmployeeId, task.id);
+      }
+    });
+    
+    this.tasksSignal.update(tasks => 
+      tasks.filter(task => task.projectId !== projectId)
+    );
+    this.saveTasks();
   }
 }

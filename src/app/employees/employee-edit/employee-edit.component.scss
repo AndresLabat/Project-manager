@@ -150,3 +150,12 @@
     display: block;
   }
 }
+
+form {
+  padding-bottom: $spacing-lg;
+}
+
+app-button {
+  margin-top: $spacing-lg;
+  display: block;
+}

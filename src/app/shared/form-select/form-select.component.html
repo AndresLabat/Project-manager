@@ -36,7 +36,6 @@
   } @else {
     <select 
       [id]="getFieldId()"
-      [value]="value"
       [disabled]="disabled"
       [class.error]="hasError"
       (change)="onSelectionChange($event)"
@@ -46,7 +45,7 @@
         <option value="" disabled>{{ placeholder }}</option>
       }
       @for (option of options; track $index) {
-        <option [value]="option.value">{{ option.label }}</option>
+        <option [value]="option.value" [selected]="value == option.value">{{ option.label }}</option>
       }
     </select>
   }

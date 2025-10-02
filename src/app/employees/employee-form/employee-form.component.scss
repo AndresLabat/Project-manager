@@ -169,11 +169,20 @@ button[type="submit"] {
   }
   
   form {
-    padding-bottom: $spacing-xl;
+    padding-bottom: $spacing-xl !important;
   }
   
   app-button {
-    margin-top: $spacing-xl;
-    display: block;
+    margin-top: $spacing-xl !important;
+    display: block !important;
   }
+}
+
+form {
+  padding-bottom: $spacing-lg !important;
+}
+
+app-button {
+  margin-top: $spacing-lg !important;
+  display: block !important;
 }

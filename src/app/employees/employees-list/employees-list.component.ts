@@ -15,7 +15,7 @@ import { EmptyStateComponent } from '../../shared/empty-state/empty-state.compon
   styleUrls: ['./employees-list.component.scss']
 })
 export class EmployeesListComponent implements OnInit {
-  employees = computed(() => this.employeesService.getEmployees());
+  employees = computed(() => this.employeesService.employeesSignal());
 
   constructor(
     private employeesService: EmployeesService,
