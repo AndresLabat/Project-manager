@@ -5,14 +5,13 @@ import { ProjectsService } from '../../projects/projects.service';
 import { TasksService } from '../../tasks/tasks.service';
 import { Employee } from '../employee.model';
 import { CommonModule } from '@angular/common';
-import { BackButtonComponent } from '../../shared/back-button/back-button.component';
-import { ButtonComponent } from '../../shared/button/button.component';
 import { AuthService } from '../../auth/auth.service';
 import { ClickableLinkComponent } from '../../shared/clickable-link/clickable-link.component';
+import { DetailCardComponent } from '../../shared/detail-card/detail-card.component';
 
 @Component({
   selector: 'app-employee-detail',
-  imports: [CommonModule, BackButtonComponent, ButtonComponent, ClickableLinkComponent],
+  imports: [CommonModule, ClickableLinkComponent, DetailCardComponent],
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.scss']
 })

@@ -5,15 +5,14 @@ import { EmployeesService } from '../../employees/employees.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
-import { ButtonComponent } from '../../shared/button/button.component';
-import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ClickableLinkComponent } from '../../shared/clickable-link/clickable-link.component';
 import { StatusBadgeComponent } from '../../shared/status-badge/status-badge.component';
+import { DetailCardComponent } from '../../shared/detail-card/detail-card.component';
 
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, BackButtonComponent, ClickableLinkComponent, StatusBadgeComponent],
+  imports: [CommonModule, ClickableLinkComponent, StatusBadgeComponent, DetailCardComponent],
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss']
 })

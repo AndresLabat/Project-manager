@@ -6,13 +6,12 @@ import { TasksService } from '../../tasks/tasks.service';
 import { Project } from '../project.model';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
-import { ButtonComponent } from '../../shared/button/button.component';
-import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ClickableLinkComponent } from '../../shared/clickable-link/clickable-link.component';
+import { DetailCardComponent } from '../../shared/detail-card/detail-card.component';
 
 @Component({
   selector: 'app-project-detail',
-  imports: [CommonModule, ButtonComponent, BackButtonComponent, ClickableLinkComponent],
+  imports: [CommonModule, ClickableLinkComponent, DetailCardComponent],
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss']
 })

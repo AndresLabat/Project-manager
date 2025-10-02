@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+
+.detail-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: $spacing-lg;
+
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $border-color;
+
+    h2 {
+      color: $primary-color;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-lg;
+    gap: $spacing-lg;
+
+    .actions {
+      display: flex;
+      gap: $spacing-sm;
+      flex-shrink: 0;
+    }
+  }
+
+  .content-body {
+    // Estilos para el contenido del detalle
+  }
+
+  @media (max-width: 768px) {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+
+    .header-section {
+      margin-bottom: $spacing-lg;
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-md;
+      padding-bottom: 0;
+      border-bottom: none;
+
+      h2 {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+    }
+
+    .content-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $spacing-md;
+
+      .actions {
+        justify-content: flex-start;
+      }
+    }
+  }
+}

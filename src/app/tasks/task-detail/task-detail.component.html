@@ -1,23 +1,18 @@
 <div class="task-detail-container">
   @if (task()) {
-    <div class="task-detail-card">
-      <div class="header-section">
-        <h2>Task Details</h2>
-        <app-back-button [route]="'/tasks'" [label]="'Back to Tasks'"></app-back-button>
-      </div>
-      <div class="task-header">
-        <div class="task-title-section">
-          <h3 class="task-name">{{ task()?.title }}</h3>
-        </div>
-        @if (authService.isAuthenticated()) {
-          <div class="task-actions">
-            <app-button variant="secondary" size="sm" (clicked)="editTask()">Edit</app-button>
-            <app-button variant="danger" size="sm" (clicked)="deleteTask()">Delete</app-button>
-          </div>
-        }
+    <app-detail-card
+      title="Task Details"
+      backRoute="/tasks"
+      backLabel="Back to Tasks"
+      [showActions]="authService.isAuthenticated()"
+      (editClick)="editTask()"
+      (deleteClick)="deleteTask()">
+      
+      <div slot="title-section" class="task-title-section">
+        <h3 class="task-name">{{ task()?.title }}</h3>
       </div>
       
-      <div class="task-content">
+      <div slot="content" class="task-content">
         <div class="detail-section">
           <h4 class="detail-label">Description</h4>
           <p class="detail-value">{{ task()?.description }}</p>
@@ -85,7 +80,7 @@
           <p class="detail-value">{{ task()?.dueDate }}</p>
         </div>
       </div>
-    </div>
+    </app-detail-card>
   } @else {
     <div class="task-detail-card">
       <div class="error-state">

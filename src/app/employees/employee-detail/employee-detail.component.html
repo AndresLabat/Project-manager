@@ -1,24 +1,19 @@
 <div class="employee-detail-container">
   @if (employee) {
-    <div class="employee-detail-card">
-      <div class="header-section">
-        <h2>Employee Details</h2>
-        <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
-      </div>
-      <div class="employee-header">
-        <div class="employee-title-section">
-          <h3 class="employee-name">{{ employee.fullName }}</h3>
-          <span class="employee-role">{{ employee.role }}</span>
-        </div>
-        <div class="employee-actions">
-          @if (authService.isAuthenticated()) {
-            <app-button variant="secondary" size="sm" (clicked)="editEmployee()">Edit</app-button>
-            <app-button variant="danger" size="sm" (clicked)="deleteEmployee()">Delete</app-button>
-          }
-        </div>
+    <app-detail-card
+      title="Employee Details"
+      backRoute="/employees"
+      backLabel="Back to Employees"
+      [showActions]="authService.isAuthenticated()"
+      (editClick)="editEmployee()"
+      (deleteClick)="deleteEmployee()">
+      
+      <div slot="title-section" class="employee-title-section">
+        <h3 class="employee-name">{{ employee.fullName }}</h3>
+        <span class="employee-role">{{ employee.role }}</span>
       </div>
       
-      <div class="employee-content">
+      <div slot="content" class="employee-content">
         <div class="detail-section">
           <h4 class="detail-label">Email</h4>
           <p class="detail-value">{{ employee.email }}</p>
@@ -71,7 +66,7 @@
           }
         </div>
       </div>
-    </div>
+    </app-detail-card>
   } @else {
     <div class="employee-detail-card">
       <div class="error-state">

@@ -1,21 +1,18 @@
 <div class="project-detail-container">
   @if (project) {
-    <div class="project-detail-card">
-      <div class="header-section">
-        <h2>Project Details</h2>
-        <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
-      </div>
-      <div class="project-header">
+    <app-detail-card
+      title="Project Details"
+      backRoute="/projects"
+      backLabel="Back to Projects"
+      [showActions]="authService.isAuthenticated()"
+      (editClick)="editProject()"
+      (deleteClick)="deleteProject()">
+      
+      <div slot="title-section">
         <h3 class="project-title">{{ project.name }}</h3>
-        @if (authService.isAuthenticated()) {
-          <div class="project-actions">
-            <app-button variant="secondary" size="sm" (clicked)="editProject()">Edit</app-button>
-            <app-button variant="danger" size="sm" (clicked)="deleteProject()">Delete</app-button>
-          </div>
-        }
       </div>
       
-      <div class="project-content">
+      <div slot="content" class="project-content">
         @if (project.description) {
           <div class="detail-section">
             <h4 class="detail-label">Description</h4>
@@ -75,7 +72,7 @@
           }
         </div>
       </div>
-    </div>
+    </app-detail-card>
   } @else {
     <div class="project-detail-card">
       <div class="error-state">
