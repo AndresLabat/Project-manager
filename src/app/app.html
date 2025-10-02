@@ -126,6 +126,134 @@
     </div>
   </aside>
 
+  <!-- MOBILE NAVIGATION - Top navbar for mobile devices -->
+  <header class="top-navbar">
+    <div class="navbar-content">
+      <button class="hamburger-menu" (click)="toggleMobileMenu()" [class.open]="mobileMenuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <h1 class="app-title">{{ title() }}</h1>
+      
+      <div class="auth-section">
+        @if (authService.isAuthenticated()) {
+          <button class="auth-btn logout-btn" (click)="onLogout()">
+            <span class="auth-text">Logout</span>
+          </button>
+        } @else {
+          <button class="auth-btn login-btn" (click)="router.navigate(['/login'])">
+            <span class="auth-text">Login</span>
+          </button>
+        }
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-sidebar" [class.open]="mobileMenuOpen()">
+    <nav class="mobile-nav">
+      <ul>
+        <li class="nav-item">
+          <a 
+            class="nav-link nav-toggle" 
+            [class.active]="isActiveRoute('/projects')"
+            (click)="toggleProjectsDropdown(); closeMobileMenu()">
+            <span class="nav-icon">📁</span>
+            <span class="nav-text">Projects</span>
+            <span class="nav-arrow" [class.rotated]="projectsDropdownOpen()">›</span>
+          </a>
+          <ul class="nav-dropdown" [class.open]="projectsDropdownOpen()">
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/projects')"
+                (click)="router.navigate(['/projects']); closeMobileMenu()">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Project List</span>
+              </a>
+            </li>
+            @if (authService.isAuthenticated()) {
+              <li>
+                <a 
+                  class="nav-link nav-sub-link" 
+                  [class.active]="isActiveSubRoute('/projects/new')"
+                  (click)="router.navigate(['/projects/new']); closeMobileMenu()">
+                  <span class="nav-icon">➕</span>
+                  <span class="nav-text">Add Project</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a 
+            class="nav-link nav-toggle" 
+            [class.active]="isActiveRoute('/employees')"
+            (click)="toggleEmployeesDropdown(); closeMobileMenu()">
+            <span class="nav-icon">👥</span>
+            <span class="nav-text">Employees</span>
+            <span class="nav-arrow" [class.rotated]="employeesDropdownOpen()">›</span>
+          </a>
+          <ul class="nav-dropdown" [class.open]="employeesDropdownOpen()">
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/employees')"
+                (click)="router.navigate(['/employees']); closeMobileMenu()">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Employee List</span>
+              </a>
+            </li>
+            @if (authService.isAuthenticated()) {
+              <li>
+                <a 
+                  class="nav-link nav-sub-link" 
+                  [class.active]="isActiveSubRoute('/employees/new')"
+                  (click)="router.navigate(['/employees/new']); closeMobileMenu()">
+                  <span class="nav-icon">➕</span>
+                  <span class="nav-text">Add Employee</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a 
+            class="nav-link nav-toggle" 
+            [class.active]="isActiveRoute('/tasks')"
+            (click)="toggleTasksDropdown(); closeMobileMenu()">
+            <span class="nav-icon">✅</span>
+            <span class="nav-text">Tasks</span>
+            <span class="nav-arrow" [class.rotated]="tasksDropdownOpen()">›</span>
+          </a>
+          <ul class="nav-dropdown" [class.open]="tasksDropdownOpen()">
+            <li>
+              <a 
+                class="nav-link nav-sub-link" 
+                [class.active]="isActiveSubRoute('/tasks')"
+                (click)="router.navigate(['/tasks']); closeMobileMenu()">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Task List</span>
+              </a>
+            </li>
+            @if (authService.isAuthenticated()) {
+              <li>
+                <a 
+                  class="nav-link nav-sub-link" 
+                  [class.active]="isActiveSubRoute('/tasks/new')"
+                  (click)="router.navigate(['/tasks/new']); closeMobileMenu()">
+                  <span class="nav-icon">➕</span>
+                  <span class="nav-text">Add Task</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>

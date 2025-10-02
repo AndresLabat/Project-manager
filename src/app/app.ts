@@ -19,6 +19,7 @@ export class App {
   projectsDropdownOpen = signal(true);
   employeesDropdownOpen = signal(true);
   tasksDropdownOpen = signal(true);
+  mobileMenuOpen = signal(false);
 
   constructor(
     public authService: AuthService,
@@ -62,5 +63,13 @@ export class App {
 
   toggleTasksDropdown() {
     this.tasksDropdownOpen.set(!this.tasksDropdownOpen());
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen.set(!this.mobileMenuOpen());
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen.set(false);
   }
 }
