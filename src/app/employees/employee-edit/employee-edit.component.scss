@@ -94,3 +94,51 @@
   text-align: left;
   padding-left: 0;
 }
+
+// Mobile styles
+@media (max-width: 768px) {
+  .employee-form {
+    padding: $spacing-md;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+  }
+  
+  .form-section {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .header-section {
+    margin-bottom: $spacing-lg;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  .form-group {
+    width: 100%;
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    font-size: 16px;
+  }
+  
+  .form-textarea {
+    min-height: 120px;
+  }
+}
