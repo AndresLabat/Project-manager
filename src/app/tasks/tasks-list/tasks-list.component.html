@@ -15,14 +15,16 @@
             <div class="task-info">
               <h3 class="task-title">{{ task.title }}</h3>
               <div class="task-meta">
-                <div class="status-badge">
-                  <span class="status-label">Status:</span>
-                  <span class="task-status" [class]="getStatusClass(task.status)">{{ task.status }}</span>
-                </div>
-                <div class="priority-badge">
-                  <span class="priority-label">Priority:</span>
-                  <span class="task-priority" [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>
-                </div>
+                <app-status-badge 
+                  type="status" 
+                  [value]="task.status" 
+                  [showLabel]="true">
+                </app-status-badge>
+                <app-status-badge 
+                  type="priority" 
+                  [value]="task.priority" 
+                  [showLabel]="true">
+                </app-status-badge>
               </div>
             </div>
             <div class="task-actions">

@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
+import { StatusBadgeComponent } from '../../shared/status-badge/status-badge.component';
 
 @Component({
   selector: 'app-tasks-list',
-  imports: [CommonModule, ButtonComponent, ListHeaderComponent],
+  imports: [CommonModule, ButtonComponent, ListHeaderComponent, StatusBadgeComponent],
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss']
 })
@@ -42,23 +43,6 @@ export class TasksListComponent {
     this.router.navigate(['/tasks', id, 'edit']);
   }
 
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'completed': return 'status-completed';
-      case 'in-progress': return 'status-in-progress';
-      case 'pending': return 'status-pending';
-      default: return '';
-    }
-  }
-
-  getPriorityClass(priority: string): string {
-    switch (priority) {
-      case 'high': return 'priority-high';
-      case 'medium': return 'priority-medium';
-      case 'low': return 'priority-low';
-      default: return '';
-    }
-  }
 
   getProjectName(projectId: number): string {
     const projects = this.projectsService.getProjects();

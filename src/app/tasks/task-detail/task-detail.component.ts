@@ -8,11 +8,12 @@ import { AuthService } from '../../auth/auth.service';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ClickableLinkComponent } from '../../shared/clickable-link/clickable-link.component';
+import { StatusBadgeComponent } from '../../shared/status-badge/status-badge.component';
 
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, BackButtonComponent, ClickableLinkComponent],
+  imports: [CommonModule, ButtonComponent, BackButtonComponent, ClickableLinkComponent, StatusBadgeComponent],
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss']
 })
@@ -35,23 +36,6 @@ export class TaskDetailComponent {
     public authService: AuthService
   ) {}
 
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'completed': return 'status-completed';
-      case 'in-progress': return 'status-in-progress';
-      case 'pending': return 'status-pending';
-      default: return '';
-    }
-  }
-
-  getPriorityClass(priority: string): string {
-    switch (priority) {
-      case 'high': return 'priority-high';
-      case 'medium': return 'priority-medium';
-      case 'low': return 'priority-low';
-      default: return '';
-    }
-  }
 
   editTask(): void {
     this.router.navigate(['/tasks', this.task()?.id, 'edit']);

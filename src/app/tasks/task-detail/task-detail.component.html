@@ -56,14 +56,22 @@
         <div class="detail-section">
           <h4 class="detail-label">Status</h4>
           <p class="detail-value">
-            <span class="task-status" [class]="getStatusClass(task()?.status || 'pending')">{{ task()?.status }}</span>
+            <app-status-badge 
+              type="status" 
+              [value]="task()?.status || 'pending'" 
+              [showLabel]="false">
+            </app-status-badge>
           </p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Priority</h4>
           <p class="detail-value">
-            <span class="task-priority" [class]="getPriorityClass(task()?.priority || 'medium')">{{ task()?.priority }}</span>
+            <app-status-badge 
+              type="priority" 
+              [value]="task()?.priority || 'medium'" 
+              [showLabel]="false">
+            </app-status-badge>
           </p>
         </div>
         
