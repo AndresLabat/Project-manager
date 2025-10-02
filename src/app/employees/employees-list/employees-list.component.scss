@@ -3,21 +3,28 @@
 .employees-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 50px $spacing-lg;
+  padding: $spacing-lg;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.list-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
 .header-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-lg * 2;
+  margin-bottom: 2.5rem;
   
   h2 {
-    color: $text-color;
+    color: $primary-color;
     margin: 0;
     font-size: 2rem;
     font-weight: 600;
@@ -50,13 +57,14 @@
 .employee-card {
   background: white;
   border: 1px solid $border-color;
-  border-radius: $border-radius;
+  border-radius: 12px;
   padding: $spacing-lg;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
   
   &:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
   }
 }
 

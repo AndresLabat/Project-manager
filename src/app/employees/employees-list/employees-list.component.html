@@ -1,12 +1,13 @@
 <div class="employees-container">
-  <div class="header-section">
-    <h2>Employees</h2>
-    @if (authService.isAuthenticated()) {
-      <app-button variant="primary" size="md" (clicked)="addEmployee()">Add Employee</app-button>
-    }
-  </div>
+  <div class="list-section">
+    <div class="header-section">
+      <h2>Employees</h2>
+      @if (authService.isAuthenticated()) {
+        <app-button variant="primary" size="md" (clicked)="addEmployee()">Add Employee</app-button>
+      }
+    </div>
 
-  @if (employees().length > 0) {
+    @if (employees().length > 0) {
     <div class="employees-grid">
       @for (employee of employees(); track employee.id) {
         <div class="employee-card">
@@ -43,10 +44,11 @@
         </div>
       }
     </div>
-  } @else {
-    <div class="empty-state">
-      <h3 class="empty-title">No employees found</h3>
-      <p class="empty-message">There are no employees in the system yet.</p>
-    </div>
-  }
+    } @else {
+      <div class="empty-state">
+        <h3 class="empty-title">No employees found</h3>
+        <p class="empty-message">There are no employees in the system yet.</p>
+      </div>
+    }
+  </div>
 </div>

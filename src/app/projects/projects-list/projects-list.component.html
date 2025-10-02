@@ -1,12 +1,13 @@
 <div class="projects-container">
-  <div class="header-section">
-    <h2>Projects</h2>
-    @if (authService.isAuthenticated()) {
-      <app-button variant="primary" size="md" (clicked)="addProject()">Add Project</app-button>
-    }
-  </div>
+  <div class="list-section">
+    <div class="header-section">
+      <h2>Projects</h2>
+      @if (authService.isAuthenticated()) {
+        <app-button variant="primary" size="md" (clicked)="addProject()">Add Project</app-button>
+      }
+    </div>
 
-  @if (projects().length > 0) {
+    @if (projects().length > 0) {
     <div class="projects-grid">
       @for (project of projects(); track project.id) {
         <div class="project-card">
@@ -59,10 +60,11 @@
         </div>
       }
     </div>
-  } @else {
-    <div class="empty-state">
-      <p class="empty-message">No projects available</p>
-      <p class="empty-hint">Create your first project to get started!</p>
-    </div>
-  }
+    } @else {
+      <div class="empty-state">
+        <p class="empty-message">No projects available</p>
+        <p class="empty-hint">Create your first project to get started!</p>
+      </div>
+    }
+  </div>
 </div>
