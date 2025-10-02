@@ -1,23 +1,24 @@
 @import '../../styles/variables';
 
 .btn-back {
-  background-color: white;
-  color: $text-color;
-  border: 1px solid $border-color;
-  padding: 8px 16px;
+  background: transparent;
+  color: $text-muted;
+  border: 1px solid #e1e5e9;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
   font-size: 0.9rem;
-  border-radius: $border-radius;
+  font-weight: 500;
   cursor: pointer;
-  transition: $transition;
-  box-shadow: $shadow-sm;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.5rem;
   
   &:hover {
-    background-color: white;
+    background: white;
     color: $primary-color;
     border-color: $primary-color;
-    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
   }
 }

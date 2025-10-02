@@ -1,10 +1,9 @@
 <div class="employee-form">
-  <div class="header-section">
-    <h2>Edit Employee</h2>
-    <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
-  </div>
-  
   <div class="form-section">
+    <div class="header-section">
+      <h2>Edit Employee</h2>
+      <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
+    </div>
     <form [formGroup]="form" (ngSubmit)="updateEmployee()">
       <div class="form-group">
         <label for="fullName">Full Name *</label>

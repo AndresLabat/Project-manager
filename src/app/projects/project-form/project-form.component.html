@@ -1,10 +1,9 @@
 <div class="project-form">
-  <div class="header-section">
-    <h2>Add Project</h2>
-    <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
-  </div>
-  
   <div class="form-section">
+    <div class="header-section">
+      <h2>Add Project</h2>
+      <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
+    </div>
     <form [formGroup]="form" (ngSubmit)="addProject()">
       <div class="form-group">
         <label for="name">Name *</label>

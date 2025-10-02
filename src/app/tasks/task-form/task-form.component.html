@@ -1,10 +1,9 @@
 <div class="task-form-container">
-  <div class="header-section">
-    <h2>Create New Task</h2>
-    <app-back-button [route]="'/tasks'" [label]="'Back to Tasks'"></app-back-button>
-  </div>
-  
   <div class="form-section">
+    <div class="header-section">
+      <h2>Create New Task</h2>
+      <app-back-button [route]="'/tasks'" [label]="'Back to Tasks'"></app-back-button>
+    </div>
     
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">

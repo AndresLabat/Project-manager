@@ -13,10 +13,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: $spacing-lg * 2;
+    margin-bottom: 2.5rem;
     
     h2 {
-      color: $text-color;
+      color: $primary-color;
       font-size: 2rem;
       font-weight: 600;
       margin: 0;
@@ -27,10 +27,9 @@
 
 .form-section {
   background: white;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  padding: $spacing-lg;
-  box-shadow: $shadow-md;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
