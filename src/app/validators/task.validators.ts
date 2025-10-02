@@ -33,7 +33,6 @@ export class TaskValidators {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value) return null;
       
-      // Use provided minDate or default to today
       const referenceDate = minDate ? new Date(minDate) : new Date();
       referenceDate.setHours(0, 0, 0, 0);
       
