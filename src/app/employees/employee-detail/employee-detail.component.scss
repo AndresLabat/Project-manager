@@ -208,6 +208,37 @@
 }
 
 @media (max-width: 768px) {
+  .employee-detail-container {
+    padding: $spacing-md;
+    margin: 0;
+    max-width: none;
+    min-height: calc(100vh - 100px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .employee-detail-card {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .header-section {
+    margin-bottom: $spacing-lg;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+  
   .employee-header {
     flex-direction: column;
     align-items: stretch;
