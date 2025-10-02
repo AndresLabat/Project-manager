@@ -19,7 +19,6 @@
   font-weight: 500;
   text-transform: capitalize;
   
-  // Status styles
   &.status-completed {
     background-color: rgba($success-color, 0.1);
     color: $success-color;
@@ -38,7 +37,6 @@
     border: 1px solid rgba($text-muted, 0.2);
   }
   
-  // Priority styles
   &.priority-high {
     background-color: rgba($error-color, 0.1);
     color: $error-color;

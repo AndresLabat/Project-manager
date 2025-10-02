@@ -69,7 +69,6 @@ export class EmployeesService {
       assignedTasks: [8]
     }
     ];
-    // Fijar nextId correctamente también cuando usamos los datos por defecto
     this.nextId = defaults.reduce((max, emp) => Math.max(max, emp.id), 0) + 1;
     return defaults;
   }
@@ -87,7 +86,6 @@ export class EmployeesService {
   }
 
   addEmployee(employee: Omit<Employee, 'id'>): void {
-    // Asegurar que nextId sea mayor que cualquier id actual para evitar colisiones
     const currentMaxId = this.employeesSignal().reduce((max, emp) => Math.max(max, emp.id), 0);
     if (this.nextId <= currentMaxId) {
       this.nextId = currentMaxId + 1;
