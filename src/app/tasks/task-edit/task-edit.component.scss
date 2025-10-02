@@ -59,6 +59,15 @@
   }
 }
 
+form {
+  padding-bottom: $spacing-lg;
+}
+
+app-button {
+  margin-top: $spacing-lg;
+  display: block;
+}
+
 .form-input,
 .form-select {
   padding: $spacing-md;
@@ -161,13 +170,4 @@ app-button {
     margin-top: $spacing-xl;
     display: block;
   }
-}
-
-form {
-  padding-bottom: $spacing-lg;
-}
-
-app-button {
-  margin-top: $spacing-lg;
-  display: block;
 }

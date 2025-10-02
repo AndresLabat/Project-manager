@@ -50,6 +50,15 @@
   font-size: 0.9em;
 }
 
+form {
+  padding-bottom: $spacing-lg;
+}
+
+app-button {
+  margin-top: $spacing-lg;
+  display: block;
+}
+
 .form-input {
   padding: $spacing-md;
   border: 1px solid $border-color;
@@ -149,13 +158,4 @@
     margin-top: $spacing-xl;
     display: block;
   }
-}
-
-form {
-  padding-bottom: $spacing-lg;
-}
-
-app-button {
-  margin-top: $spacing-lg;
-  display: block;
 }

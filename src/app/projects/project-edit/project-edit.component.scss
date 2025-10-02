@@ -50,6 +50,15 @@
   font-size: 0.9em;
 }
 
+form {
+  padding-bottom: $spacing-lg;
+}
+
+app-button {
+  margin-top: $spacing-lg;
+  display: block;
+}
+
 .form-input,
 .form-select,
 .form-textarea {
@@ -177,13 +186,4 @@ app-button {
     margin-top: $spacing-xl;
     display: block;
   }
-}
-
-form {
-  padding-bottom: $spacing-lg;
-}
-
-app-button {
-  margin-top: $spacing-lg;
-  display: block;
 }
