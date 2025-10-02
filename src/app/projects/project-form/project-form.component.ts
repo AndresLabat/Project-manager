@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { FormInputComponent } from '../../shared/form-input/form-input.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss']
 })

@@ -5,51 +5,29 @@
       <app-back-button [route]="'/employees'" [label]="'Back to Employees'"></app-back-button>
     </div>
     <form [formGroup]="form" (ngSubmit)="updateEmployee()">
-      <div class="form-group">
-        <label for="fullName">Full Name *</label>
-        <input 
-          type="text" 
-          id="fullName"
-          formControlName="fullName" 
-          class="form-input"
-          [class.error]="form.get('fullName')?.invalid && form.get('fullName')?.touched"
-          placeholder="Enter full name"
-          autocomplete="name"
-          spellcheck="false"
-          inputmode="text"
-          lang="es">
-        @if (form.get('fullName')?.invalid && form.get('fullName')?.touched) {
-          <p class="error-message">{{ getNameErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Full Name"
+        type="text"
+        placeholder="Enter full name"
+        [required]="true"
+        [control]="form.get('fullName')">
+      </app-form-input>
 
-      <div class="form-group">
-        <label for="email">Email *</label>
-        <input 
-          type="email" 
-          id="email"
-          formControlName="email" 
-          class="form-input"
-          [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
-          placeholder="Enter email address">
-        @if (form.get('email')?.invalid && form.get('email')?.touched) {
-          <p class="error-message">{{ getEmailErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Email"
+        type="email"
+        placeholder="Enter email address"
+        [required]="true"
+        [control]="form.get('email')">
+      </app-form-input>
 
-      <div class="form-group">
-        <label for="role">Role *</label>
-        <input 
-          type="text" 
-          id="role"
-          formControlName="role" 
-          class="form-input"
-          [class.error]="form.get('role')?.invalid && form.get('role')?.touched"
-          placeholder="Enter role (e.g., Developer, Designer)">
-        @if (form.get('role')?.invalid && form.get('role')?.touched) {
-          <p class="error-message">{{ getRoleErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Role"
+        type="text"
+        placeholder="Enter role (e.g., Developer, Designer)"
+        [required]="true"
+        [control]="form.get('role')">
+      </app-form-input>
 
       <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Update Employee</app-button>
 

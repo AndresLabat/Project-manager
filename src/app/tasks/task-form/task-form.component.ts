@@ -6,13 +6,14 @@ import { EmployeesService } from '../../employees/employees.service';
 import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { FormInputComponent } from '../../shared/form-input/form-input.component';
 import { Router } from '@angular/router';
 import { TaskValidators } from '../../validators/task.validators';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.scss']
 })
@@ -43,20 +44,12 @@ export class TaskFormComponent {
     });
   }
 
-  getTitleErrorMessage(): string {
-    return TaskValidators.getTitleErrorMessage(this.form);
-  }
-
   getDescriptionErrorMessage(): string {
     return TaskValidators.getDescriptionErrorMessage(this.form);
   }
 
   getProjectIdErrorMessage(): string {
     return TaskValidators.getProjectIdErrorMessage(this.form);
-  }
-
-  getDueDateErrorMessage(): string {
-    return TaskValidators.getDueDateErrorMessage(this.form);
   }
 
   onSubmit(): void {

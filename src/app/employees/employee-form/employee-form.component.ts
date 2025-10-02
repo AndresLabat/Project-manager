@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { EmployeeValidators } from '../../validators/employee.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { FormInputComponent } from '../../shared/form-input/form-input.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-form',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.scss']
 })
@@ -29,17 +30,6 @@ export class EmployeeFormComponent {
     });
   }
 
-  getNameErrorMessage(): string {
-    return EmployeeValidators.getNameErrorMessage(this.form);
-  }
-
-  getEmailErrorMessage(): string {
-    return EmployeeValidators.getEmailErrorMessage(this.form);
-  }
-
-  getRoleErrorMessage(): string {
-    return EmployeeValidators.getRoleErrorMessage(this.form);
-  }
 
   addEmployee(): void {
     if (this.form.invalid) return;

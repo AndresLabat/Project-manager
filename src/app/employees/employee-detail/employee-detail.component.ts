@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeesService } from '../employees.service';
 import { ProjectsService } from '../../projects/projects.service';
@@ -15,7 +15,7 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.scss']
 })
-export class EmployeeDetailComponent {
+export class EmployeeDetailComponent implements OnInit {
   employee: Employee | undefined;
   employeeId: number;
 
@@ -29,6 +29,19 @@ export class EmployeeDetailComponent {
   ) {
     this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
     this.employee = this.employeesService.getEmployeeById(this.employeeId);
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const idParam = params.get('id');
+      const parsedId = idParam ? Number(idParam) : NaN;
+      if (!Number.isNaN(parsedId)) {
+        this.employeeId = parsedId;
+        this.employee = this.employeesService.getEmployeeById(this.employeeId);
+      } else {
+        this.employee = undefined;
+      }
+    });
   }
 
   editEmployee(): void {

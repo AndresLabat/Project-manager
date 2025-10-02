@@ -10,33 +10,21 @@
     </div>
 
     <form [formGroup]="form" (ngSubmit)="onLogin()" class="login-form">
-      <div class="form-group">
-        <label for="username">Username *</label>
-        <input 
-          type="text" 
-          id="username"
-          formControlName="username" 
-          class="form-input"
-          [class.error]="form.get('username')?.invalid && form.get('username')?.touched"
-          placeholder="Enter your username">
-        @if (form.get('username')?.invalid && form.get('username')?.touched) {
-          <p class="error-message">{{ getUsernameErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Username"
+        type="text"
+        placeholder="Enter your username"
+        [required]="true"
+        [control]="form.get('username')">
+      </app-form-input>
 
-      <div class="form-group">
-        <label for="password">Password *</label>
-        <input 
-          type="password" 
-          id="password"
-          formControlName="password" 
-          class="form-input"
-          [class.error]="form.get('password')?.invalid && form.get('password')?.touched"
-          placeholder="Enter your password">
-        @if (form.get('password')?.invalid && form.get('password')?.touched) {
-          <p class="error-message">{{ getPasswordErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Password"
+        type="password"
+        placeholder="Enter your password"
+        [required]="true"
+        [control]="form.get('password')">
+      </app-form-input>
 
       <button 
         type="submit"

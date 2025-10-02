@@ -7,10 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { FormInputComponent } from '../../shared/form-input/form-input.component';
 
 @Component({
   selector: 'app-project-edit',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.scss']
 })
@@ -42,10 +43,6 @@ export class ProjectEditComponent {
       endDate: [project?.endDate || ''],
       assignedEmployees: [assignedEmployees]
     }, { validators: ProjectValidators.dateRangeValidator });
-  }
-
-  getNameErrorMessage(): string {
-    return ProjectValidators.getNameErrorMessage(this.form);
   }
 
   getDescriptionErrorMessage(): string {

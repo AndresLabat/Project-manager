@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+}
+
+label {
+  font-weight: 500;
+  color: $text-color;
+  font-size: 0.9rem;
+  
+  .required {
+    color: $error-color;
+    margin-left: 2px;
+  }
+}
+
+.form-input {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  transition: $transition;
+  background: white;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+  
+  &.error {
+    border-color: $error-color;
+    
+    &:focus {
+      border-color: $error-color;
+      box-shadow: 0 0 0 2px rgba($error-color, 0.1);
+    }
+  }
+  
+  &:disabled {
+    background-color: $bg-light;
+    color: $text-muted;
+    cursor: not-allowed;
+  }
+  
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.85rem;
+  margin: 0;
+  margin-top: $spacing-xs;
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .form-input {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+}

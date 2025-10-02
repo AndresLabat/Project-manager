@@ -6,22 +6,16 @@
     </div>
     
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="title">Title *</label>
-        <input
-          type="text"
-          id="title"
-          formControlName="title"
-          class="form-input"
-          [class.error]="form.get('title')?.invalid && form.get('title')?.touched"
-          placeholder="Enter task title">
-        @if (form.get('title')?.invalid && form.get('title')?.touched) {
-          <p class="error-message">{{ getTitleErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Title"
+        type="text"
+        placeholder="Enter task title"
+        [required]="true"
+        [control]="form.get('title')">
+      </app-form-input>
 
       <div class="form-group">
-        <label for="description">Description *</label>
+        <label for="description" class="required">Description</label>
         <textarea
           id="description"
           formControlName="description"
@@ -36,7 +30,7 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="projectId">Project *</label>
+          <label for="projectId" class="required">Project</label>
           <select
             id="projectId"
             formControlName="projectId"
@@ -92,19 +86,12 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="dueDate">Due Date *</label>
-        <input
-          type="date"
-          id="dueDate"
-          formControlName="dueDate"
-          class="form-input"
-          [min]="getTodayDate()"
-          [class.error]="form.get('dueDate')?.invalid && form.get('dueDate')?.touched">
-        @if (form.get('dueDate')?.invalid && form.get('dueDate')?.touched) {
-          <p class="error-message">{{ getDueDateErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Due Date"
+        type="date"
+        [required]="true"
+        [control]="form.get('dueDate')">
+      </app-form-input>
 
       @if (errorMessage()) {
         <p class="error-message">{{ errorMessage() }}</p>

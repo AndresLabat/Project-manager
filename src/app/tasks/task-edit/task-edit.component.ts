@@ -6,6 +6,7 @@ import { EmployeesService } from '../../employees/employees.service';
 import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { FormInputComponent } from '../../shared/form-input/form-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TaskValidators } from '../../validators/task.validators';
 import { Task } from '../task.model';
@@ -13,7 +14,7 @@ import { Task } from '../task.model';
 @Component({
   selector: 'app-task-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
   templateUrl: './task-edit.component.html',
   styleUrls: ['./task-edit.component.scss']
 })
@@ -50,17 +51,13 @@ export class TaskEditComponent implements OnInit {
         description: [task.description, TaskValidators.descriptionValidators],
         projectId: [task.projectId, TaskValidators.projectIdValidators],
         assignedEmployeeId: [task.assignedEmployeeId],
-        status: [task.status, [Validators.required]],
-        priority: [task.priority, [Validators.required]],
-        dueDate: [task.dueDate, TaskValidators.getDueDateValidators(createdAtDate)]
+        status: [task.status],
+        priority: [task.priority],
+        dueDate: [task.dueDate, TaskValidators.dueDateValidators]
       });
     } else {
       this.router.navigate(['/tasks']);
     }
-  }
-
-  getTitleErrorMessage(): string {
-    return TaskValidators.getTitleErrorMessage(this.form);
   }
 
   getDescriptionErrorMessage(): string {
@@ -69,10 +66,6 @@ export class TaskEditComponent implements OnInit {
 
   getProjectIdErrorMessage(): string {
     return TaskValidators.getProjectIdErrorMessage(this.form);
-  }
-
-  getDueDateErrorMessage(): string {
-    return TaskValidators.getDueDateErrorMessage(this.form);
   }
 
   onSubmit(): void {

@@ -19,7 +19,7 @@ export class EmployeesService {
       this.nextId = parsed.reduce((max, emp) => Math.max(max, emp.id), 0) + 1;
       return parsed;
     }
-    return [
+    const defaults: Employee[] = [
     {
       id: 1,
       fullName: 'John Smith',
@@ -68,7 +68,10 @@ export class EmployeesService {
       assignedProjects: [4, 5, 6],
       assignedTasks: [8]
     }
-  ];
+    ];
+    // Fijar nextId correctamente también cuando usamos los datos por defecto
+    this.nextId = defaults.reduce((max, emp) => Math.max(max, emp.id), 0) + 1;
+    return defaults;
   }
 
   constructor() {
@@ -84,6 +87,12 @@ export class EmployeesService {
   }
 
   addEmployee(employee: Omit<Employee, 'id'>): void {
+    // Asegurar que nextId sea mayor que cualquier id actual para evitar colisiones
+    const currentMaxId = this.employeesSignal().reduce((max, emp) => Math.max(max, emp.id), 0);
+    if (this.nextId <= currentMaxId) {
+      this.nextId = currentMaxId + 1;
+    }
+
     const newEmployee: Employee = {
       ...employee,
       id: this.nextId++

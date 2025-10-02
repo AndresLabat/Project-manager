@@ -3,9 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormInputComponent } from '../../shared/form-input/form-input.component';
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormInputComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -48,19 +49,4 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/projects']);
   }
 
-  getUsernameErrorMessage() {
-    const control = this.form.get('username');
-    if (control?.hasError('required') && control?.touched) {
-      return 'Username is required';
-    }
-    return '';
-  }
-
-  getPasswordErrorMessage() {
-    const control = this.form.get('password');
-    if (control?.hasError('required') && control?.touched) {
-      return 'Password is required';
-    }
-    return '';
-  }
 }

@@ -5,19 +5,13 @@
       <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
     </div>
     <form [formGroup]="form" (ngSubmit)="addProject()">
-      <div class="form-group">
-        <label for="name">Name *</label>
-        <input 
-          type="text" 
-          id="name"
-          formControlName="name" 
-          class="form-input"
-          [class.error]="form.get('name')?.invalid && form.get('name')?.touched"
-          placeholder="Enter project name">
-        @if (form.get('name')?.invalid && form.get('name')?.touched) {
-          <p class="error-message">{{ getNameErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-input
+        label="Name"
+        type="text"
+        placeholder="Enter project name"
+        [required]="true"
+        [control]="form.get('name')">
+      </app-form-input>
 
       <div class="form-group">
         <label for="description">Description</label>
@@ -32,31 +26,18 @@
         }
       </div>
 
-      <div class="form-group">
-        <label for="startDate">Start Date *</label>
-        <input 
-          type="date" 
-          id="startDate"
-          formControlName="startDate" 
-          class="form-input"
-          [class.error]="form.get('startDate')?.invalid && form.get('startDate')?.touched">
-        @if (form.get('startDate')?.invalid && form.get('startDate')?.touched) {
-          <p class="error-message">Start date is required</p>
-        }
-      </div>
+      <app-form-input
+        label="Start Date"
+        type="date"
+        [required]="true"
+        [control]="form.get('startDate')">
+      </app-form-input>
 
-      <div class="form-group">
-        <label for="endDate">End Date</label>
-        <input 
-          type="date" 
-          id="endDate"
-          formControlName="endDate" 
-          class="form-input"
-          [class.error]="form.get('endDate')?.invalid && form.get('endDate')?.touched">
-        @if (form.get('endDate')?.invalid && form.get('endDate')?.touched) {
-          <p class="error-message">End date is invalid</p>
-        }
-      </div>
+      <app-form-input
+        label="End Date"
+        type="date"
+        [control]="form.get('endDate')">
+      </app-form-input>
 
       <div class="form-group">
         <label for="assignedEmployees">Assign Employees</label>
@@ -72,9 +53,6 @@
         <p class="form-hint">Hold Ctrl/Cmd to select multiple employees</p>
       </div>
 
-      @if (form.hasError('dateRange')) {
-        <p class="error-message">{{ getDateRangeErrorMessage() }}</p>
-      }
 
       <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Add Project</app-button>
 
