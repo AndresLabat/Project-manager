@@ -19,7 +19,6 @@
   position: relative;
 }
 
-// Brand Section
 .brand-section {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -62,7 +61,6 @@
   font-weight: 400;
 }
 
-// Form Styles
 .login-form {
   margin-bottom: 2rem;
 }
@@ -181,7 +179,6 @@
   margin-top: $spacing-sm;
 }
 
-// Responsive
 @media (max-width: 480px) {
   .login-container {
     padding: 1rem;

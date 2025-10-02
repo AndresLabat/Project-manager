@@ -58,7 +58,6 @@ export class ProjectFormComponent {
       endDate: formValue.endDate || ''
     });
 
-    // Assign selected employees to the project
     const assignedEmployees = formValue.assignedEmployees as number[] | null;
     if (assignedEmployees && Array.isArray(assignedEmployees) && assignedEmployees.length > 0) {
       assignedEmployees.forEach((employeeId: number) => {

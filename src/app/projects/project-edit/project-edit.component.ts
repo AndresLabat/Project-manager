@@ -31,7 +31,6 @@ export class ProjectEditComponent {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
     const project = this.projectsService.getProjects().find(p => p.id === this.projectId);
 
-    // Get currently assigned employees
     const assignedEmployees = this.employeesService.getEmployees()
       .filter(emp => emp.assignedProjects.includes(this.projectId))
       .map(emp => emp.id);
@@ -68,7 +67,6 @@ export class ProjectEditComponent {
       endDate: formValue.endDate || ''
     });
 
-    // Update employee assignments
     this.updateEmployeeAssignments(formValue.assignedEmployees || []);
 
     this.successMessage.set('Project updated successfully!');
@@ -79,19 +77,16 @@ export class ProjectEditComponent {
   }
 
   private updateEmployeeAssignments(newAssignedEmployees: number[]): void {
-    // Get current assignments
     const currentAssignedEmployees = this.employeesService.getEmployees()
       .filter(emp => emp.assignedProjects.includes(this.projectId))
       .map(emp => emp.id);
 
-    // Remove employees that are no longer assigned
     currentAssignedEmployees.forEach(employeeId => {
       if (!newAssignedEmployees.includes(employeeId)) {
         this.employeesService.unassignFromProject(employeeId, this.projectId);
       }
     });
 
-    // Add new employees
     newAssignedEmployees.forEach(employeeId => {
       if (!currentAssignedEmployees.includes(employeeId)) {
         this.employeesService.assignToProject(employeeId, this.projectId);
