@@ -139,11 +139,11 @@
       
       <div class="auth-section">
         @if (authService.isAuthenticated()) {
-          <button class="auth-btn logout-btn" (click)="onLogout()">
+          <button class="auth-btn logout-btn" (click)="onLogout(); closeMobileMenu()">
             <span class="auth-text">Logout</span>
           </button>
         } @else {
-          <button class="auth-btn login-btn" (click)="router.navigate(['/login'])">
+          <button class="auth-btn login-btn" (click)="router.navigate(['/login']); closeMobileMenu()">
             <span class="auth-text">Login</span>
           </button>
         }
