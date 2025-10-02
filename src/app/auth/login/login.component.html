@@ -38,16 +38,16 @@
         }
       </div>
 
-      @if (form.errors?.['invalidLogin']) {
-        <p class="error-message">Incorrect username or password</p>
-      }
-
       <button 
         type="submit"
         class="login-button"
         [disabled]="form.invalid">
         Login ⟶
       </button>
+
+      @if (form.errors?.['invalidLogin']) {
+        <p class="error-message">Incorrect username or password</p>
+      }
 
     </form>
 

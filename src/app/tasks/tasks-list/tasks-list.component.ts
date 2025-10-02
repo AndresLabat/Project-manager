@@ -60,13 +60,14 @@ export class TasksListComponent {
   }
 
   getProjectName(projectId: number): string {
-    const project = this.projectsService.getProjects().find(p => p.id === projectId);
-    return project ? project.name : `Project #${projectId}`;
+    const projects = this.projectsService.getProjects();
+    const project = projects.find(p => p.id === projectId);
+    return project ? project.name : 'Project Deleted';
   }
 
   getEmployeeName(employeeId: number | null): string {
     if (!employeeId) return 'Not assigned';
     const employee = this.employeesService.getEmployees().find(e => e.id === employeeId);
-    return employee ? employee.fullName : `Employee #${employeeId}`;
+    return employee ? employee.fullName : 'Employee Deleted';
   }
 }
