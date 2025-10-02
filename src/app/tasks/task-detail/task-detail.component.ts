@@ -78,4 +78,12 @@ export class TaskDetailComponent {
     const employee = this.employeesService.getEmployees().find(e => e.id === employeeId);
     return employee ? employee.fullName : `Employee #${employeeId}`;
   }
+
+  navigateToProject(projectId: number) {
+    this.router.navigate(['/projects', projectId]);
+  }
+
+  navigateToEmployee(employeeId: number) {
+    this.router.navigate(['/employees', employeeId]);
+  }
 }

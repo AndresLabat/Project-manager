@@ -26,13 +26,27 @@
         
         <div class="detail-section">
           <h4 class="detail-label">Project</h4>
-          <p class="detail-value">{{ getProjectName(task()?.projectId || 0) }}</p>
+          <p class="detail-value">
+            @if (task()?.projectId) {
+              <a class="clickable-link" (click)="navigateToProject(task()!.projectId)">
+                {{ getProjectName(task()!.projectId) }}
+              </a>
+            } @else {
+              <span class="no-assignments">Not assigned</span>
+            }
+          </p>
         </div>
         
         <div class="detail-section">
           <h4 class="detail-label">Assigned Employee</h4>
           <p class="detail-value">
-            {{ getEmployeeName(task()?.assignedEmployeeId || null) }}
+            @if (task()?.assignedEmployeeId) {
+              <a class="clickable-link" (click)="navigateToEmployee(task()!.assignedEmployeeId!)">
+                {{ getEmployeeName(task()!.assignedEmployeeId) }}
+              </a>
+            } @else {
+              <span class="no-assignments">Not assigned</span>
+            }
           </p>
         </div>
         
