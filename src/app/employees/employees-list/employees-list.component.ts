@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
 import { ListCardComponent } from '../../shared/list-card/list-card.component';
+import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 
 @Component({
   selector: 'app-employees-list',
-  imports: [CommonModule, ListHeaderComponent, ListCardComponent],
+  imports: [CommonModule, ListHeaderComponent, ListCardComponent, EmptyStateComponent],
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss']
 })

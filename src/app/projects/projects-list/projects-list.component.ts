@@ -7,10 +7,11 @@ import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
 import { ListCardComponent } from '../../shared/list-card/list-card.component';
+import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 
 @Component({
   selector: 'app-projects-list',
-  imports: [CommonModule, ListHeaderComponent, ListCardComponent],
+  imports: [CommonModule, ListHeaderComponent, ListCardComponent, EmptyStateComponent],
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })

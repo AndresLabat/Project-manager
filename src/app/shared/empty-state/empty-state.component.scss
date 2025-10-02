@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $spacing-xl;
+  min-height: 200px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: $spacing-lg;
+  opacity: 0.6;
+}
+
+.empty-title {
+  color: $text-color;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 $spacing-md 0;
+}
+
+.empty-message {
+  color: $text-muted;
+  font-size: 1rem;
+  margin: 0 0 $spacing-lg 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .empty-state {
+    padding: $spacing-lg;
+    min-height: 150px;
+  }
+  
+  .empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: $spacing-md;
+  }
+  
+  .empty-title {
+    font-size: 1.25rem;
+  }
+  
+  .empty-message {
+    font-size: 0.9rem;
+    max-width: 300px;
+  }
+}

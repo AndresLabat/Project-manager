@@ -54,10 +54,10 @@
       }
     </div>
     } @else {
-      <div class="empty-state">
-        <p class="empty-message">No projects available</p>
-        <p class="empty-hint">Create your first project to get started!</p>
-      </div>
+      <app-empty-state
+        title="No projects available"
+        message="Create your first project to get started!">
+      </app-empty-state>
     }
   </div>
 </div>

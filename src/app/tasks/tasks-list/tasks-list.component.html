@@ -59,10 +59,10 @@
       }
     </div>
     } @else {
-      <div class="empty-state">
-        <h3 class="empty-title">No tasks found</h3>
-        <p class="empty-message">There are no tasks in the system yet.</p>
-      </div>
+      <app-empty-state
+        title="No tasks found"
+        message="There are no tasks in the system yet.">
+      </app-empty-state>
     }
   </div>
 </div>

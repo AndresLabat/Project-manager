@@ -8,10 +8,11 @@ import { AuthService } from '../../auth/auth.service';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
 import { ListCardComponent } from '../../shared/list-card/list-card.component';
 import { StatusBadgeComponent } from '../../shared/status-badge/status-badge.component';
+import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 
 @Component({
   selector: 'app-tasks-list',
-  imports: [CommonModule, ListHeaderComponent, ListCardComponent, StatusBadgeComponent],
+  imports: [CommonModule, ListHeaderComponent, ListCardComponent, StatusBadgeComponent, EmptyStateComponent],
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss']
 })

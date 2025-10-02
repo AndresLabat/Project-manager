@@ -1,0 +1,20 @@
+<div class="empty-state">
+  <div class="empty-icon">{{ icon }}</div>
+  
+  @if (title) {
+    <h3 class="empty-title">{{ title }}</h3>
+  }
+  
+  @if (message) {
+    <p class="empty-message">{{ message }}</p>
+  }
+  
+  @if (showAction && actionText) {
+    <app-button 
+      variant="primary" 
+      size="md" 
+      (clicked)="onActionClick()">
+      {{ actionText }}
+    </app-button>
+  }
+</div>

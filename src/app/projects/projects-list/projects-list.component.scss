@@ -107,27 +107,7 @@
   font-style: italic;
 }
 
-.empty-state {
-  text-align: center;
-  padding: 60px $spacing-lg;
-  background: white;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  box-shadow: $shadow-md;
-}
-
-.empty-message {
-  color: $text-muted;
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin: 0 0 $spacing-sm 0;
-}
-
-.empty-hint {
-  color: $text-light;
-  font-size: 0.9rem;
-  margin: 0;
-}
+// Estilos de empty-state movidos a EmptyStateComponent
 
 @media (max-width: 768px) {
   .projects-container {
