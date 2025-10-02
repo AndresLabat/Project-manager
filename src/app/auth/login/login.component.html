@@ -1,0 +1,63 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="brand-section">
+      <div class="logo">
+        <span class="logo-main">PROJECT</span>
+        <span class="logo-sub">MANAGER</span>
+      </div>
+      <h1 class="welcome-title">Welcome to Project Manager</h1>
+      <p class="welcome-subtitle">Enter your credentials to login</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-group">
+        <label for="username">Username *</label>
+        <input 
+          type="text" 
+          id="username"
+          formControlName="username" 
+          class="form-input"
+          [class.error]="form.get('username')?.invalid && form.get('username')?.touched"
+          placeholder="Enter your username">
+        @if (form.get('username')?.invalid && form.get('username')?.touched) {
+          <p class="error-message">{{ getUsernameErrorMessage() }}</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input 
+          type="password" 
+          id="password"
+          formControlName="password" 
+          class="form-input"
+          [class.error]="form.get('password')?.invalid && form.get('password')?.touched"
+          placeholder="Enter your password">
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+          <p class="error-message">{{ getPasswordErrorMessage() }}</p>
+        }
+      </div>
+
+      @if (form.errors?.['invalidLogin']) {
+        <p class="error-message">Incorrect username or password</p>
+      }
+
+      <button 
+        type="submit"
+        class="login-button"
+        [disabled]="form.invalid">
+        Login ⟶
+      </button>
+
+    </form>
+
+    <div class="continue-section">
+      <button 
+        class="btn-continue" 
+        type="button" 
+        (click)="continueWithoutLogin()">
+        Continue as guest ⟶
+      </button>
+    </div>
+  </div>
+</div>

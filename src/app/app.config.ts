@@ -1,12 +1,51 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { LoginComponent } from './auth/login/login.component';
+import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
+import { ProjectFormComponent } from './projects/project-form/project-form.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
+import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
+import { EmployeeFormComponent } from './employees/employee-form/employee-form.component';
+import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
+import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import { TaskFormComponent } from './tasks/task-form/task-form.component';
+import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
+import { AuthGuard } from './auth/auth.guard';
 
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
+export const appConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
+    provideRouter([
+      { path: 'login', component: LoginComponent },
+      { path: 'projects', 
+        children: [
+          { path: '', component: ProjectsListComponent },
+          { path: 'new', component: ProjectFormComponent, canActivate: [AuthGuard] },
+          { path: ':id/edit', component: ProjectEditComponent, canActivate: [AuthGuard] },
+          { path: ':id', component: ProjectDetailComponent }
+        ]
+      },
+      { path: 'employees',
+        children: [
+          { path: '', component: EmployeesListComponent },
+          { path: 'new', component: EmployeeFormComponent, canActivate: [AuthGuard] },
+          { path: ':id/edit', component: EmployeeEditComponent, canActivate: [AuthGuard] },
+          { path: ':id', component: EmployeeDetailComponent }
+        ]
+      },
+      { path: 'tasks',
+        children: [
+          { path: '', component: TasksListComponent },
+          { path: 'new', component: TaskFormComponent, canActivate: [AuthGuard] },
+          { path: ':id/edit', component: TaskEditComponent, canActivate: [AuthGuard] },
+          { path: ':id', component: TaskDetailComponent }
+        ]
+      },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '**', redirectTo: 'login' }
+    ]),
+    provideHttpClient()
   ]
 };
