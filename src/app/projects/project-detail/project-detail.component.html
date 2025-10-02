@@ -1,0 +1,74 @@
+<div class="project-detail-container">
+  <div class="header-section">
+    <h2>Project Details</h2>
+    <app-back-button [route]="'/projects'" [label]="'Back to Projects'"></app-back-button>
+  </div>
+  
+  @if (project) {
+    <div class="project-detail-card">
+      <div class="project-header">
+        <h3 class="project-title">{{ project.name }}</h3>
+        @if (authService.isAuthenticated()) {
+          <div class="project-actions">
+            <app-button variant="secondary" size="sm" (clicked)="editProject()">Edit</app-button>
+            <app-button variant="danger" size="sm" (clicked)="deleteProject()">Delete</app-button>
+          </div>
+        }
+      </div>
+      
+      <div class="project-content">
+        @if (project.description) {
+          <div class="detail-section">
+            <h4 class="detail-label">Description</h4>
+            <p class="detail-value description">{{ project.description }}</p>
+          </div>
+        }
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Start Date</h4>
+          <p class="detail-value">{{ project.startDate }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">End Date</h4>
+          <p class="detail-value">{{ project.endDate ? project.endDate : 'Not set' }}</p>
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Assigned Employees</h4>
+          @if (getAssignedEmployeesCount() > 0) {
+            <ul class="detail-list">
+              @for (employee of getAssignedEmployees(); track employee) {
+                <li class="detail-item">{{ employee }}</li>
+              }
+            </ul>
+          } @else {
+            <p class="detail-value">
+              <span class="no-assignments">No employees assigned</span>
+            </p>
+          }
+        </div>
+        
+        <div class="detail-section">
+          <h4 class="detail-label">Tasks</h4>
+          @if (getAssignedTasksCount() > 0) {
+            <ul class="detail-list">
+              @for (task of getAssignedTasks(); track task) {
+                <li class="detail-item">{{ task }}</li>
+              }
+            </ul>
+          } @else {
+            <p class="detail-value">
+              <span class="no-assignments">No tasks assigned</span>
+            </p>
+          }
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="error-state">
+      <h3 class="error-title">Project not found</h3>
+      <p class="error-message">The project you're looking for doesn't exist or has been deleted.</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,70 @@
+<div class="projects-container">
+  <div class="list-section">
+    <div class="header-section">
+      <h2>Projects</h2>
+      @if (authService.isAuthenticated()) {
+        <app-button variant="primary" size="md" (clicked)="addProject()">Add Project</app-button>
+      }
+    </div>
+
+    @if (projects().length > 0) {
+    <div class="projects-grid">
+      @for (project of projects(); track project.id) {
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-info">
+              <h3 class="project-name">{{ project.name }}</h3>
+            </div>
+            <div class="project-actions">
+              <app-button variant="primary" size="sm" (clicked)="viewDetails(project.id)">View</app-button>
+              @if (authService.isAuthenticated()) {
+                <app-button variant="secondary" size="sm" (clicked)="editProject(project.id)">Edit</app-button>
+                <app-button variant="danger" size="sm" (clicked)="deleteProject(project.id)">Delete</app-button>
+              }
+            </div>
+          </div>
+          
+          <div class="project-content">
+            @if (project.description) {
+              <p class="project-description">{{ project.description }}</p>
+            }
+            
+            <div class="detail-item">
+              <span class="detail-label">Start Date:</span>
+              <span class="detail-value">{{ project.startDate }}</span>
+            </div>
+            
+            @if (project.endDate) {
+              <div class="detail-item">
+                <span class="detail-label">End Date:</span>
+                <span class="detail-value">{{ project.endDate }}</span>
+              </div>
+            }
+            
+            <div class="detail-item">
+              <span class="detail-label">Assigned Employees:</span>
+              <span class="detail-value">
+                @if (getAssignedEmployeesCount(project.id) > 0) {
+                  {{ getAssignedEmployees(project.id).join(', ') }}
+                } @else {
+                  <span class="no-assignments">No employees assigned</span>
+                }
+              </span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Tasks:</span>
+              <span class="detail-value">{{ getAssignedTasksCount(project.id) }} task(s)</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    } @else {
+      <div class="empty-state">
+        <p class="empty-message">No projects available</p>
+        <p class="empty-hint">Create your first project to get started!</p>
+      </div>
+    }
+  </div>
+</div>
