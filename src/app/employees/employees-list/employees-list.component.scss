@@ -188,16 +188,52 @@
 }
 
 @media (max-width: 768px) {
+  .employees-container {
+    padding: $spacing-md;
+  }
+  
+  .list-section {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .header-section {
+    margin-bottom: $spacing-lg;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+  
+  .btn-add {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  
   .employees-grid {
     grid-template-columns: 1fr;
+    gap: $spacing-md;
   }
   
   .employee-header {
     flex-direction: column;
     align-items: stretch;
+    gap: $spacing-md;
+  }
+  
+  .employee-title {
+    order: 1;
   }
   
   .employee-actions {
-    justify-content: center;
+    order: 2;
+    justify-content: flex-start;
+    margin-top: $spacing-sm;
   }
 }
