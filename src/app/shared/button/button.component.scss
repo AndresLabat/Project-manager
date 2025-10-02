@@ -1,0 +1,90 @@
+@import '../../styles/variables';
+
+button {
+  border: none;
+  border-radius: $border-radius;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: $transition;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  text-decoration: none;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Size variants
+button.size-sm {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-sm;
+}
+
+button.size-md {
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-base;
+}
+
+button.size-lg {
+  padding: $spacing-lg $spacing-lg * 1.5;
+  font-size: $font-size-lg;
+}
+
+// Color variants
+button.variant-primary {
+  background-color: $primary-color;
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: $primary-hover;
+  }
+}
+
+button.variant-secondary {
+  background-color: $btn-secondary-bg;
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: $btn-secondary-hover;
+  }
+}
+
+button.variant-danger {
+  background-color: $error-color;
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: darken($error-color, 10%);
+  }
+}
+
+button.variant-success {
+  background-color: $success-color;
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: darken($success-color, 10%);
+  }
+}
+
+button.variant-warning {
+  background-color: $btn-warning-bg;
+  color: $btn-warning-text;
+  
+  &:hover:not(:disabled) {
+    background-color: $btn-warning-hover;
+  }
+}
+
+button.variant-info {
+  background-color: $btn-info-bg;
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: $btn-info-hover;
+  }
+}
