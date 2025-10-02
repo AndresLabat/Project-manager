@@ -4,12 +4,12 @@ import { TasksService } from '../../tasks/tasks.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
-import { ButtonComponent } from '../../shared/button/button.component';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
+import { ListCardComponent } from '../../shared/list-card/list-card.component';
 
 @Component({
   selector: 'app-employees-list',
-  imports: [CommonModule, ButtonComponent, ListHeaderComponent],
+  imports: [CommonModule, ListHeaderComponent, ListCardComponent],
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss']
 })

@@ -10,22 +10,19 @@
     @if (employees().length > 0) {
     <div class="employees-grid">
       @for (employee of employees(); track employee.id) {
-        <div class="employee-card">
-          <div class="employee-header">
-            <div class="employee-info">
-              <h3 class="employee-name">{{ employee.fullName }}</h3>
-              <span class="employee-role">{{ employee.role }}</span>
-            </div>
-            <div class="employee-actions">
-              <app-button variant="primary" size="sm" (clicked)="viewDetails(employee.id)">View</app-button>
-              @if (authService.isAuthenticated()) {
-                <app-button variant="secondary" size="sm" (clicked)="editEmployee(employee.id)">Edit</app-button>
-                <app-button variant="danger" size="sm" (clicked)="deleteEmployee(employee.id)">Delete</app-button>
-              }
-            </div>
-          </div>
+        <app-list-card
+          [title]="employee.fullName"
+          [subtitle]="employee.role"
+          [showActions]="true"
+          [showViewButton]="true"
+          [showEditButton]="authService.isAuthenticated()"
+          [showDeleteButton]="authService.isAuthenticated()"
+          (viewClick)="viewDetails(employee.id)"
+          (editClick)="editEmployee(employee.id)"
+          (deleteClick)="deleteEmployee(employee.id)">
           
-          <div class="employee-content">
+          <!-- Contenido adicional específico del empleado -->
+          <div class="employee-details">
             <div class="detail-item">
               <span class="detail-label">Email:</span>
               <span class="detail-value">{{ employee.email }}</span>
@@ -41,7 +38,7 @@
               <span class="detail-value">{{ employee.assignedTasks.length }}</span>
             </div>
           </div>
-        </div>
+        </app-list-card>
       }
     </div>
     } @else {

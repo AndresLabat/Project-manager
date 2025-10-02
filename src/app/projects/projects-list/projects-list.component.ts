@@ -5,12 +5,12 @@ import { TasksService } from '../../tasks/tasks.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../../shared/button/button.component';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
+import { ListCardComponent } from '../../shared/list-card/list-card.component';
 
 @Component({
   selector: 'app-projects-list',
-  imports: [CommonModule, ButtonComponent, ListHeaderComponent],
+  imports: [CommonModule, ListHeaderComponent, ListCardComponent],
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })

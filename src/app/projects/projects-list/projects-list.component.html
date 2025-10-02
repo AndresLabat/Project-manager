@@ -10,25 +10,19 @@
     @if (projects().length > 0) {
     <div class="projects-grid">
       @for (project of projects(); track project.id) {
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-info">
-              <h3 class="project-name">{{ project.name }}</h3>
-            </div>
-            <div class="project-actions">
-              <app-button variant="primary" size="sm" (clicked)="viewDetails(project.id)">View</app-button>
-              @if (authService.isAuthenticated()) {
-                <app-button variant="secondary" size="sm" (clicked)="editProject(project.id)">Edit</app-button>
-                <app-button variant="danger" size="sm" (clicked)="deleteProject(project.id)">Delete</app-button>
-              }
-            </div>
-          </div>
+        <app-list-card
+          [title]="project.name"
+          [description]="project.description"
+          [showActions]="true"
+          [showViewButton]="true"
+          [showEditButton]="authService.isAuthenticated()"
+          [showDeleteButton]="authService.isAuthenticated()"
+          (viewClick)="viewDetails(project.id)"
+          (editClick)="editProject(project.id)"
+          (deleteClick)="deleteProject(project.id)">
           
-          <div class="project-content">
-            @if (project.description) {
-              <p class="project-description">{{ project.description }}</p>
-            }
-            
+          <!-- Contenido adicional específico del proyecto -->
+          <div class="project-details">
             <div class="detail-item">
               <span class="detail-label">Start Date:</span>
               <span class="detail-value">{{ project.startDate }}</span>
@@ -57,7 +51,7 @@
               <span class="detail-value">{{ getAssignedTasksCount(project.id) }} task(s)</span>
             </div>
           </div>
-        </div>
+        </app-list-card>
       }
     </div>
     } @else {

@@ -10,35 +10,29 @@
     @if (tasks().length > 0) {
     <div class="tasks-grid">
       @for (task of tasks(); track task.id) {
-        <div class="task-card">
-          <div class="task-header">
-            <div class="task-info">
-              <h3 class="task-title">{{ task.title }}</h3>
-              <div class="task-meta">
-                <app-status-badge 
-                  type="status" 
-                  [value]="task.status" 
-                  [showLabel]="true">
-                </app-status-badge>
-                <app-status-badge 
-                  type="priority" 
-                  [value]="task.priority" 
-                  [showLabel]="true">
-                </app-status-badge>
-              </div>
-            </div>
-            <div class="task-actions">
-              <app-button variant="primary" size="sm" (clicked)="viewDetails(task.id)">View</app-button>
-              @if (authService.isAuthenticated()) {
-                <app-button variant="secondary" size="sm" (clicked)="editTask(task.id)">Edit</app-button>
-                <app-button variant="danger" size="sm" (clicked)="deleteTask(task.id)">Delete</app-button>
-              }
-            </div>
-          </div>
+        <app-list-card
+          [title]="task.title"
+          [description]="task.description"
+          [showActions]="true"
+          [showViewButton]="true"
+          [showEditButton]="authService.isAuthenticated()"
+          [showDeleteButton]="authService.isAuthenticated()"
+          (viewClick)="viewDetails(task.id)"
+          (editClick)="editTask(task.id)"
+          (deleteClick)="deleteTask(task.id)">
           
-          @if (task.description) {
-            <p class="task-description">{{ task.description }}</p>
-          }
+          <div class="task-badges">
+            <app-status-badge 
+              type="status" 
+              [value]="task.status" 
+              [showLabel]="true">
+            </app-status-badge>
+            <app-status-badge 
+              type="priority" 
+              [value]="task.priority" 
+              [showLabel]="true">
+            </app-status-badge>
+          </div>
           
           <div class="task-details">
             <div class="detail-item">
@@ -61,7 +55,7 @@
               <span class="detail-value">{{ getEmployeeName(task.assignedEmployeeId) }}</span>
             </div>
           </div>
-        </div>
+        </app-list-card>
       }
     </div>
     } @else {

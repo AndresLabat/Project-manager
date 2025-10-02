@@ -1,0 +1,44 @@
+<div class="list-card">
+  <div class="card-header">
+    <div class="card-info">
+      <h3 class="card-title">{{ title }}</h3>
+      @if (subtitle) {
+        <p class="card-subtitle">{{ subtitle }}</p>
+      }
+      @if (description) {
+        <p class="card-description">{{ description }}</p>
+      }
+    </div>
+    
+    @if (showActions) {
+      <div class="card-actions">
+        @if (showViewButton) {
+          <app-button 
+            variant="primary" 
+            size="sm" 
+            (clicked)="onViewClick()">
+            {{ viewButtonText }}
+          </app-button>
+        }
+        @if (showEditButton) {
+          <app-button 
+            variant="secondary" 
+            size="sm" 
+            (clicked)="onEditClick()">
+            {{ editButtonText }}
+          </app-button>
+        }
+        @if (showDeleteButton) {
+          <app-button 
+            variant="danger" 
+            size="sm" 
+            (clicked)="onDeleteClick()">
+            {{ deleteButtonText }}
+          </app-button>
+        }
+      </div>
+    }
+  </div>
+  
+  <ng-content></ng-content>
+</div>

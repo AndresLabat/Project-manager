@@ -5,13 +5,13 @@ import { EmployeesService } from '../../employees/employees.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
-import { ButtonComponent } from '../../shared/button/button.component';
 import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
+import { ListCardComponent } from '../../shared/list-card/list-card.component';
 import { StatusBadgeComponent } from '../../shared/status-badge/status-badge.component';
 
 @Component({
   selector: 'app-tasks-list',
-  imports: [CommonModule, ButtonComponent, ListHeaderComponent, StatusBadgeComponent],
+  imports: [CommonModule, ListHeaderComponent, ListCardComponent, StatusBadgeComponent],
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss']
 })
