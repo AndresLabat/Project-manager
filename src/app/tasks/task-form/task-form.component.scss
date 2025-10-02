@@ -153,4 +153,13 @@ app-button {
   .form-textarea {
     min-height: 120px;
   }
+  
+  form {
+    padding-bottom: $spacing-xl;
+  }
+  
+  app-button {
+    margin-top: $spacing-xl;
+    display: block;
+  }
 }

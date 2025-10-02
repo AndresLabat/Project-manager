@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { FormInputComponent } from '../../shared/form-input/form-input.component';
+import { FormSelectComponent } from '../../shared/form-select/form-select.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TaskValidators } from '../../validators/task.validators';
 import { Task } from '../task.model';
@@ -14,7 +15,7 @@ import { Task } from '../task.model';
 @Component({
   selector: 'app-task-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent, FormSelectComponent],
   templateUrl: './task-edit.component.html',
   styleUrls: ['./task-edit.component.scss']
 })
@@ -99,5 +100,36 @@ export class TaskEditComponent implements OnInit {
   getTaskCreatedDate(): string {
     const task = this.tasksService.getTaskById(this.taskId);
     return task ? task.createdAt.split('T')[0] : this.getTodayDate();
+  }
+
+  getProjectOptions() {
+    return this.projects.map((project: any) => ({
+      value: project.id.toString(),
+      label: project.name
+    }));
+  }
+
+  getEmployeeOptions() {
+    const options = [{ value: '', label: 'No assignment' }];
+    return options.concat(this.employees.map((employee: any) => ({
+      value: employee.id.toString(),
+      label: employee.fullName
+    })));
+  }
+
+  getStatusOptions() {
+    return [
+      { value: 'pending', label: 'Pending' },
+      { value: 'in-progress', label: 'In Progress' },
+      { value: 'completed', label: 'Completed' }
+    ];
+  }
+
+  getPriorityOptions() {
+    return [
+      { value: 'low', label: 'Low' },
+      { value: 'medium', label: 'Medium' },
+      { value: 'high', label: 'High' }
+    ];
   }
 }

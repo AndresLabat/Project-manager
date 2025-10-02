@@ -6,7 +6,7 @@ import { Employee } from './employee.model';
 })
 export class EmployeesService {
   private employeesSignal = signal<Employee[]>(this.loadEmployees());
-  private nextId = 6;
+  private nextId = 1;
 
   private saveEmployees() {
     localStorage.setItem('employees', JSON.stringify(this.employeesSignal()));
@@ -16,7 +16,7 @@ export class EmployeesService {
     const stored = localStorage.getItem('employees');
     if (stored) {
       const parsed: Employee[] = JSON.parse(stored);
-      this.nextId = parsed.reduce((max, emp) => Math.max(max, emp.id), 0) + 1;
+      this.nextId = parsed.length > 0 ? parsed.reduce((max, emp) => Math.max(max, emp.id), 0) + 1 : 1;
       return parsed;
     }
     const defaults: Employee[] = [

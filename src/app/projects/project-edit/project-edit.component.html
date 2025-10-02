@@ -13,18 +13,12 @@
         [control]="form.get('name')">
       </app-form-input>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea 
-          id="description"
-          formControlName="description" 
-          class="form-textarea"
-          [class.error]="form.get('description')?.invalid && form.get('description')?.touched"
-          placeholder="Enter project description"></textarea>
-        @if (form.get('description')?.invalid && form.get('description')?.touched) {
-          <p class="error-message">{{ getDescriptionErrorMessage() }}</p>
-        }
-      </div>
+      <app-form-select
+        label="Description"
+        type="textarea"
+        placeholder="Enter project description"
+        [control]="form.get('description')">
+      </app-form-select>
 
       <app-form-input
         label="Start Date"

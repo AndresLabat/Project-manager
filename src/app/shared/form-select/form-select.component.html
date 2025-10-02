@@ -1,0 +1,57 @@
+<div class="form-group">
+  <label [for]="getFieldId()">
+    {{ label }}
+    @if (required) {
+      <span class="required">*</span>
+    }
+  </label>
+  
+  @if (type === 'textarea') {
+    <textarea 
+      [id]="getFieldId()"
+      [value]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [rows]="rows"
+      [class.error]="hasError"
+      (input)="onInput($event)"
+      (blur)="onBlur()"
+      class="form-textarea">
+    </textarea>
+  } @else if (type === 'select-multiple') {
+    <select 
+      [id]="getFieldId()"
+      [disabled]="disabled"
+      [class.error]="hasError"
+      (change)="onSelectionChange($event)"
+      (blur)="onBlur()"
+      class="form-select"
+      multiple>
+      @for (option of options; track option.value) {
+        <option [value]="option.value" [selected]="value?.includes(option.value)">
+          {{ option.label }}
+        </option>
+      }
+    </select>
+  } @else {
+    <select 
+      [id]="getFieldId()"
+      [value]="value"
+      [disabled]="disabled"
+      [class.error]="hasError"
+      (change)="onSelectionChange($event)"
+      (blur)="onBlur()"
+      class="form-select">
+      @if (placeholder) {
+        <option value="" disabled>{{ placeholder }}</option>
+      }
+      @for (option of options; track $index) {
+        <option [value]="option.value">{{ option.label }}</option>
+      }
+    </select>
+  }
+  
+  @if (hasError) {
+    <p class="error-message">{{ displayErrorMessage }}</p>
+  }
+</div>

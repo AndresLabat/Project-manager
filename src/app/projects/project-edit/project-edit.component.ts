@@ -8,10 +8,11 @@ import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { FormInputComponent } from '../../shared/form-input/form-input.component';
+import { FormSelectComponent } from '../../shared/form-select/form-select.component';
 
 @Component({
   selector: 'app-project-edit',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent, FormSelectComponent],
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.scss']
 })
@@ -89,5 +90,12 @@ export class ProjectEditComponent {
         this.employeesService.assignToProject(employeeId, this.projectId);
       }
     });
+  }
+
+  getEmployeeOptions() {
+    return this.employees.map((employee: any) => ({
+      value: employee.id.toString(),
+      label: `${employee.fullName} (${employee.role})`
+    }));
   }
 }

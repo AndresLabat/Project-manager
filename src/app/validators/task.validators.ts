@@ -33,13 +33,13 @@ export class TaskValidators {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value) return null;
       
-      const referenceDate = minDate ? new Date(minDate) : new Date();
-      referenceDate.setHours(0, 0, 0, 0);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
       
       const dueDate = new Date(control.value);
       dueDate.setHours(0, 0, 0, 0);
       
-      if (dueDate < referenceDate) {
+      if (dueDate < today) {
         return { dueDateInPast: true };
       }
       

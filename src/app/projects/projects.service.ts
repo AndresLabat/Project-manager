@@ -3,7 +3,7 @@ import { Project } from './project.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectsService {
-  private nextId = 7;
+  private nextId = 1;
   projects = signal<Project[]>(this.loadProjects());
 
   private saveProjects() {
@@ -14,7 +14,7 @@ export class ProjectsService {
     const stored = localStorage.getItem('projects');
     if (stored) {
       const parsed: Project[] = JSON.parse(stored);
-      this.nextId = parsed.reduce((max, p) => Math.max(max, p.id), 0) + 1;
+      this.nextId = parsed.length > 0 ? parsed.reduce((max, p) => Math.max(max, p.id), 0) + 1 : 1;
       return parsed;
     }
     return [

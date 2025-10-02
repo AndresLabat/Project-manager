@@ -7,7 +7,7 @@ import { EmployeesService } from '../employees/employees.service';
 })
 export class TasksService {
   private tasksSignal = signal<Task[]>(this.loadTasks());
-  private nextId = 6;
+  private nextId = 9;
 
   constructor(private employeesService: EmployeesService) {
     this.saveTasks();
@@ -22,7 +22,7 @@ export class TasksService {
     const stored = localStorage.getItem('tasks');
     if (stored) {
       const parsed: Task[] = JSON.parse(stored);
-      this.nextId = parsed.reduce((max, task) => Math.max(max, task.id), 0) + 1;
+      this.nextId = parsed.length > 0 ? parsed.reduce((max, task) => Math.max(max, task.id), 0) + 1 : 9;
       return parsed;
     }
     return [

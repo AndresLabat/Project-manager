@@ -1,0 +1,100 @@
+@use '../../styles/variables' as *;
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: $spacing-sm;
+  font-weight: 500;
+  color: $text-color;
+  font-size: 0.9em;
+
+  .required {
+    color: $error-color;
+    margin-left: $spacing-xs;
+  }
+}
+
+.form-select {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  color: $text-color;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+
+  &.error {
+    border-color: $error-color;
+    box-shadow: 0 0 0 2px rgba($error-color, 0.1);
+  }
+
+  &:disabled {
+    background-color: $bg-light;
+    color: $text-muted;
+    cursor: not-allowed;
+  }
+
+  &[multiple] {
+    min-height: 120px;
+    padding: $spacing-sm;
+
+    option {
+      padding: $spacing-sm;
+    }
+  }
+}
+
+.form-textarea {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: 0.9rem;
+  color: $text-color;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+
+  &.error {
+    border-color: $error-color;
+    box-shadow: 0 0 0 2px rgba($error-color, 0.1);
+  }
+
+  &:disabled {
+    background-color: $bg-light;
+    color: $text-muted;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $text-muted;
+    font-style: italic;
+  }
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.85em;
+  margin-top: $spacing-sm;
+}

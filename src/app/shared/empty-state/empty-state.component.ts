@@ -14,7 +14,7 @@ export class EmptyStateComponent {
   @Input() message: string = '';
   @Input() actionText: string = '';
   @Input() showAction: boolean = false;
-  @Input() icon: string = '📋'; // Emoji por defecto
+  @Input() icon: string = '📋';
 
   @Output() actionClick = new EventEmitter<void>();
 

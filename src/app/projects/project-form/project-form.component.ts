@@ -7,11 +7,12 @@ import { ProjectValidators } from '../../validators/project.validators';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { FormInputComponent } from '../../shared/form-input/form-input.component';
+import { FormSelectComponent } from '../../shared/form-select/form-select.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
-  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent],
+  imports: [CommonModule, ReactiveFormsModule, BackButtonComponent, ButtonComponent, FormInputComponent, FormSelectComponent],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss']
 })
@@ -52,6 +53,9 @@ export class ProjectFormComponent {
     if (this.form.invalid) return;
 
     const formValue = this.form.value;
+    console.log('ProjectForm - Form value:', formValue);
+    console.log('ProjectForm - Assigned employees:', formValue.assignedEmployees);
+    
     const project = this.projectsService.addProject({
       name: formValue.name || '',
       description: formValue.description || '',
@@ -70,5 +74,12 @@ export class ProjectFormComponent {
     setTimeout(() => {
       this.router.navigate(['/projects']);
     }, 1000);
+  }
+
+  getEmployeeOptions() {
+    return this.employees.map((employee: any) => ({
+      value: employee.id.toString(),
+      label: `${employee.fullName} (${employee.role})`
+    }));
   }
 }
