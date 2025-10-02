@@ -1,0 +1,11 @@
+<div class="header-section">
+  <h2>{{ title }}</h2>
+  @if (showButton) {
+    <app-button 
+      variant="primary" 
+      size="md" 
+      (clicked)="onButtonClick()">
+      {{ buttonText }}
+    </app-button>
+  }
+</div>

@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
 
 @Component({
   selector: 'app-projects-list',
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, ListHeaderComponent],
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss']
 })

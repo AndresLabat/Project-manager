@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
 
 @Component({
   selector: 'app-tasks-list',
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, ListHeaderComponent],
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss']
 })

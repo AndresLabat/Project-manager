@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { ListHeaderComponent } from '../../shared/list-header/list-header.component';
 
 @Component({
   selector: 'app-employees-list',
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, ListHeaderComponent],
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss']
 })

@@ -1,11 +1,11 @@
 <div class="projects-container">
   <div class="list-section">
-    <div class="header-section">
-      <h2>Projects</h2>
-      @if (authService.isAuthenticated()) {
-        <app-button variant="primary" size="md" (clicked)="addProject()">Add Project</app-button>
-      }
-    </div>
+    <app-list-header 
+      title="Projects" 
+      buttonText="Add Project" 
+      [showButton]="authService.isAuthenticated()"
+      (buttonClick)="addProject()">
+    </app-list-header>
 
     @if (projects().length > 0) {
     <div class="projects-grid">

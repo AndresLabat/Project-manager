@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    color: $primary-color;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+}
