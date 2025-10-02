@@ -27,9 +27,11 @@
           <h4 class="detail-label">Project</h4>
           <p class="detail-value">
             @if (task()?.projectId) {
-              <a class="clickable-link" (click)="navigateToProject(task()!.projectId)">
-                {{ getProjectName(task()!.projectId) }}
-              </a>
+              <app-clickable-link 
+                [text]="getProjectName(task()!.projectId)" 
+                [id]="task()!.projectId" 
+                (linkClick)="navigateToProject($event)">
+              </app-clickable-link>
             } @else {
               <span class="no-assignments">Not assigned</span>
             }
@@ -40,9 +42,11 @@
           <h4 class="detail-label">Assigned Employee</h4>
           <p class="detail-value">
             @if (task()?.assignedEmployeeId) {
-              <a class="clickable-link" (click)="navigateToEmployee(task()!.assignedEmployeeId!)">
-                {{ getEmployeeName(task()!.assignedEmployeeId) }}
-              </a>
+              <app-clickable-link 
+                [text]="getEmployeeName(task()!.assignedEmployeeId)" 
+                [id]="task()!.assignedEmployeeId" 
+                (linkClick)="navigateToEmployee($event)">
+              </app-clickable-link>
             } @else {
               <span class="no-assignments">Not assigned</span>
             }

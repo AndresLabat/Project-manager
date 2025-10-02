@@ -35,9 +35,11 @@
             <ul class="detail-list">
               @for (project of getAssignedProjects(); track project) {
                 <li class="detail-item">
-                  <a class="clickable-link" (click)="navigateToProject(project.id)">
-                    {{ project.name }}
-                  </a>
+                  <app-clickable-link 
+                    [text]="project.name" 
+                    [id]="project.id" 
+                    (linkClick)="navigateToProject($event)">
+                  </app-clickable-link>
                 </li>
               }
             </ul>
@@ -54,9 +56,11 @@
             <ul class="detail-list">
               @for (task of getAssignedTasks(); track task) {
                 <li class="detail-item">
-                  <a class="clickable-link" (click)="navigateToTask(task.id)">
-                    {{ task.title }}
-                  </a>
+                  <app-clickable-link 
+                    [text]="task.title" 
+                    [id]="task.id" 
+                    (linkClick)="navigateToTask($event)">
+                  </app-clickable-link>
                 </li>
               }
             </ul>

@@ -39,9 +39,11 @@
             <ul class="detail-list">
               @for (employee of getAssignedEmployees(); track employee) {
                 <li class="detail-item">
-                  <a class="clickable-link" (click)="navigateToEmployee(employee.id)">
-                    {{ employee.fullName }}
-                  </a>
+                  <app-clickable-link 
+                    [text]="employee.fullName" 
+                    [id]="employee.id" 
+                    (linkClick)="navigateToEmployee($event)">
+                  </app-clickable-link>
                 </li>
               }
             </ul>
@@ -58,9 +60,11 @@
             <ul class="detail-list">
               @for (task of getAssignedTasks(); track task) {
                 <li class="detail-item">
-                  <a class="clickable-link" (click)="navigateToTask(task.id)">
-                    {{ task.title }}
-                  </a>
+                  <app-clickable-link 
+                    [text]="task.title" 
+                    [id]="task.id" 
+                    (linkClick)="navigateToTask($event)">
+                  </app-clickable-link>
                 </li>
               }
             </ul>

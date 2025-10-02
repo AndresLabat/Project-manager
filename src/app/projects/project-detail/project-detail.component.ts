@@ -8,10 +8,11 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+import { ClickableLinkComponent } from '../../shared/clickable-link/clickable-link.component';
 
 @Component({
   selector: 'app-project-detail',
-  imports: [CommonModule, ButtonComponent, BackButtonComponent],
+  imports: [CommonModule, ButtonComponent, BackButtonComponent, ClickableLinkComponent],
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss']
 })

@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { BackButtonComponent } from '../../shared/back-button/back-button.component';
+import { ClickableLinkComponent } from '../../shared/clickable-link/clickable-link.component';
 
 @Component({
   selector: 'app-task-detail',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, BackButtonComponent],
+  imports: [CommonModule, ButtonComponent, BackButtonComponent, ClickableLinkComponent],
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss']
 })
