@@ -1,0 +1,186 @@
+@import '../../styles/variables';
+
+.task-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  height: calc(100vh - 12rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    color: $text-color;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
+
+.task-detail-card {
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-lg;
+  gap: $spacing-md;
+  min-width: 0;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $border-color;
+}
+
+.task-title-section {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.task-name {
+  color: $text-color;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.task-meta {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.task-status,
+.task-priority {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.task-status {
+  &.status-completed {
+    background-color: $status-completed-bg;
+    color: $status-completed-text;
+  }
+  
+  &.status-in-progress {
+    background-color: $status-in-progress-bg;
+    color: $status-in-progress-text;
+  }
+  
+  &.status-pending {
+    background-color: $status-pending-bg;
+    color: $status-pending-text;
+  }
+}
+
+.task-priority {
+  &.priority-high {
+    background-color: $priority-high-bg;
+    color: $priority-high-text;
+  }
+  
+  &.priority-medium {
+    background-color: $priority-medium-bg;
+    color: $priority-medium-text;
+  }
+  
+  &.priority-low {
+    background-color: $priority-low-bg;
+    color: $priority-low-text;
+  }
+}
+
+.task-actions {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: $text-color;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: $text-muted;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+
+  .task-status,
+  .task-priority {
+    display: inline-block;
+  }
+}
+
+.error-state {
+  text-align: center;
+  padding: 60px $spacing-lg;
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: $shadow-md;
+
+  .error-title {
+    color: $text-color;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 $spacing-md 0;
+  }
+
+  .error-message {
+    color: $text-muted;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .task-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-actions {
+    justify-content: center;
+  }
+}

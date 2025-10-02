@@ -1,0 +1,104 @@
+@import '../../styles/variables';
+
+.task-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+
+  h2 {
+    color: $primary-color;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+.form-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: $spacing-sm;
+    font-weight: 500;
+    color: $text-color;
+    font-size: 0.9rem;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: $transition;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: $shadow-focus;
+  }
+
+  &.error {
+    border-color: $error-color;
+  }
+  
+  &::placeholder {
+    color: $text-light;
+    font-style: italic;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.9em;
+  margin-top: $spacing-sm;
+}
+
+.success-message {
+  color: $success-color;
+  font-size: 0.9em;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+app-button {
+  margin-top: $spacing-md;
+}

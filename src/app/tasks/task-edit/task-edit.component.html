@@ -1,0 +1,119 @@
+<div class="task-form-container">
+  <div class="form-section">
+    <div class="header-section">
+      <h2>Edit Task</h2>
+      <app-back-button [route]="'/tasks'" [label]="'Back to Tasks'"></app-back-button>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title *</label>
+        <input 
+          type="text" 
+          id="title"
+          formControlName="title" 
+          class="form-input"
+          [class.error]="form.get('title')?.invalid && form.get('title')?.touched"
+          placeholder="Enter task title">
+        @if (form.get('title')?.invalid && form.get('title')?.touched) {
+          <p class="error-message">{{ getTitleErrorMessage() }}</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea 
+          id="description"
+          formControlName="description" 
+          class="form-input"
+          [class.error]="form.get('description')?.invalid && form.get('description')?.touched"
+          placeholder="Enter task description"
+          rows="3"></textarea>
+        @if (form.get('description')?.invalid && form.get('description')?.touched) {
+          <p class="error-message">{{ getDescriptionErrorMessage() }}</p>
+        }
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="projectId">Project *</label>
+          <select
+            id="projectId"
+            formControlName="projectId"
+            class="form-select"
+            [class.error]="form.get('projectId')?.invalid && form.get('projectId')?.touched">
+            <option value="">Select a project</option>
+            @for (project of projects; track project.id) {
+              <option [value]="project.id">{{ project.name }}</option>
+            }
+          </select>
+          @if (form.get('projectId')?.invalid && form.get('projectId')?.touched) {
+            <p class="error-message">{{ getProjectIdErrorMessage() }}</p>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="assignedEmployeeId">Assigned Employee</label>
+          <select
+            id="assignedEmployeeId"
+            formControlName="assignedEmployeeId"
+            class="form-select">
+            <option value="">No assignment</option>
+            @for (employee of employees; track employee.id) {
+              <option [value]="employee.id">{{ employee.fullName }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="status">Status *</label>
+          <select
+            id="status"
+            formControlName="status"
+            class="form-select">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="priority">Priority *</label>
+          <select
+            id="priority"
+            formControlName="priority"
+            class="form-select">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date *</label>
+        <input 
+          type="date" 
+          id="dueDate"
+          formControlName="dueDate" 
+          class="form-input"
+          [class.error]="form.get('dueDate')?.invalid && form.get('dueDate')?.touched"
+          [min]="getTaskCreatedDate()">
+        @if (form.get('dueDate')?.invalid && form.get('dueDate')?.touched) {
+          <p class="error-message">{{ getDueDateErrorMessage() }}</p>
+        }
+      </div>
+
+      @if (errorMessage()) {
+        <p class="error-message">{{ errorMessage() }}</p>
+      }
+
+      <app-button type="submit" variant="primary" size="md" [disabled]="form.invalid">Update Task</app-button>
+
+      @if (successMessage()) {
+        <p class="success-message">{{ successMessage() }}</p>
+      }
+    </form>
+  </div>
+</div>
