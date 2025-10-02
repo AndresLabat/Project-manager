@@ -372,7 +372,13 @@
 
 @media (max-width: 480px) {
   .main-content {
-    padding: $spacing-md;
+    padding: 10px;
+  }
+  
+  .main-content:has(app-login) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .mobile-sidebar {

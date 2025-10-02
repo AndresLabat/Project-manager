@@ -179,13 +179,20 @@
   margin-top: $spacing-sm;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .login-container {
-    padding: 1rem;
+    min-height: calc(100vh - 100px);
+    background: transparent;
+    padding: $spacing-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
   
   .login-card {
     padding: 2rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
   
   .logo-main {
@@ -194,5 +201,15 @@
   
   .welcome-title {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 2rem 1.5rem;
   }
 }
