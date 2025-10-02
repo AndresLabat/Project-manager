@@ -28,8 +28,8 @@ export class TasksService {
     return [
     {
       id: 1,
-      title: 'Implement authentication',
-      description: 'Create login and logout system for the application',
+      title: 'Implement user authentication',
+      description: 'Create secure login and logout system with JWT tokens',
       status: 'completed',
       priority: 'high',
       assignedEmployeeId: 1,
@@ -39,8 +39,8 @@ export class TasksService {
     },
     {
       id: 2,
-      title: 'Design user interface',
-      description: 'Create mockups and interface prototypes',
+      title: 'Design responsive UI components',
+      description: 'Create modern and responsive user interface components',
       status: 'in-progress',
       priority: 'medium',
       assignedEmployeeId: 2,
@@ -50,36 +50,69 @@ export class TasksService {
     },
     {
       id: 3,
-      title: 'Configure database',
-      description: 'Set up and optimize project database',
+      title: 'Setup payment gateway integration',
+      description: 'Integrate secure payment processing for mobile banking',
       status: 'pending',
       priority: 'high',
       assignedEmployeeId: 3,
       projectId: 2,
-      dueDate: '2024-01-25',
+      dueDate: '2024-02-15',
       createdAt: '2024-01-03'
     },
     {
       id: 4,
-      title: 'Write documentation',
-      description: 'Create technical project documentation',
-      status: 'pending',
-      priority: 'low',
-      assignedEmployeeId: 4,
+      title: 'Create user experience wireframes',
+      description: 'Design intuitive user flows for banking app',
+      status: 'completed',
+      priority: 'medium',
+      assignedEmployeeId: 2,
       projectId: 2,
-      dueDate: '2024-01-30',
+      dueDate: '2024-01-25',
       createdAt: '2024-01-04'
     },
     {
       id: 5,
-      title: 'Run tests',
-      description: 'Execute unit and integration tests',
+      title: 'Project planning and coordination',
+      description: 'Manage project timeline and team coordination',
+      status: 'in-progress',
+      priority: 'high',
+      assignedEmployeeId: 4,
+      projectId: 1,
+      dueDate: '2024-02-01',
+      createdAt: '2024-01-05'
+    },
+    {
+      id: 6,
+      title: 'Implement API endpoints',
+      description: 'Develop RESTful API for customer support system',
+      status: 'pending',
+      priority: 'medium',
+      assignedEmployeeId: 3,
+      projectId: 4,
+      dueDate: '2024-03-15',
+      createdAt: '2024-01-06'
+    },
+    {
+      id: 7,
+      title: 'Execute comprehensive testing',
+      description: 'Run unit, integration and end-to-end tests for analytics dashboard',
       status: 'pending',
       priority: 'medium',
       assignedEmployeeId: 5,
       projectId: 3,
-      dueDate: '2024-02-01',
-      createdAt: '2024-01-05'
+      dueDate: '2024-02-20',
+      createdAt: '2024-01-07'
+    },
+    {
+      id: 8,
+      title: 'Deploy to production environment',
+      description: 'Configure CI/CD pipeline and deploy inventory management system',
+      status: 'pending',
+      priority: 'high',
+      assignedEmployeeId: 6,
+      projectId: 5,
+      dueDate: '2024-04-01',
+      createdAt: '2024-01-08'
     }
   ];
   }

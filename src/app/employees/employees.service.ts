@@ -25,40 +25,48 @@ export class EmployeesService {
       fullName: 'John Smith',
       email: 'john.smith@company.com',
       role: 'Frontend Developer',
-      assignedProjects: [1],
-      assignedTasks: []
+      assignedProjects: [1, 2],
+      assignedTasks: [1, 2]
     },
     {
       id: 2,
       fullName: 'Sarah Johnson',
       email: 'sarah.johnson@company.com',
       role: 'UX/UI Designer',
-      assignedProjects: [1, 2],
-      assignedTasks: []
+      assignedProjects: [1, 2, 3],
+      assignedTasks: [2, 4]
     },
     {
       id: 3,
       fullName: 'Mike Wilson',
       email: 'mike.wilson@company.com',
       role: 'Backend Developer',
-      assignedProjects: [2],
-      assignedTasks: []
+      assignedProjects: [2, 4],
+      assignedTasks: [3, 6]
     },
     {
       id: 4,
       fullName: 'Emma Davis',
       email: 'emma.davis@company.com',
       role: 'Project Manager',
-      assignedProjects: [1, 2, 3],
-      assignedTasks: []
+      assignedProjects: [1, 2, 3, 4],
+      assignedTasks: [5]
     },
     {
       id: 5,
       fullName: 'David Brown',
       email: 'david.brown@company.com',
       role: 'QA Tester',
-      assignedProjects: [3],
-      assignedTasks: []
+      assignedProjects: [3, 5],
+      assignedTasks: [7]
+    },
+    {
+      id: 6,
+      fullName: 'Lisa Garcia',
+      email: 'lisa.garcia@company.com',
+      role: 'DevOps Engineer',
+      assignedProjects: [4, 5, 6],
+      assignedTasks: [8]
     }
   ];
   }
