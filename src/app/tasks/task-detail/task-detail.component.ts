@@ -20,9 +20,7 @@ export class TaskDetailComponent {
   task = computed(() => {
     const idParam = this.route.snapshot.paramMap.get('id');
     const taskId = idParam ? +idParam : 0;
-    console.log('Loading task with ID:', taskId);
     const foundTask = this.tasksService.getTaskById(taskId);
-    console.log('Found task:', foundTask);
     return foundTask;
   });
 

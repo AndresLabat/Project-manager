@@ -53,8 +53,6 @@ export class ProjectFormComponent {
     if (this.form.invalid) return;
 
     const formValue = this.form.value;
-    console.log('ProjectForm - Form value:', formValue);
-    console.log('ProjectForm - Assigned employees:', formValue.assignedEmployees);
     
     const project = this.projectsService.addProject({
       name: formValue.name || '',
