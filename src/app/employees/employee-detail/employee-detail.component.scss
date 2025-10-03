@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use 'sass:color';
 
 .employee-detail-container {
   max-width: 800px;
@@ -92,7 +93,7 @@
     color: white;
     
     &:hover {
-      background-color: darken($error-color, 10%);
+      background-color: color.scale($error-color, $lightness: -10%);
     }
   }
 }

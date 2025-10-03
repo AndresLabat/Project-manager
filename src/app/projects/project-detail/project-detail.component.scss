@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use 'sass:color';
 
 .project-detail-container {
   max-width: 800px;
@@ -84,7 +85,7 @@
     color: white;
     
     &:hover {
-      background-color: darken($text-muted, 10%);
+      background-color: color.scale($text-muted, $lightness: -10%);
     }
   }
   
@@ -93,7 +94,7 @@
     color: white;
     
     &:hover {
-      background-color: darken($error-color, 10%);
+      background-color: color.scale($error-color, $lightness: -10%);
     }
   }
   
