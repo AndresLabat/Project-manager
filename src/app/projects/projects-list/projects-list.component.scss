@@ -111,6 +111,8 @@
 @media (max-width: 768px) {
   .projects-container {
     padding: $spacing-md;
+    min-height: auto;
+    justify-content: flex-start;
   }
   
   .list-section {

@@ -81,6 +81,7 @@
 @media (max-width: 768px) {
   .employees-container {
     padding: $spacing-md;
+    min-height: auto;
   }
   
   .list-section {

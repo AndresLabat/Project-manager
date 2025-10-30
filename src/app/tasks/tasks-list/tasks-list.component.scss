@@ -189,6 +189,8 @@
 @media (max-width: 768px) {
   .tasks-container {
     padding: $spacing-md;
+    min-height: auto;
+    justify-content: flex-start;
   }
   
   .list-section {
