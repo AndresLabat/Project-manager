@@ -42,7 +42,7 @@
       (blur)="onBlur()"
       class="form-select">
       @if (placeholder) {
-        <option value="" disabled>{{ placeholder }}</option>
+        <option value="" disabled [selected]="!value">{{ placeholder }}</option>
       }
       @for (option of options; track $index) {
         <option [value]="option.value" [selected]="value == option.value">{{ option.label }}</option>
