@@ -41,13 +41,6 @@ export class EmployeesService {
     return defaults;
   }
 
-  constructor() {
-    localStorage.removeItem('employees');
-    localStorage.removeItem('projects');
-    localStorage.removeItem('tasks');
-    this.saveEmployees();
-  }
-
   getEmployees(): Employee[] {
     return this.employeesSignal();
   }
