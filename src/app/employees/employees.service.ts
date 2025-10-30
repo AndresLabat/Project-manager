@@ -97,6 +97,7 @@ export class EmployeesService {
         return emp;
       })
     );
+    this.saveEmployees();
   }
 
   unassignFromProject(employeeId: number, projectId: number): void {
