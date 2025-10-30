@@ -10,7 +10,6 @@ export class TasksService {
   private nextId = 9;
 
   constructor(private employeesService: EmployeesService) {
-    this.saveTasks();
     this.syncEmployeeTaskAssignments();
   }
 
